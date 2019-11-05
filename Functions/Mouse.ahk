@@ -1,9 +1,9 @@
-global nox_id
+global ld_id
 global step
 
 init_mouse()
 {
-    ControlGet, nox_id, Hwnd, , ScreenBoardClassWindow, NoxPlayer
+    ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
     step := 15
 }
 
@@ -21,31 +21,31 @@ GetLParam(x, y)
 SendMiddleButtonDown(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x207, 0x0010, %lparam%, , ahk_id %nox_id%    
+    PostMessage, 0x207, 0x0010, %lparam%, , ahk_id %ld_id%    
 }
 
 SendMiddleButtonUp(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x208, 0x0000, %lparam%, , ahk_id %nox_id%    
+    PostMessage, 0x208, 0x0000, %lparam%, , ahk_id %ld_id%
 }
 
 SendLButtonDown(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x201, 0x0001, %lparam%, , ahk_id %nox_id%    
+    PostMessage, 0x201, 0x0001, %lparam%, , ahk_id %ld_id%
 }
 
 SendLButtonUp(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x202, 0, %lparam%, , ahk_id %nox_id%
+    PostMessage, 0x202, 0, %lparam%, , ahk_id %ld_id%
 }
 
 SendMouseMove(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x200, 0x0001, %lparam%, , ahk_id %nox_id%
+    PostMessage, 0x200, 0x0001, %lparam%, , ahk_id %ld_id%
 }
 
 ; Finger on top of the screen, and drag down
@@ -137,7 +137,7 @@ ZoomOut(RepeatCount=1)
     SendMiddleButtonDown(700, 400)
     SendMiddleButtonUp(700, 400)
     Loop, %RepeatCount% {
-        ; Nox is wonky if you try to zoom too much too fast
+        ; not working for ldplayer
         DragRightToLeft(300, 1250, 850)
         sleep 100
     }
@@ -147,7 +147,7 @@ ZoomOut(RepeatCount=1)
 }
 
 ; ClickM sends a MouseDown/MouseUp messages to specific coordinates, randomized by offset.
-; This works the same as ClickS (different coordinates), but it doesnt rely on Nox window being visible and
+; This works the same as ClickS (different coordinates), but it doesnt rely on ld window being visible and
 ; the click works even when the window is minimized.
 ; This is not relevant now, but it opens new possibilities.
 ; It also has no external dependencies, so you can "dry run" a map simply by running this file, which speeds up testing
@@ -158,7 +158,7 @@ ClickM(x, y, offset=10)
     SendLButtonDown(x, y)
     SendLButtonUp(x, y)
     ; Avoids clicking too fast. Maybe we should randomize this a little bit.
-    ; Has a lower limit, if clicks too fast Nox doesnt recognize multiple clicks.
+    ; Has a lower limit, if clicks too fast ldplayer doesnt recognize multiple clicks.
     sleep 150
 }
 ;init_mouse()

@@ -11,7 +11,9 @@ CheckWindow()
 		{
 			GuiControl,, NB, Window size changed, reinitializing pixel map
 			Sleep 1000
-			RPixelSearch()
+			WinActivate, ahk_id %uid%
+			FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 Count1 n0 a1200,,,-600")
+;			RPixelSearch()
 		}
 	}
 	else
@@ -57,8 +59,24 @@ SetWindow()
 		GuiControl,, NB, AMD selected, press Start
 	}
 	else
-	{
-	RPixelSearch()
+	{	
+		loop {
+			
+		WinActivate, ahk_id %uid%
+		GuiControl,, NB, Return to home screen
+		FoundHomeScreen := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 Count1 n0 a1200,,,-600")
+		if (FoundHomeScreen=1)
+		{
+			GuiControl,, NB, Found home screen, press Start
+			return
+		}
+		else
+		{
+			GuiControl,, NB, Return to home screen
+		
+		}
+;	RPixelSearch()
+			}
 	}
 
 }
