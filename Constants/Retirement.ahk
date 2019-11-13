@@ -40,6 +40,7 @@ Transition("CombatTdollEnhancement","Retirement")
 	RFindClick("TdollRetirementDismantle", "rLDPlayer mc o75 w30000,50")
 	Sleep 2000
 	RFindClick("FactoryReturn", "rLDPlayer mc o50 w30000,50")
+	sleep 2000
 	Transition("Combat","CombatPage")
 
 }

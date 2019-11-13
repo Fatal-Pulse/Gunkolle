@@ -295,9 +295,9 @@ GoHome()
 	ClickS(814, 115)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-	sleep 155000
+	sleep 150000
 	RFindClick("\Maps\0_2\NoAmmo", "rLDPlayer mc o10 w30000,50 ")
-	sleep 3000 ;need it, otherwise 'illegal action' window will pop
+	sleep 2000 ;need it, otherwise 'illegal action' window will pop
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	GoHome()
 }
@@ -580,7 +580,7 @@ GoHome()
 			Else
 				{
 				}
-		sleep 1000
+		sleep 2500
 		Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 		sleep 500
 		TFindClick("\Maps\4_6\Terminate","\Maps\4_6\TerminateRestart")
@@ -636,7 +636,7 @@ GoHome()
 		Else
 			{
 			}
-	sleep 1000
+	sleep 2500
 	Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 	sleep 500
 	TFindClick("\Maps\4_6\Terminate","\Maps\4_6\TerminateOK")
@@ -704,11 +704,11 @@ GoHome()
 	{
 		sleep 1000
 		ClickS(840, 330)
+		sleep 500
 		RFindClick("Maps\5_4\OK", "rLDPlayer mc o10 w30000,50")
+		sleep 500
 		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
-		sleep 1000
-		RFindClick("Maps\5_4\5_4MapWait", "rLDPlayer mc o25 w30000,50 n0")
-		sleep 1500
+		sleep 3000
 		ClickS(425, 350)
 		sleep 500
 		RFindClick("Maps\5_4\Support", "rLDPlayer mc o50 w30000,50 ")  
