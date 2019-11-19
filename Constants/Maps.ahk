@@ -177,11 +177,12 @@ nodes(nodecount)
 			}
 			else
 			{
-				ClickS(Safex,Safey)
+				;ClickS(Safex,Safey)
+				ClickS(700,400)
 			}
 			GuiControl,, NB, %found%
 		}
-		FindClick(A_ScriptDir "\pics\EndTurn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	}
 }
 
@@ -295,8 +296,9 @@ GoHome()
 	ClickS(814, 115)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-	sleep 150000
-	RFindClick("\Maps\0_2\NoAmmo", "rLDPlayer mc o10 w30000,50 ")
+	nodes(3)
+	sleep 12000
+	nodes(2)
 	sleep 2000 ;need it, otherwise 'illegal action' window will pop
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	GoHome()
@@ -531,6 +533,7 @@ GoHome()
 	sleep 500
 	Loop, 9
 	{
+		sleep 500
 		ClickS(842, 400)
 		sleep 500
 		RFindClick("\Maps\4_6\OK", "rLDPlayer mc o10 w30000,50 ")
@@ -580,13 +583,13 @@ GoHome()
 			Else
 				{
 				}
-		sleep 2500
-		Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 		sleep 500
+		Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 		TFindClick("\Maps\4_6\Terminate","\Maps\4_6\TerminateRestart")
 		ClickTilGone("\Maps\4_6\TerminateRestart", " rLDPlayer mc o10 w30000,50")
 		sleep 3500
 	}
+	sleep 500
 	ClickS(842, 400)
 	sleep 500
 	RFindClick("\Maps\4_6\OK", "rLDPlayer mc o10 w30000,50 ")
@@ -636,7 +639,7 @@ GoHome()
 		Else
 			{
 			}
-	sleep 2500
+	sleep 500
 	Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 	sleep 500
 	TFindClick("\Maps\4_6\Terminate","\Maps\4_6\TerminateOK")
@@ -688,6 +691,7 @@ GoHome()
 5_4_friendly()
 {
 	Global
+	sleep 2000
 	ClickM(716, 664)
 	RFindClick("\Maps\5_4\Battle", "rLDPlayer mc o20 w30000,50")
 	Found := FindClick(A_ScriptDir "\pics\Maps\5_4\5_4MapWait", "rLDPlayer mc o10 Count1 n0 w30000,50")
@@ -1163,8 +1167,7 @@ GoHome()
 	ClickS(750, 378)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-	sleep 35000
-	RFindClick("\Maps\6_3N\Wiped2", "rLDPlayer mc o10 w30000,50 ")
+	nodes(2)
 	sleep 2000
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	sleep 18000 ;need it
@@ -1202,8 +1205,7 @@ GoHome()
 	ClickS(750, 378)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-	sleep 35000
-	RFindClick("\Maps\6_3N\Wiped2", "rLDPlayer mc o10 w30000,50 ")
+	nodes(2)
 	sleep 2000
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	sleep 18000 ;need it
@@ -1281,11 +1283,8 @@ GoHome()
 		ClickS(750, 378)
 		sleep 500
 		RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-		sleep 3000
-		Found := FindClick(A_ScriptDir "\pics\Maps\6_3N\Exhausted", "rLDPlayer mc o30 Count1 w1000,50")
-		sleep 22000
-		Found := FindClick(A_ScriptDir "\pics\Maps\6_3N\Exhausted", "rLDPlayer mc o30 Count1 w1000,50")
-		sleep 22500
+		nodes(2)
+		sleep 2000
 		TFindClick("\Maps\6_3N\Terminate","\Maps\6_3N\TerminateRestart")
 		ClickTilGone("\Maps\6_3N\TerminateRestart", " rLDPlayer mc o10 w30000,50")
 		sleep 3500
@@ -1303,11 +1302,8 @@ GoHome()
 	ClickS(750, 378)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-	sleep 3000
-	Found := FindClick(A_ScriptDir "\pics\Maps\6_3N\Exhausted", "rLDPlayer mc o30 Count1 w1000,50")
-	sleep 22000
-	Found := FindClick(A_ScriptDir "\pics\Maps\6_3N\Exhausted", "rLDPlayer mc o30 Count1 w1000,50")
-	sleep 22500
+	nodes(2)
+	sleep 2000
 	TFindClick("\Maps\6_3N\Terminate","\Maps\6_3N\TerminateOK")
 	ClickTilGone("\Maps\6_3N\TerminateOK", " rLDPlayer mc o10 w30000,50")
 	GoHome()
@@ -1396,7 +1392,7 @@ GoHome()
 	RetirementLoop := 1
 	while (RetirementLoop != 0)
 	{
-		sleep 1000
+		sleep 2000
 		ClickM(720, 660)
 		RFindClick("\Maps\10_4E\Battle", "rLDPlayer mc o30 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
@@ -1444,9 +1440,8 @@ GoHome()
 	ClickS(486, 232)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-	sleep 175000
-	RFindClick("\Maps\10_4E\NoAmmo", "rLDPlayer mc o10 w30000,50 ")
-	sleep 5000
+	nodes(5)
+	sleep 15000
 	ClickS(486, 398)
 	sleep 200
 	ClickS(486, 398)
@@ -1465,7 +1460,7 @@ GoHome()
 	RetirementLoop := 1
 	while (RetirementLoop != 0)
 	{
-		sleep 1000
+		sleep 2000
 		ClickM(720, 660)
 		RFindClick("\Maps\10_4E\Battle", "rLDPlayer mc o30 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
@@ -1504,9 +1499,8 @@ GoHome()
 	ClickS(486, 232)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-	sleep 175000
-	RFindClick("\Maps\10_4E\NoAmmo", "rLDPlayer mc o10 w30000,50 ")
-	sleep 5000
+	nodes(5)
+	sleep 15000
 	ClickS(486, 398)
 	sleep 200
 	ClickS(486, 398)
