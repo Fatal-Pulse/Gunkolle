@@ -1,4 +1,4 @@
-;Gunkolle v0.6.0
+;Gunkolle v0.6.1
 #Persistent
 #SingleInstance
 #Include %A_ScriptDir%/Functions/Gdip_All.ahk ;Thanks to tic (Tariq Porter) for his GDI+ Library => ahkscript.org/boards/viewtopic.php?t=6517
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.0
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.1
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -279,7 +279,7 @@ Transition(ClickThis,WaitForThis)
 		{
 			Counter = 0
 			GuiControl,, NB, Expedition Found
-			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
+				FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
 				if (FoundLoginCollectNotice == true)
 				{
 					GuiControl,, NB, Login Collect Found
@@ -290,7 +290,7 @@ Transition(ClickThis,WaitForThis)
 					TFindClick("LoginCollectNotice3","LoginCollectNotice")
 					ClickTilGone("LoginCollectNotice", " rLDPlayer mc o10 w30000,50")
 				}
-			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+				FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundExpedition == true)
 				{
 					GuiControl,, NB, Expedition Found
@@ -298,7 +298,7 @@ Transition(ClickThis,WaitForThis)
 					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
 					sleep 3000
 				}
-			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+				FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundExpedition == true)
 				{
 					GuiControl,, NB, Expedition Found
@@ -306,7 +306,7 @@ Transition(ClickThis,WaitForThis)
 					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
 					sleep 3000
 				}
-			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+				FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundExpedition == true)
 				{
 					GuiControl,, NB, Expedition Found
@@ -314,7 +314,7 @@ Transition(ClickThis,WaitForThis)
 					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
 					sleep 3000
 				}	
-			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+				FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundExpedition == true)
 				{
 					GuiControl,, NB, Expedition Found
@@ -551,6 +551,7 @@ Repair()
 	Found := FindClick(A_ScriptDir "\pics\Repair", "rLDPlayer mc o50 w500,50 Count1 n0 a800,200,-200,-400")
 	if ( Found >= 1)
 	{
+		Transition("Repair","RepairSlot")
 		Transition("Repair","RepairSlot")
 		RFindClick("RepairSlot", "rLDPlayer mc o50 w30000,50 a50,100,-1050,-100")
 		RFindClick("RepairSlotWait", "rLDPlayer mc o30 w30000,50 n0 a0,100,-1000,-300")
@@ -886,6 +887,7 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 		}
 		Found := 0
 		Transition("Formation","WaitForFormation")
+		Transition("Formation","WaitForFormation")
 		ReplaceDPS(exhaustedDoll1, loadedDoll1)
 		if (dualDPS)
 		{
@@ -901,12 +903,15 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 ;			AddToSecondEchelon(exhaustedDoll2, 2)
 ;		}
 		Transition("FormationReturn","WaitForHome")
+		Transition("FormationReturn","WaitForHome")
 		; Check expedition
 	}	
 
 	; ExpeditionCheck("Daily")
 	
 	Transition("Combat","CombatPage")
+	Transition("Combat","CombatPage")
+	Transition("CombatMissionNotActive","CombatMissionActive")
 	Transition("CombatMissionNotActive","CombatMissionActive")
 
 	GuiControlGet, WorldV

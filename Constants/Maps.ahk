@@ -247,7 +247,7 @@ GoHome()
 			else
 			{
 				Found4 := FindClick(A_ScriptDir "\pics\ReturnFromResult", "rLDPlayer mc o40 Count1 w100,50")
-                sleep 500
+                sleep 1000
 				Found3 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o40 Count1 w100,50")
 				Found5 := FindClick(A_ScriptDir "\pics\CombatReturnEvent", "rLDPlayer mc o40 Count1 w100,50")
 				FoundExp := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o30 Count1")

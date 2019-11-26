@@ -1,3 +1,8 @@
+
+#### LDPlayer 0.6.1
+* **_Bugfix_** Looking for correct time for the GoHome function
+* **_Bugfix_** Transition loop will return again
+
 #### LDPlayer 0.6.0
 * **_New_** Event map Promotion III for crate farm
 * **_New_** Mod for AR15 and M4A1 added
