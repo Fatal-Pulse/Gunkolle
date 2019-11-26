@@ -1,3 +1,8 @@
+#### LDPlayer 0.6.0
+* **_New_** Event map Promotion III for crate farm
+* **_New_** Mod for AR15 and M4A1 added
+* **_Bugfix_** Multiple expeditions working at home, daily popup fixed
+* **_Update_** sleep tweaks
 
 #### 0.5.0
 * **_New_** Mini Sortie Per Hour timer when you click the sortie number on the menu bar.

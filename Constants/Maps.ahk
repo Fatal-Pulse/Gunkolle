@@ -78,6 +78,10 @@ RunMap(x)
 	{
 		VA7()
 	}
+	else if(x == "E2_C3_60crates")
+	{
+		E2_C3_60crates()
+	}
 }
 
 WaitBattle()
@@ -229,11 +233,13 @@ GoHome()
 		Found2 := 0
 		Found3 := 0
 		Found4 := 0
+		Found5 := 0
 		sleep 5000
 		while(Found1 == 0 && Found2 == 0)
 		{
 			Found1 := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 w250,50 Count1 n0 a1200,,,-600")
 			Found2 := FindClick(A_ScriptDir "\pics\DailyMessage", "rLDPlayer mc o40 Count1 n0")
+			
 			if (Found1 >= 1 or Found2 >= 1)
 			{
 
@@ -241,8 +247,9 @@ GoHome()
 			else
 			{
 				Found4 := FindClick(A_ScriptDir "\pics\ReturnFromResult", "rLDPlayer mc o40 Count1 w100,50")
-                sleep 2000
+                sleep 500
 				Found3 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o40 Count1 w100,50")
+				Found5 := FindClick(A_ScriptDir "\pics\CombatReturnEvent", "rLDPlayer mc o40 Count1 w100,50")
 				FoundExp := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o30 Count1")
 				if FoundExp >= 1
 				{
@@ -250,7 +257,7 @@ GoHome()
 				}
 				ClickS(398,649)
 			}
-			GuiControl,, NB, %found1% %found2% %found3% %found4% 
+			GuiControl,, NB, %found1% %found2% %found3% %found4% %found5% 
 		}
 	}
 }
@@ -1622,5 +1629,195 @@ VA7( )
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	GoHome()
 }
+	
+E2_C3_60crates()
+{
+	Global
+	RetirementLoop := 1
+	while (RetirementLoop != 0)
+	{
+		sleep 2000
+		RFindClick("\Maps\Sing\Sing", "rLDPlayer mc o30 w30000,50")
+		GuiControl,, NB, User needs to click on Promotion III
+		sleep 8000
+		RFindClick("\Maps\Sing\Battle", "rLDPlayer mc o30 w30000,50")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		if(Found == 1)
+		{
+			Retirement()
+			RetirementLoop++
+		}
+		RetirementLoop--
+	}
+	Loop, 5
+	{
+	sleep 1000
+	ClickS(682, 400)
+	RFindClick("\Maps\Sing\OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
+	RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+	sleep 3000
+	ClickS(682, 400)
+	sleep 500
+	ClickS(623, 437)
+	sleep 2200
+	ClickS(692, 488)
+	sleep 500
+	RFindClick("\Maps\Sing\Switch", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(623, 437)
+	sleep 500
+	RFindClick("\Maps\Sing\Rescue", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Move", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Retrieval", "rLDPlayer mc o10 w30000,50 ")
+	sleep 3000
+	ClickS(732, 436)
+	sleep 200
+	ClickS(732, 436)
+	sleep 2200
+	ClickS(795, 414)
+	sleep 500
+	RFindClick("\Maps\Sing\Switch2", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(732, 436)
+	sleep 500
+	RFindClick("\Maps\Sing\Rescue2", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Move", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Retrieval", "rLDPlayer mc o10 w30000,50 ")
+	sleep 3000
+	ClickS(717, 348)
+	sleep 200
+	ClickS(717, 348)
+	sleep 2200
+	ClickS(696, 285)
+	sleep 500
+	RFindClick("\Maps\Sing\Switch3", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(717, 348)
+	sleep 500
+	RFindClick("\Maps\Sing\Rescue3", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Move", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Retrieval", "rLDPlayer mc o10 w30000,50 ")
+	sleep 4000
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 4500
+	RFindClick("\Maps\Sing\P3", "rLDPlayer mc o30 w30000,50")
+	RFindClick("\Maps\Sing\Battle", "rLDPlayer mc o30 w30000,50")
+	sleep 3000
+	}
+	sleep 1000
+	ClickS(682, 400)
+	RFindClick("\Maps\Sing\OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
+	RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+	sleep 3000
+	ClickS(682, 400)
+	sleep 500
+	ClickS(623, 437)
+	sleep 2200
+	ClickS(692, 488)
+	sleep 500
+	RFindClick("\Maps\Sing\Switch", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(623, 437)
+	sleep 500
+	RFindClick("\Maps\Sing\Rescue", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Move", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Retrieval", "rLDPlayer mc o10 w30000,50 ")
+	sleep 3000
+	ClickS(732, 436)
+	sleep 200
+	ClickS(732, 436)
+	sleep 2200
+	ClickS(795, 414)
+	sleep 500
+	RFindClick("\Maps\Sing\Switch2", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(732, 436)
+	sleep 500
+	RFindClick("\Maps\Sing\Rescue2", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Move", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Retrieval", "rLDPlayer mc o10 w30000,50 ")
+	sleep 3000
+	ClickS(717, 348)
+	sleep 200
+	ClickS(717, 348)
+	sleep 2200
+	ClickS(696, 285)
+	sleep 500
+	RFindClick("\Maps\Sing\Switch3", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(717, 348)
+	sleep 500
+	RFindClick("\Maps\Sing\Rescue3", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Move", "rLDPlayer mc o10 w30000,50 ")
+	sleep 2200
+	ClickS(682, 400)
+	sleep 500
+	RFindClick("\Maps\Sing\Retrieval", "rLDPlayer mc o10 w30000,50 ")
+	sleep 4000
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	ClickS(640, 102)
+	sleep 500
+	GuiControl,, NB, Collected 60 Crates, Paused
+	Pause
+}
 
 
+		

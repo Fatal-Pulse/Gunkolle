@@ -64,7 +64,7 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|
+Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|E2_C3_60crates
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%ClickS(706, 425)
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.0
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -278,10 +278,50 @@ Transition(ClickThis,WaitForThis)
 		if ((Counter >= 15) && (Found == 0))
 		{
 			Counter = 0
- 			GuiControl,, NB, Expedition Found
-			RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
-			RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-			loopcount++
+			GuiControl,, NB, Expedition Found
+			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
+				if (FoundLoginCollectNotice == true)
+				{
+					GuiControl,, NB, Login Collect Found
+					TFindClick("LoginCollectNotice","LoginCollectNotice2")
+					sleep 3000
+					TFindClick("LoginCollectNotice2","LoginCollectNotice3")
+					sleep 1000
+					TFindClick("LoginCollectNotice3","LoginCollectNotice")
+					ClickTilGone("LoginCollectNotice", " rLDPlayer mc o10 w30000,50")
+				}
+			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+				if (FoundExpedition == true)
+				{
+					GuiControl,, NB, Expedition Found
+					RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+					sleep 3000
+				}
+			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+				if (FoundExpedition == true)
+				{
+					GuiControl,, NB, Expedition Found
+					RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+					sleep 3000
+				}
+			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+				if (FoundExpedition == true)
+				{
+					GuiControl,, NB, Expedition Found
+					RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+					sleep 3000
+				}	
+			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+				if (FoundExpedition == true)
+				{
+					GuiControl,, NB, Expedition Found
+					RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+					sleep 3000
+				}	
 		}
 		if (Found2 == true)
 		{
@@ -295,8 +335,6 @@ Transition(ClickThis,WaitForThis)
 		}
 	}
 }
-
-
 
 UpdateEnergy()
 {
@@ -562,16 +600,16 @@ ReplaceDPS(exhaustedDoll, loadedDoll, resetFilter:=False)
 	{
 		sleep 1000
 		DragDownToUp(540, 700, 520)
-		sleep 3000
+		sleep 4000
 	}
 	GuiControlGet, selectscroll2V
 	if (selectscroll2V = 1)
 	{
 		sleep 1000
 		DragDownToUp(540, 700, 300)
-		sleep 800
+		sleep 4000
 	}
-	sleep 2200
+	sleep 600
 	WFindClick("DollList\"%loadedDoll% "Profile","rLDPlayer mc a,130,-200,",120)
 	RFindClick("WaitForFormation", "rLDPlayer mc o50 w30000,50 n0") 
 }
@@ -676,6 +714,51 @@ Sortie2:
 		TCS := A_TickCount
 	}
 
+GuiControl,, NB, Expedition Check
+FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
+	if (FoundLoginCollectNotice == true)
+	{
+		GuiControl,, NB, Login Collect Found
+		TFindClick("LoginCollectNotice","LoginCollectNotice2")
+		sleep 3000
+		TFindClick("LoginCollectNotice2","LoginCollectNotice3")
+		sleep 1000
+		TFindClick("LoginCollectNotice3","LoginCollectNotice")
+		ClickTilGone("LoginCollectNotice", " rLDPlayer mc o10 w30000,50")
+	}
+FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+	if (FoundExpedition == true)
+	{
+		GuiControl,, NB, Expedition Found
+		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		sleep 3000
+	}
+FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+	if (FoundExpedition == true)
+	{
+		GuiControl,, NB, Expedition Found
+		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		sleep 3000
+	}
+FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+	if (FoundExpedition == true)
+	{
+		GuiControl,, NB, Expedition Found
+		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		sleep 3000
+	}
+FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+	if (FoundExpedition == true)
+	{
+		GuiControl,, NB, Expedition Found
+		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		sleep 3000
+	}
+
 	GuiControlGet, ExpeditionV
 	GuiControl,, NB, %ExpeditionV%
 	While (ExpeditionV == 1)
@@ -750,7 +833,6 @@ Sortie2:
 				TFindClick("LoginCollectNotice3","LoginCollectNotice1")
 				ClickTilGone("LoginCollectNotice", " rLDPlayer mc o10 w30000,50")
 				loopcount++
-			
 			}
 			else if (FoundDailyPop == true)
 			{	
@@ -1107,7 +1189,7 @@ Initialize()
 	FriendChecker := 1
 	BatteryChecker := 1
 	CombatSimsDataChecker := 1
-	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000,ZAS1,ZAS2,K11,AUG,RFB,ART,T91,K2,64Shiki,GRAPE1,GRAPE2
+	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000,ZAS1,ZAS2,K11,AUG,RFB,ART,T91,K2,64Shiki,GRAPE1,GRAPE2,M4A1M3,AR15M3
 	4Star = 
 	init_mouse()
 }

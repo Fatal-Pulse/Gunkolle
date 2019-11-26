@@ -16,12 +16,9 @@ Running from source
 * findclick library by berban (also included)
 * Mouse library by fnzr (included)
 * playing at 1280 x 720 res
-* Requires a NVIDIA graphics card becuase of how NOX renders. [#16](https://github.com/dice4321/Gunkolle/issues/16)
-* NOX version 6.1.0.0 recommended (6.0.8.0 version tends to crash with new NVIDIA drivers, 6.1.0.0 seems stable so far) 
-* Default background in main menu
-
-Running from releases (v1.60803 or above)
-* None
+* Both NVIDIA and AMD graphics cards are working, but AMD users might need to replace some pics. 
+* Latest version of LDPlayer should work fine (3.76) but older versions work too.
+* Default background in main menu.
 
 THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN8.1 AND WIN10. I may be unable to help you on any other version.
 
@@ -31,22 +28,20 @@ THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN8.1 AND WIN10. I may be unable t
 * Dynamic pixel checking to prevent user error
 * Can be set up to pause/resume at a certain time
 * All clicks have randomness to avoid click tracking
-* can run for 24 hours, even skipping the daily login messages! [Not]
+* Can run for 24 hours, even skipping the daily login messages! (Most cases for me - the game crashes from memory leak well before the 24 mark)
 
 ## What does not work at current state:
 1. Auto-Factory
-2. New day login
+2. Combat simulation, time checks
 
 ## How to use: Gunkolle(Expeditions)
 When starting Gunkolle make sure your android emulator is the active window when starting the script. (else you'll get an invald screen reading)
 
 Dont do anything until you see the 'Ready' in the gui box.
 
-If you are having probablems trying to get the 'Ready' on the home page, you can changing your nox graphics render settings from 'Compatible' to 'Speed'.
-
 Click expedition only and leave window open in background.
 
-If you are not playing with Nox, add/create an entry in the config.ini file in the script directory. Use AU3_Spy Window Spy that is included with your AHK installation to determine the window properties.  As shown below (Two valid options are show, **PICK ONE**)-
+To use another emulator, add/create an entry in the config.ini file in the script directory. Use AU3_Spy Window Spy that is included with your AHK installation to determine the window properties.  As shown below (Two valid options are show, **PICK ONE**)-
 
 ```
 [Variables]
@@ -54,9 +49,12 @@ WINID=ahk_class Qt5QWindowIcon
 WINID=ahk_exe Nox.exe
 ```
 
+You will also likely need to find and replace all existing mentions of LDPlayer in all functions. As far as I know, you need more changes for most other emulators that aren't Nox or LDPlayer. MeMu doesn't get recognized at all when I last tried.
+
 ## How to use: Gunkolle(Sortie)
 read the wiki
 
+old client:
 ![lol](https://github.com/dice4321/Gunkolle/blob/master/uselesspics/lol32.gif)
 
 ## How to use: Pause Utility
