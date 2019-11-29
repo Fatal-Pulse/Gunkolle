@@ -1,4 +1,8 @@
 
+#### LDPlayer 0.6.2
+* **_New_** Event maps added, check wiki.
+* **_Bugfix_** Small change to login popup and expedition check.
+
 #### LDPlayer 0.6.1
 * **_Bugfix_** Looking for correct time for the GoHome function
 * **_Bugfix_** Transition loop will return again

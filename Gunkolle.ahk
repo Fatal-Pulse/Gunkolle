@@ -1,4 +1,4 @@
-;Gunkolle v0.6.1
+;Gunkolle v0.6.2
 #Persistent
 #SingleInstance
 #Include %A_ScriptDir%/Functions/Gdip_All.ahk ;Thanks to tic (Tariq Porter) for his GDI+ Library => ahkscript.org/boards/viewtopic.php?t=6517
@@ -64,7 +64,7 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|E2_C3_60crates
+Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|E2_C3_60crates|E1_A2_Thunder|E1_C4_MP7|E2_C4_416eq|E3_1_57
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%ClickS(706, 425)
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.1
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.2
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -287,8 +287,8 @@ Transition(ClickThis,WaitForThis)
 					sleep 3000
 					TFindClick("LoginCollectNotice2","LoginCollectNotice3")
 					sleep 1000
-					TFindClick("LoginCollectNotice3","LoginCollectNotice")
-					ClickTilGone("LoginCollectNotice", " rLDPlayer mc o10 w30000,50")
+					TFindClick("LoginCollectNotice3","LoginCollectNotice4")
+					ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
 				}
 				FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundExpedition == true)
@@ -320,7 +320,6 @@ Transition(ClickThis,WaitForThis)
 					GuiControl,, NB, Expedition Found
 					RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
 					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-					sleep 3000
 				}	
 		}
 		if (Found2 == true)
@@ -724,8 +723,8 @@ FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rL
 		sleep 3000
 		TFindClick("LoginCollectNotice2","LoginCollectNotice3")
 		sleep 1000
-		TFindClick("LoginCollectNotice3","LoginCollectNotice")
-		ClickTilGone("LoginCollectNotice", " rLDPlayer mc o10 w30000,50")
+		TFindClick("LoginCollectNotice3","LoginCollectNotice4")
+		ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
 	}
 FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
 	if (FoundExpedition == true)
@@ -757,7 +756,6 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 		GuiControl,, NB, Expedition Found
 		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
 		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-		sleep 3000
 	}
 
 	GuiControlGet, ExpeditionV
@@ -831,8 +829,8 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 				sleep 3000
 				TFindClick("LoginCollectNotice2","LoginCollectNotice3")
 				sleep 1000
-				TFindClick("LoginCollectNotice3","LoginCollectNotice1")
-				ClickTilGone("LoginCollectNotice", " rLDPlayer mc o10 w30000,50")
+				TFindClick("LoginCollectNotice3","LoginCollectNotice4")
+				ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
 				loopcount++
 			}
 			else if (FoundDailyPop == true)
@@ -867,6 +865,14 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 	; } 
 
 	; Check expedition
+	FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+		if (FoundExpedition == true)
+		{
+			GuiControl,, NB, Expedition Found
+			RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+			RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		}
+		
 	GuiControlGet, corpsedragoffV
 	if (corpsedragoffV != 1)
 	{
@@ -908,7 +914,14 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 	}	
 
 	; ExpeditionCheck("Daily")
-	
+	FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+		if (FoundExpedition == true)
+		{
+			GuiControl,, NB, Expedition Found
+			RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+			RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		}
+		
 	Transition("Combat","CombatPage")
 	Transition("Combat","CombatPage")
 	Transition("CombatMissionNotActive","CombatMissionActive")
