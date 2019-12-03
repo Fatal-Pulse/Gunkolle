@@ -18,7 +18,10 @@ Running from source
 * playing at 1280 x 720 res
 * Both NVIDIA and AMD graphics cards are working, but AMD users might need to replace some pics. 
 * Latest version of LDPlayer should work fine (3.76) but older versions work too.
+* Newer versions of LDPlayer are rumored to have a cryptominer, so use old version or delete fynews.exe, fyservice.exe in ld player directory, and delete fyservice from services via admin CMD - type "SC DELETE fyservice".
 * Default background in main menu.
+* Using the uncensored pics via recipe (522/320/404/137).
+* Using old apk before the V2.0410 Optional Client Update for now. https://reddit.com/r/girlsfrontline/comments/e3n7dt/all_the_design_issuesbugs_with_the_new_optional/
 
 THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN8.1 AND WIN10. I may be unable to help you on any other version.
 
