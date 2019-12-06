@@ -583,18 +583,12 @@ GoHome()
 					ClickTilGone("\Maps\4_6\Pause", "rLDPlayer mc o10 w30000,50 ")
 					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
 				}
-			Else
-				{
-				}
 		sleep 6500
 		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Pause", "rLDPlayer mc o40 Count1 n0 w500")
 			if (FoundBattle == true)
 				{
 					ClickTilGone("\Maps\4_6\Pause", "rLDPlayer mc o10 w30000,50 ")
 					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-				}
-			Else
-				{
 				}
 		sleep 4800
 		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Pause", "rLDPlayer mc o40 Count1 n0 w500")
@@ -603,10 +597,8 @@ GoHome()
 					ClickTilGone("\Maps\4_6\Pause", "rLDPlayer mc o10 w30000,50 ")
 					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
 				}
-			Else
-				{
-				}
 		sleep 500
+		Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 		Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 		TFindClick("\Maps\4_6\Terminate","\Maps\4_6\TerminateRestart")
 		ClickTilGone("\Maps\4_6\TerminateRestart", " rLDPlayer mc o10 w30000,50")
@@ -639,18 +631,12 @@ GoHome()
 				ClickTilGone("\Maps\4_6\Pause", "rLDPlayer mc o10 w30000,50 ")
 				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
 			}
-		Else
-			{
-			}
 	sleep 6500
 	FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Pause", "rLDPlayer mc o40 Count1 n0 w500")
 		if (FoundBattle == true)
 			{
 				ClickTilGone("\Maps\4_6\Pause", "rLDPlayer mc o10 w30000,50 ")
 				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-			}
-		Else
-			{
 			}
 	sleep 4800
 	FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Pause", "rLDPlayer mc o40 Count1 n0 w500")
@@ -659,10 +645,8 @@ GoHome()
 				ClickTilGone("\Maps\4_6\Pause", "rLDPlayer mc o10 w30000,50 ")
 				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
 			}
-		Else
-			{
-			}
 	sleep 500
+	Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 	Found := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o30 Count1 w1000,50")
 	sleep 500
 	TFindClick("\Maps\4_6\Terminate","\Maps\4_6\TerminateOK")
@@ -737,7 +721,7 @@ GoHome()
 		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 		sleep 3000
 		ClickS(425, 350)
-		sleep 500
+		sleep 1000
 		RFindClick("Maps\5_4\Support", "rLDPlayer mc o50 w30000,50 ")  
 		sleep 1000
 		Found := FindClick(A_ScriptDir "\pics\Maps\5_4\20Max", "rLDPlayer mc o30 Count1 w1000,50")
@@ -751,7 +735,7 @@ GoHome()
 		}
 		RFindClick("Maps\5_4\SupportFriend", "rLDPlayer mc o50 w30000,50 ")
 		RFindClick("Maps\5_4\OK", "rLDPlayer mc o20 w30000,50")
-		sleep 500
+		sleep 1000
 		ClickS(425, 560)
 		RFindClick("Maps\5_4\Support", "rLDPlayer mc o50 w30000,50 ")  
 		sleep 1000
@@ -767,8 +751,8 @@ GoHome()
 		RFindClick("Maps\5_4\SupportFriend", "rLDPlayer mc o50 w30000,50 ")
 		RFindClick("Maps\5_4\OK", "rLDPlayer mc o20 w30000,50")
 		sleep 500
-		RFindClick("Maps\5_4\Terminate", "rLDPlayer mc o20 w30000,50")
-		RFindClick("Maps\5_4\Restart", "rLDPlayer mc o20 w30000,50")
+		TFindClick("\Maps\5_4\Terminate","\Maps\5_4\Restart")
+		ClickTilGone("\Maps\5_4\Restart", " rLDPlayer mc o10 w30000,50")
 		RFindClick("Maps\5_4\5_4MapWait", "rLDPlayer mc o20 w30000,50 n0")
 		sleep 1000
 	}
@@ -782,8 +766,8 @@ GoHome()
 		Else
 		{
 			sleep 500
-			RFindClick("Maps\5_4\Terminate", "rLDPlayer mc o20 w30000,50")
-			RFindClick("Maps\5_4\Restart", "rLDPlayer mc o20 w30000,50")
+			TFindClick("\Maps\5_4\Terminate","\Maps\5_4\Restart")
+			ClickTilGone("\Maps\5_4\Restart", " rLDPlayer mc o10 w30000,50")
 		}
 }
 
@@ -1748,7 +1732,7 @@ E2_C3_60crates()
 	ClickS(640, 102)
 	sleep 500
 	ClickS(640, 102)
-	sleep 4500
+	sleep 5000
 	RFindClick("\Maps\Sing\PromotionIII\Map", "rLDPlayer mc o30 w30000,50")
 	RFindClick("\Maps\Sing\Battle", "rLDPlayer mc o30 w30000,50")
 	sleep 3000
@@ -2167,19 +2151,22 @@ E3_1_57()
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
 	nodes(2)
-	sleep 14000
+	sleep 14500
 	nodes(2)
+	sleep 500
 	ClickS(698, 467)
+	sleep 500
 	RFindClick("\Maps\Sing\OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	nodes(1)
-	sleep 6000
+	sleep 6500
 	ClickS(671, 398)
 	sleep 200
 	ClickS(671, 398)
 	sleep 500
 	RFindClick("\Maps\Sing\Retreat", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
 	RFindClick("\Maps\Sing\Confirm", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
 	TFindClick("\Maps\Sing\Terminate","\Maps\Sing\TerminateOK")

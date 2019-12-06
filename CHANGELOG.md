@@ -1,4 +1,7 @@
 
+#### LDPlayer 0.6.3
+* **_Bugfix_** Small map changes for E3_1, 5_4, 4_6.
+
 #### LDPlayer 0.6.2
 * **_New_** Event maps added, check wiki.
 * **_Bugfix_** Small change to login popup and expedition check.
