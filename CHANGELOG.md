@@ -1,4 +1,7 @@
 
+#### LDPlayer 0.6.4
+* **_Bugfix_** Small sleep time adjustments.
+
 #### LDPlayer 0.6.3
 * **_Bugfix_** Small map changes for E3_1, 5_4, 4_6.
 

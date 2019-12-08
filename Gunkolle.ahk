@@ -1,4 +1,4 @@
-;Gunkolle v0.6.3
+;Gunkolle v0.6.4
 #Persistent
 #SingleInstance
 #Include %A_ScriptDir%/Functions/Gdip_All.ahk ;Thanks to tic (Tariq Porter) for his GDI+ Library => ahkscript.org/boards/viewtopic.php?t=6517
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.3
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.4
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -576,7 +576,7 @@ RSleep(min,max)
 ReplaceDPS(exhaustedDoll, loadedDoll, resetFilter:=False)
 {
 	Global
-	sleep 500
+	sleep 1000
 	WFindClick("DollList\"%exhaustedDoll% , "rLDPlayer mc a125,125,-590,-220", 120) ;select Doll1
 	if resetFilter
 	{
@@ -600,16 +600,16 @@ ReplaceDPS(exhaustedDoll, loadedDoll, resetFilter:=False)
 	{
 		sleep 1000
 		DragDownToUp(540, 700, 520)
-		sleep 4000
+		sleep 3600
 	}
 	GuiControlGet, selectscroll2V
 	if (selectscroll2V = 1)
 	{
 		sleep 1000
 		DragDownToUp(540, 700, 300)
-		sleep 4000
+		sleep 3600
 	}
-	sleep 600
+	sleep 1000
 	WFindClick("DollList\"%loadedDoll% "Profile","rLDPlayer mc a,130,-200,",120)
 	RFindClick("WaitForFormation", "rLDPlayer mc o50 w30000,50 n0") 
 }

@@ -721,7 +721,7 @@ GoHome()
 		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 		sleep 3000
 		ClickS(425, 350)
-		sleep 1000
+		sleep 1500
 		RFindClick("Maps\5_4\Support", "rLDPlayer mc o50 w30000,50 ")  
 		sleep 1000
 		Found := FindClick(A_ScriptDir "\pics\Maps\5_4\20Max", "rLDPlayer mc o30 Count1 w1000,50")
@@ -735,7 +735,7 @@ GoHome()
 		}
 		RFindClick("Maps\5_4\SupportFriend", "rLDPlayer mc o50 w30000,50 ")
 		RFindClick("Maps\5_4\OK", "rLDPlayer mc o20 w30000,50")
-		sleep 1000
+		sleep 1500
 		ClickS(425, 560)
 		RFindClick("Maps\5_4\Support", "rLDPlayer mc o50 w30000,50 ")  
 		sleep 1000
