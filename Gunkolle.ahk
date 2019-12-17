@@ -1,4 +1,4 @@
-;Gunkolle v0.6.4
+;Gunkolle v0.6.5
 #Persistent
 #SingleInstance
 #Include %A_ScriptDir%/Functions/Gdip_All.ahk ;Thanks to tic (Tariq Porter) for his GDI+ Library => ahkscript.org/boards/viewtopic.php?t=6517
@@ -64,7 +64,7 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|E2_C3_60crates|E1_A2_Thunder|E1_C4_MP7|E2_C4_416eq|E3_1_57
+Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|Orphan_60Stars
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%ClickS(706, 425)
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -76,7 +76,7 @@ Gui, Add, Edit, gIntervalF r2 w15 vIntervalV -VScroll ym, %SortieInterval%
 GuiControl, Move, IntervalV, h17 w60
 Gui, Add, Checkbox, vExpeditionV , Expedition only
 GuiControl, Move, ExpeditionV, x150 y33
-Gui, Add, Checkbox, vcorpsedragoffV , Corpse dragging off(4_6, event)
+Gui, Add, Checkbox, vcorpsedragoffV , Corpse dragging off (check wiki)
 GuiControl, Move, corpsedragoffV, x150 y58
 Gui, Add, Checkbox, vselectscrollV , Sort1
 GuiControl, Move, selectscrollV, x244 y33
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.4
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.5
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -290,6 +290,13 @@ Transition(ClickThis,WaitForThis)
 					TFindClick("LoginCollectNotice3","LoginCollectNotice4")
 					ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
 				}
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+				if (FoundAchievement == true)
+				{
+					GuiControl,, NB, Achievement Found
+					ClickS(130, 300)
+					sleep 3000
+				}
 				FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundExpedition == true)
 				{
@@ -321,6 +328,13 @@ Transition(ClickThis,WaitForThis)
 					RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
 					RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
 				}	
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+				if (FoundAchievement == true)
+				{
+					GuiControl,, NB, Achievement Found
+					ClickS(130, 300)
+					sleep 3000
+				}
 		}
 		if (Found2 == true)
 		{
@@ -726,12 +740,11 @@ FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rL
 		TFindClick("LoginCollectNotice3","LoginCollectNotice4")
 		ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
 	}
-FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
-	if (FoundExpedition == true)
+FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+	if (FoundAchievement == true)
 	{
-		GuiControl,, NB, Expedition Found
-		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
-		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		GuiControl,, NB, Achievement Found
+		ClickS(130, 300)
 		sleep 3000
 	}
 FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
@@ -756,6 +769,21 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 		GuiControl,, NB, Expedition Found
 		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
 		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		sleep 3000
+	}
+FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+	if (FoundExpedition == true)
+	{
+		GuiControl,, NB, Expedition Found
+		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+	}
+FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+	if (FoundAchievement == true)
+	{
+		GuiControl,, NB, Achievement Found
+		ClickS(130, 300)
+		sleep 3000
 	}
 
 	GuiControlGet, ExpeditionV
@@ -774,6 +802,8 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 			FoundLoginCollectExit := FindClick(A_ScriptDir "\pics\LoginCollectExit", "rLDPlayer mc o40 Count1 n0")
 			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
 			FoundDailyPop := FindClick(A_ScriptDir "\pics\DailyPop", "rLDPlayer mc o40 Count1 n0")
+			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+			FoundClose := FindClick(A_ScriptDir "\pics\LostConnection", "rLDPlayer mc o40 Count1 n0 w500")
 			if (FoundHome == true)
 			{
 				GuiControl,, NB,At home
@@ -837,6 +867,29 @@ FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc
 			{	
 				GuiControl,, NB, Initial Event notice Found
 				RFindClick("ExitNoticeFound", "rLDPlayer mc o50 w30000,50")
+				loopcount++
+			}
+			else if (FoundAchievement == true)
+			{
+				GuiControl,, NB, Achievement Found
+				ClickS(130, 300)
+				sleep 3000
+				loopcount++
+			}
+			else if (FoundClose == true)
+			{
+				RFindClick("LostConnection", "rLDPlayer mc o50 w30000,50")
+				GuiControl,, NB, Lost Connection, retrying every 10 mins.
+				sleep 10000
+				FoundUpdate := FindClick(A_ScriptDir "\pics\Update", "rLDPlayer mc o40 Count1 n0 w500")
+				if (FoundUpdate == true)
+					{
+						RFindClick("Update", "rLDPlayer mc o50 w30000,50")
+						GuiControl,, NB, Waiting for update...
+					}
+				sleep 590000
+				RFindClick("LoginScreen", "rLDPlayer mc o50 w30000,50")
+				sleep 10000
 				loopcount++
 			}
 			loopcount--

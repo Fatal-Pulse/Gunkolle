@@ -1,4 +1,12 @@
 
+#### LDPlayer 0.6.5
+* **_Update_** Removed unused maps
+* **_Update_** Retirement includes 3 stars again
+* **_New_** Event map for farming 60 stars.
+* **_New_** Added achievement popup
+* **_New_** Added maintenance check for expedition only.
+* **_Bugfix_** Combat page pic update
+
 #### LDPlayer 0.6.4
 * **_Bugfix_** Small sleep time adjustments.
 

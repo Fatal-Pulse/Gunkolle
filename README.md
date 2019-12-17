@@ -35,7 +35,8 @@ THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN8.1 AND WIN10. I may be unable t
 
 ## What does not work at current state:
 1. Auto-Factory
-2. Combat simulation, time checks
+2. Auto-Battle
+3. Combat simulation, time checks
 
 ## How to use: Gunkolle(Expeditions)
 When starting Gunkolle make sure your android emulator is the active window when starting the script. (else you'll get an invald screen reading)
