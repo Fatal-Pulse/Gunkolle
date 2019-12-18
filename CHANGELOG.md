@@ -1,4 +1,7 @@
 
+#### LDPlayer 0.6.6
+* **_Bugfix_** Orphan map should be more consistent.
+
 #### LDPlayer 0.6.5
 * **_Update_** Removed unused maps
 * **_Update_** Retirement includes 3 stars again

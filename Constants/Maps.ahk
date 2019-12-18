@@ -830,20 +830,11 @@ Orphan_60Stars()
 	nodes(3)
 	sleep 12000
 	RFindClick("\Maps\Snow\MapComplete", "rLDPlayer mc o10 w30000,50 ")
+	loop, 7
+	{
 	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
+	sleep 1000
+	}
 	ClickS(640, 102)
 	sleep 3500
 	RFindClick("\Maps\Snow\Map", "rLDPlayer mc o30 w30000,50")
@@ -902,20 +893,11 @@ Orphan_60Stars()
 	nodes(3)
 	sleep 12000
 	RFindClick("\Maps\Snow\MapComplete", "rLDPlayer mc o10 w30000,50 ")
+	loop, 7
+	{
 	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
-	ClickS(640, 102)
-	sleep 500
+	sleep 1000
+	}
 	ClickS(640, 102)
 	sleep 3500
 	FindClick(A_ScriptDir "\pics\CombatReturnEvent", "rLDPlayer mc o40 Count1 w100,50")
