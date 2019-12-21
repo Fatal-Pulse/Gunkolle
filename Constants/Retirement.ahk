@@ -43,7 +43,7 @@ Transition("CombatTdollEnhancement","Retirement")
 	Found := FindClick(A_ScriptDir "\pics\3STAR", "rLDPlayer mc o50 Count1 n0")
 	if Found >= 1
 	{
-	ClickTilGone("3STAR", " rLDPlayer mc o75 w30000,50 sleep150")
+	ClickTilGone("3STAR", " rLDPlayer mc o75 w30000,50 sleep100")
 	}
 	RFindClick("ConfirmRet", "rLDPlayer mc o75 w30000,50")
 	sleep 500

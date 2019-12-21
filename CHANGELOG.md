@@ -1,4 +1,10 @@
 
+#### LDPlayer 0.6.7
+* **_Bugfix_** Removed unused pics to speed up some functions and reduce rare errors.
+* **_Update_** Added various GUI messages during maps.
+* **_Update_** Re-added 4_3E map.
+* **_New_** Added a fast version of 4_6_data - needs more testing.
+
 #### LDPlayer 0.6.6
 * **_Bugfix_** Orphan map should be more consistent.
 

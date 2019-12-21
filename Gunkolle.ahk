@@ -1,4 +1,4 @@
-;Gunkolle v0.6.6
+;Gunkolle v0.6.7
 #Persistent
 #SingleInstance
 #Include %A_ScriptDir%/Functions/Gdip_All.ahk ;Thanks to tic (Tariq Porter) for his GDI+ Library => ahkscript.org/boards/viewtopic.php?t=6517
@@ -64,7 +64,7 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|Orphan_60Stars
+Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|4_6_fast|4_3E|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|Orphan_60Stars
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%ClickS(706, 425)
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.6
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.7
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -570,9 +570,9 @@ Repair()
 		RFindClick("RepairSlotWait", "rLDPlayer mc o30 w30000,50 n0 a0,100,-1000,-300")
 		sleep 250
 		WFindClick("Damage", "rLDPlayer mc")
-		RFindClick("OK", "rLDPlayer mc o50 w30000,50")
-		RFindClick("RepairQuick", "rLDPlayer mc o50 w30000,50")
 		RFindClick("RepairOK", "rLDPlayer mc o50 w30000,50")
+		RFindClick("RepairQuick", "rLDPlayer mc o50 w30000,50")
+		RFindClick("RepairConfirm", "rLDPlayer mc o50 w30000,50")
 		RFindClick("RepairReturnFaded", "rLDPlayer mc o50 w30000,50 ")
 		RFindClick("RepairReturn", "rLDPlayer mc o50 w30000,50")
 		; ExpeditionCheck("Daily")
@@ -728,6 +728,102 @@ Sortie2:
 		TCS := A_TickCount
 	}
 
+	GuiControlGet, ExpeditionV
+	GuiControl,, NB, %ExpeditionV%
+	While (ExpeditionV == 1)
+	{
+		GuiControlGet, ExpeditionV
+		GuiControl,, NB, ExpOnlyCheck %ExpeditionV%
+		loopcount := 1
+		while (loopcount != 0)
+		{
+			FoundHome := FindClick(A_ScriptDir "\pics\FoundHome", "rLDPlayer mc o40 Count1 n0 w500")
+			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+			FoundAutoBattle := FindClick(A_ScriptDir "\pics\AutoBattle", "rLDPlayer mc o40 Count1 n0 w500")
+			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
+			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+			FoundClose := FindClick(A_ScriptDir "\pics\LostConnection", "rLDPlayer mc o40 Count1 n0 w500")
+			if (FoundHome == true)
+			{
+				GuiControl,, NB,At home
+			}
+			else if (FoundExpedition == true)
+			{
+				GuiControl,, NB, Expedition Found
+				RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+				RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+				loopcount++
+			}
+			else if (FoundAutoBattle == true)
+			{
+				if (AutoBattleResendV == 1)
+				{
+				GuiControl,, NB, AutoBattle Found
+				RFindClick("AutoBattle", "rLDPlayer mc o50 w30000,50")
+				sleep 5000
+				loop
+				{		
+					Found := FindClick(A_ScriptDir "\pics\AutoBattle", "rLDPlayer mc o40 Count1 n0 w500")
+					if Found >= 1
+					{
+						break
+					}
+					else
+					{
+						RFindClick("TdollObtain", "rLDPlayer mc o50 w30000,50")
+					}		
+				}
+				RFindClick("AutoBattle", "rLDPlayer mc o50 w30000,50")
+				RFindClick("AutoBattleResend", "rLDPlayer mc o50 w30000,50")
+				loopcount++
+				}
+				else if (AutoBattleResendV == 0)
+				{
+				GuiControl,, NB, AutoBattle Found
+				RFindClick("AutoBattle", "rLDPlayer mc o50 w30000,50")
+				RFindClick("AutoBattleCancel", "rLDPlayer mc o50 w30000,50")
+				loopcount++
+				}
+			}
+			else if (FoundLoginCollectNotice == true)
+			{
+				GuiControl,, NB, Login Collect Found
+				TFindClick("LoginCollectNotice","LoginCollectNotice2")
+				sleep 3000
+				TFindClick("LoginCollectNotice2","LoginCollectNotice3")
+				sleep 1000
+				TFindClick("LoginCollectNotice3","LoginCollectNotice4")
+				ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
+				loopcount++
+			}
+			else if (FoundAchievement == true)
+			{
+				GuiControl,, NB, Achievement Found
+				ClickS(130, 300)
+				sleep 3000
+				loopcount++
+			}
+			else if (FoundClose == true)
+			{
+				RFindClick("LostConnection", "rLDPlayer mc o50 w30000,50")
+				GuiControl,, NB, Lost Connection, retrying every 10 mins.
+				sleep 10000
+				FoundUpdate := FindClick(A_ScriptDir "\pics\Update", "rLDPlayer mc o40 Count1 n0 w500")
+				if (FoundUpdate == true)
+					{
+						RFindClick("Update", "rLDPlayer mc o50 w30000,50")
+						GuiControl,, NB, Waiting for update...
+					}
+				sleep 590000
+				RFindClick("LoginScreen", "rLDPlayer mc o50 w30000,50")
+				sleep 10000
+				loopcount++
+			}
+			loopcount--
+
+		}
+	}
+
 GuiControl,, NB, Expedition Check
 FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
 	if (FoundLoginCollectNotice == true)
@@ -785,118 +881,7 @@ FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40
 		ClickS(130, 300)
 		sleep 3000
 	}
-
-	GuiControlGet, ExpeditionV
-	GuiControl,, NB, %ExpeditionV%
-	While (ExpeditionV == 1)
-	{
-		GuiControlGet, ExpeditionV
-		GuiControl,, NB, ExpOnlyCheck %ExpeditionV%
-		loopcount := 1
-		while (loopcount != 0)
-		{
-			FoundHome := FindClick(A_ScriptDir "\pics\FoundHome", "rLDPlayer mc o40 Count1 n0 w500")
-			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
-			FoundAutoBattle := FindClick(A_ScriptDir "\pics\AutoBattle", "rLDPlayer mc o40 Count1 n0 w500")
-			FoundAndroidPop := FindClick(A_ScriptDir "\pics\AndroidPop", "rLDPlayer mc o30 w3000,50 Count1 n0 a1200,,,-600")
-			FoundLoginCollectExit := FindClick(A_ScriptDir "\pics\LoginCollectExit", "rLDPlayer mc o40 Count1 n0")
-			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
-			FoundDailyPop := FindClick(A_ScriptDir "\pics\DailyPop", "rLDPlayer mc o40 Count1 n0")
-			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
-			FoundClose := FindClick(A_ScriptDir "\pics\LostConnection", "rLDPlayer mc o40 Count1 n0 w500")
-			if (FoundHome == true)
-			{
-				GuiControl,, NB,At home
-			}
-			else if (FoundExpedition == true)
-			{
-				GuiControl,, NB, Expedition Found
-				RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
-				RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-				loopcount++
-			}
-			else if (FoundAutoBattle == true)
-			{
-				if (AutoBattleResendV == 1)
-				{
-				GuiControl,, NB, AutoBattle Found
-				RFindClick("AutoBattle", "rLDPlayer mc o50 w30000,50")
-				sleep 5000
-				loop
-				{		
-					Found := FindClick(A_ScriptDir "\pics\AutoBattle", "rLDPlayer mc o40 Count1 n0 w500")
-					if Found >= 1
-					{
-						break
-					}
-					else
-					{
-						RFindClick("TdollObtain", "rLDPlayer mc o50 w30000,50")
-					}		
-				}
-				RFindClick("AutoBattle", "rLDPlayer mc o50 w30000,50")
-				RFindClick("AutoBattleResend", "rLDPlayer mc o50 w30000,50")
-				loopcount++
-				}
-				else if (AutoBattleResendV == 0)
-				{
-				GuiControl,, NB, AutoBattle Found
-				RFindClick("AutoBattle", "rLDPlayer mc o50 w30000,50")
-				RFindClick("AutoBattleCancel", "rLDPlayer mc o50 w30000,50")
-				loopcount++
-				}
-			}
-			else if (FoundAndroidPop == true)
-			{
-				GuiControl,, NB, Android popup Found
-				RFindClick("ExitAndroid", "rLDPlayer mc o50 w30000,50")
-				loopcount++
-			}
-			else if (FoundLoginCollectNotice == true)
-			{
-				GuiControl,, NB, Login Collect Found
-				TFindClick("LoginCollectNotice","LoginCollectNotice2")
-				sleep 3000
-				TFindClick("LoginCollectNotice2","LoginCollectNotice3")
-				sleep 1000
-				TFindClick("LoginCollectNotice3","LoginCollectNotice4")
-				ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
-				loopcount++
-			}
-			else if (FoundDailyPop == true)
-			{	
-				GuiControl,, NB, Initial Event notice Found
-				RFindClick("ExitNoticeFound", "rLDPlayer mc o50 w30000,50")
-				loopcount++
-			}
-			else if (FoundAchievement == true)
-			{
-				GuiControl,, NB, Achievement Found
-				ClickS(130, 300)
-				sleep 3000
-				loopcount++
-			}
-			else if (FoundClose == true)
-			{
-				RFindClick("LostConnection", "rLDPlayer mc o50 w30000,50")
-				GuiControl,, NB, Lost Connection, retrying every 10 mins.
-				sleep 10000
-				FoundUpdate := FindClick(A_ScriptDir "\pics\Update", "rLDPlayer mc o40 Count1 n0 w500")
-				if (FoundUpdate == true)
-					{
-						RFindClick("Update", "rLDPlayer mc o50 w30000,50")
-						GuiControl,, NB, Waiting for update...
-					}
-				sleep 590000
-				RFindClick("LoginScreen", "rLDPlayer mc o50 w30000,50")
-				sleep 10000
-				loopcount++
-			}
-			loopcount--
-
-		}
-	}
-
+	
 	Repair()
 
 	;TimeCheck()
