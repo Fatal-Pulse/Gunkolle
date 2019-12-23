@@ -31,12 +31,12 @@ THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN8.1 AND WIN10. I may be unable t
 * Dynamic pixel checking to prevent user error
 * Can be set up to pause/resume at a certain time
 * All clicks have randomness to avoid click tracking
-* Can run for 24 hours, even skipping the daily login messages! (Most cases for me - the game crashes from memory leak well before the 24 mark)
+* Can run for 24 hours, even skipping the daily login messages! (running maps for long can cause game to lag/crash)
 
 ## What does not work at current state:
-1. Auto-Factory
-2. Auto-Battle
-3. Combat simulation, time checks
+1. Auto-Factory check
+2. Auto-Battle return
+3. Combat simulation, batteries, time checks
 
 ## How to use: Gunkolle(Expeditions)
 When starting Gunkolle make sure your android emulator is the active window when starting the script. (else you'll get an invald screen reading)
@@ -58,7 +58,8 @@ You will also likely need to find and replace all existing mentions of LDPlayer 
 ## How to use: Gunkolle(Sortie)
 read the wiki
 
-old client:
+old old client example:
+
 ![lol](https://github.com/dice4321/Gunkolle/blob/master/uselesspics/lol32.gif)
 
 ## How to use: Pause Utility

@@ -1,4 +1,8 @@
 
+#### LDPlayer 0.6.8
+* **_Update_** Login popup and achievements should work during maps and gohome function.
+* **_Update_** 4_6_data was changed to faster/stable version.
+
 #### LDPlayer 0.6.7
 * **_Bugfix_** Removed unused pics to speed up some functions and reduce rare errors.
 * **_Update_** Added various GUI messages during maps.

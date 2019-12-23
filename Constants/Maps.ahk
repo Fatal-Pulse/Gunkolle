@@ -10,10 +10,6 @@ RunMap(x)
 	{
 		4_6_data()
 	}
-	else if(x == "4_6_fast")
-	{
-		4_6_fast()
-	}
 	else if(x == "4_3E")
 	{
 		4_3E()
@@ -193,7 +189,7 @@ GoHome()
 		Found1 := 0
 		Found2 := 0
 		;Found3 := 0
-		sleep 5000
+		sleep 4000
 		while(Found1 == 0)
 		{
 			Found1 := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 w250,50 Count1 n0 a1200,,,-600")
@@ -206,12 +202,25 @@ GoHome()
                 sleep 250
 				Found2 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o40 Count1 w100,50")
 				;Found3 := FindClick(A_ScriptDir "\pics\CombatReturnEvent", "rLDPlayer mc o40 Count1 w100,50")
+				FoundLogin := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
+				if FoundLogin >= 1
+				{
+					GuiControl,, NB, Login Collect Found
+					TFindClick("LoginCollectNotice","LoginCollectNotice2")
+					sleep 2000
+					TFindClick("LoginCollectNotice2","LoginCollectNotice3")
+					sleep 1000
+					TFindClick("LoginCollectNotice3","LoginCollectNotice4", sleep500)
+					sleep 500
+					Found := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1")
+					ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
+				}
 				FoundExp := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o30 Count1")
 				if FoundExp >= 1
 				{
 					RetirementLoop++
 				}
-				ClickS(765, 185)
+				ClickS(765, 130)
 			}
 			GuiControl,, NB, Waiting for base = %found1% %found2%
 		}
@@ -225,7 +234,7 @@ GoHome()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 1000
+		sleep 2000
 		ClickS(725, 430)
 		RFindClick("Battle", "rLDPlayer mc o30 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
@@ -238,11 +247,14 @@ GoHome()
 	}
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
+	sleep 1500
 	ClickS(649, 401)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport
 	sleep 500
 	ClickS(455, 395)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 1000
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
@@ -279,7 +291,7 @@ GoHome()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 1000
+		sleep 2800
 		DragDownToUp(500, 675, 350)
 		sleep 500
 		ClickS(750, 625)
@@ -295,147 +307,15 @@ GoHome()
 	Loop, 9
 	{
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
-		GuiControl,, NB, CommandPost
-		ClickS(842, 400)
-		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
-		GuiControl,, NB, Heliport
-		sleep 500
-		ClickS(868, 46)
-		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
-		sleep 500
-		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
-		GuiControl,, NB, Heliport
 		sleep 2000
-		ClickS(868, 46)
-		sleep 500
-		RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
-		sleep 500
-		GuiControl,, NB, Plan1
-		ClickS(745, 235)
-		sleep 300
-		GuiControl,, NB, Plan2
-		ClickS(820, 260)
-		sleep 500
-		RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-		GuiControl,, NB, Scouting nodes
-		sleep 9800
-		FoundBattle := FindClick(A_ScriptDir "\pics\Pause", "rLDPlayer mc o40 Count1 n0 w500")
-			if (FoundBattle == true)
-				{
-					ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-				}
-		sleep 6500
-		FoundBattle := FindClick(A_ScriptDir "\pics\Pause", "rLDPlayer mc o40 Count1 n0 w500")
-			if (FoundBattle == true)
-				{
-					ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-				}
-		sleep 4800
-		FoundBattle := FindClick(A_ScriptDir "\pics\Pause", "rLDPlayer mc o40 Count1 n0 w500")
-			if (FoundBattle == true)
-				{
-					ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-				}
-		sleep 500
-		FoundDrop := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o40 Count1 n0 w500")
-			if (FoundDrop == true)
-				{
-					ClickTilGone("\Maps\4_6\DollDrop", "rLDPlayer mc o10 w30000,50 ")
-				}
-		sleep 500
-		TFindClick("Terminate","TerminateRestart")
-		ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
-	}
-	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
-	GuiControl,, NB, CommandPost
-	ClickS(842, 400)
-	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
-	GuiControl,, NB, Heliport
-	sleep 500
-	ClickS(868, 46)
-	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
-	sleep 500
-	RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
-	GuiControl,, NB, Heliport
-	sleep 2000
-	ClickS(868, 46)
-	sleep 500
-	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
-	sleep 500
-	GuiControl,, NB, Plan1
-	ClickS(745, 235)
-	sleep 300
-	GuiControl,, NB, Plan2
-	ClickS(820, 260)
-	sleep 500
-	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-	GuiControl,, NB, Scouting nodes
-	sleep 9800
-	FoundBattle := FindClick(A_ScriptDir "\pics\Pause", "rLDPlayer mc o40 Count1 n0 w500")
-		if (FoundBattle == true)
-			{
-				ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-			}
-	sleep 6500
-	FoundBattle := FindClick(A_ScriptDir "\pics\Pause", "rLDPlayer mc o40 Count1 n0 w500")
-		if (FoundBattle == true)
-			{
-				ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-			}
-	sleep 4800
-	FoundBattle := FindClick(A_ScriptDir "\pics\Pause", "rLDPlayer mc o40 Count1 n0 w500")
-		if (FoundBattle == true)
-			{
-				ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-			}
-	sleep 500
-	FoundDrop := FindClick(A_ScriptDir "\pics\Maps\4_6\DollDrop", "rLDPlayer mc o40 Count1 n0 w500")
-		if (FoundDrop == true)
-			{
-				ClickTilGone("\Maps\4_6\DollDrop", "rLDPlayer mc o10 w30000,50 ")
-			}
-	sleep 500
-	TFindClick("Terminate","TerminateOK")
-	ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
-	GoHome()
-}
-
-4_6_fast()
-{
-	Global
-	RetirementLoop := 1
-	while (RetirementLoop != 0)
-	{
-		GuiControl,, NB, MapSelect
-		sleep 1000
-		DragDownToUp(500, 675, 350)
-		sleep 500
-		ClickS(750, 625)
-		RFindClick("Battle", "rLDPlayer mc o30 w30000,50")
-		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
-		if(Found == 1)
-		{
-			Retirement()
-			RetirementLoop++
-		}
-		RetirementLoop--
-	}
-	Loop, 9
-	{
-		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
-		sleep 500
 		GuiControl,, NB, CommandPost
 		ClickS(842, 400)
+		sleep 500
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 		GuiControl,, NB, Heliport
 		sleep 500
 		ClickS(868, 46)
+		sleep 500
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 		sleep 500
 		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
@@ -445,129 +325,200 @@ GoHome()
 		GuiControl,, NB, Node1
 		sleep 500
 		ClickS(858, 109)
-		sleep 1400
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+			if (FoundBattle == true)
+				{
+					ClickS(858, 109)
+					sleep 2000
+					TFindClick("\Maps\4_6\CombatPause","\Maps\4_6\Withdraw", sleep250)
+					ClickTilGone("\Maps\4_6\Withdraw", " rLDPlayer mc o10 w30000,50")
+					sleep 1500
+					ClickS(800, 200)
+					sleep 1500
+					TFindClick("Terminate","TerminateRestart")
+					sleep 500
+					ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
+					continue
+				}	
+		FoundDrop := FindClick(A_ScriptDir "\pics\Maps\4_6\DollNode", "rLDPlayer mc o40 Count1 n0")
+			if (FoundDrop == true)
+				{
+					ClickS(810, 185)
+					sleep 500
+					ClickS(810, 185)
+					ClickTilGone("\Maps\4_6\DollDrop", "rLDPlayer mc o10 w30000,50 ")
+				}
 		GuiControl,, NB, Node2
 		ClickS(810, 185)
 		sleep 150
 		ClickS(810, 185)
-		sleep 150
-		ClickS(810, 185)
-		FoundBattle := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o40 Count1 n0 w2000")
-			if (FoundBattle >= 1)
+		sleep 1500
+		GuiControl,, NB, Node3
+		ClickS(745, 233)
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+			if (FoundBattle == true)
 				{
-					sleep 500
-					ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
+					ClickS(745, 233)
+					sleep 2000
+					TFindClick("\Maps\4_6\CombatPause","\Maps\4_6\Withdraw", sleep250)
+					ClickTilGone("\Maps\4_6\Withdraw", " rLDPlayer mc o10 w30000,50")
 					sleep 1500
 					ClickS(800, 200)
+					sleep 1500
 					TFindClick("Terminate","TerminateRestart")
+					sleep 500
 					ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
 					continue
 				}	
-		GuiControl,, NB, Node3
-		ClickS(745, 233)
-		sleep 1400
+		FoundDrop := FindClick(A_ScriptDir "\pics\Maps\4_6\DollNode", "rLDPlayer mc o40 Count1 n0")
+			if (FoundDrop == true)
+				{
+					ClickS(818, 260)
+					sleep 500
+					ClickS(818, 260)
+					ClickTilGone("\Maps\4_6\DollDrop", "rLDPlayer mc o10 w30000,50 ")
+				}
 		GuiControl,, NB, Node4
 		ClickS(818, 260)
 		sleep 150
 		ClickS(818, 260)
-		sleep 150
-		ClickS(818, 260)
-		FoundBattle := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o40 Count1 n0 w2000")
-			if (FoundBattle >= 1)
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+			if (FoundBattle == true)
 				{
-					sleep 500
-					ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
+					ClickS(818, 260)
+					sleep 2000
+					TFindClick("\Maps\4_6\CombatPause","\Maps\4_6\Withdraw", sleep250)
+					ClickTilGone("\Maps\4_6\Withdraw", " rLDPlayer mc o10 w30000,50")
 					sleep 1500
 					ClickS(800, 200)
-					TFindClick("Terminate","TerminateRestart")
-					ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
-					continue
-				}					
-		ClickS(818, 260)
-		sleep 150
-		ClickS(870, 260)
-		FoundBattle := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o40 Count1 n0 w2000")
-			if (FoundBattle >= 1)
-				{
-					sleep 500
-					ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-					RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
 					sleep 1500
-					ClickS(800, 200)
 					TFindClick("Terminate","TerminateRestart")
+					sleep 500
 					ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
 					continue
+				}		
+		FoundDrop := FindClick(A_ScriptDir "\pics\Maps\4_6\DollNode", "rLDPlayer mc o40 Count1 n0")
+			if (FoundDrop == true)
+				{
+					ClickS(818, 260)
+					sleep 500
+					ClickS(818, 260)
+					ClickTilGone("\Maps\4_6\DollDrop", "rLDPlayer mc o10 w30000,50 ")
 				}
+		ClickS(320, 180)
+		sleep 250
 		TFindClick("Terminate","TerminateRestart")
+		sleep 500
 		ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
 	}
-	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
-	sleep 500
-	GuiControl,, NB, CommandPost
-	ClickS(842, 400)
-	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
-	GuiControl,, NB, Heliport
-	sleep 500
-	ClickS(868, 46)
-	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
-	sleep 500
-	RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
-	GuiControl,, NB, Heliport
-	sleep 2000
-	ClickS(868, 46)
-	GuiControl,, NB, Node1
-	sleep 500
-	ClickS(858, 109)
-	sleep 1400
-	GuiControl,, NB, Node2
-	ClickS(810, 185)
-	sleep 150
-	ClickS(810, 185)
-	sleep 150
-	ClickS(810, 185)
-	FoundBattle := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o40 Count1 n0 w2000")
-		if (FoundBattle >= 1)
-			{
-				sleep 500
-				ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-				sleep 1500
-				ClickS(800, 200)
-			}	
-	GuiControl,, NB, Node3
-	ClickS(745, 233)
-	sleep 1400
-	GuiControl,, NB, Node4
-	ClickS(818, 260)
-	sleep 150
-	ClickS(818, 260)
-	sleep 150
-	ClickS(818, 260)
-	FoundBattle := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o40 Count1 n0 w2000")
-		if (FoundBattle >= 1)
-			{
-				sleep 500
-				ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-				sleep 1500
-				ClickS(800, 200)
-			}					
-	ClickS(818, 260)
-	sleep 150
-	ClickS(870, 260)
-	FoundBattle := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o40 Count1 n0 w2000")
-		if (FoundBattle >= 1)
-			{
-				sleep 500
-				ClickTilGone("Pause", "rLDPlayer mc o10 w30000,50 ")
-				RFindClick("\Maps\4_6\Withdraw", "rLDPlayer mc o10 w30000,50 ")
-				sleep 1500
-				ClickS(800, 200)
-			}
-	TFindClick("Terminate","TerminateOK")
-	ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
+	Loop, 1
+	{
+		GuiControl,, NB, Last reset
+		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		sleep 1500
+		GuiControl,, NB, CommandPost
+		ClickS(842, 400)
+		sleep 500
+		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+		GuiControl,, NB, Heliport
+		sleep 500
+		ClickS(868, 46)
+		sleep 500
+		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+		sleep 500
+		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+		GuiControl,, NB, Heliport
+		sleep 2000
+		ClickS(868, 46)
+		GuiControl,, NB, Node1
+		sleep 500
+		ClickS(858, 109)
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+			if (FoundBattle == true)
+				{
+					ClickS(858, 109)
+					sleep 2000
+					TFindClick("\Maps\4_6\CombatPause","\Maps\4_6\Withdraw", sleep250)
+					ClickTilGone("\Maps\4_6\Withdraw", " rLDPlayer mc o10 w30000,50")
+					sleep 1500
+					ClickS(800, 200)
+					sleep 1500
+					TFindClick("Terminate","TerminateOK")
+					sleep 500
+					ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
+					continue
+				}	
+		FoundDrop := FindClick(A_ScriptDir "\pics\Maps\4_6\DollNode", "rLDPlayer mc o40 Count1 n0")
+			if (FoundDrop == true)
+				{
+					ClickS(810, 185)
+					sleep 500
+					ClickS(810, 185)
+					ClickTilGone("\Maps\4_6\DollDrop", "rLDPlayer mc o10 w30000,50 ")
+				}
+		GuiControl,, NB, Node2
+		ClickS(810, 185)
+		sleep 150
+		ClickS(810, 185)
+		sleep 1500
+		GuiControl,, NB, Node3
+		ClickS(745, 233)
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+			if (FoundBattle == true)
+				{
+					ClickS(745, 233)
+					sleep 2000
+					TFindClick("\Maps\4_6\CombatPause","\Maps\4_6\Withdraw", sleep250)
+					ClickTilGone("\Maps\4_6\Withdraw", " rLDPlayer mc o10 w30000,50")
+					sleep 1500
+					ClickS(800, 200)
+					sleep 1500
+					TFindClick("Terminate","TerminateOK")
+					sleep 500
+					ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
+					continue
+				}	
+		FoundDrop := FindClick(A_ScriptDir "\pics\Maps\4_6\DollNode", "rLDPlayer mc o40 Count1 n0")
+			if (FoundDrop == true)
+				{
+					ClickS(818, 260)
+					sleep 500
+					ClickS(818, 260)
+					ClickTilGone("\Maps\4_6\DollDrop", "rLDPlayer mc o10 w30000,50 ")
+				}
+		GuiControl,, NB, Node4
+		ClickS(818, 260)
+		sleep 150
+		ClickS(818, 260)
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+			if (FoundBattle == true)
+				{
+					ClickS(818, 260)
+					sleep 2000
+					TFindClick("\Maps\4_6\CombatPause","\Maps\4_6\Withdraw", sleep250)
+					ClickTilGone("\Maps\4_6\Withdraw", " rLDPlayer mc o10 w30000,50")
+					sleep 1500
+					ClickS(800, 200)
+					sleep 1500
+					TFindClick("Terminate","TerminateOK")
+					sleep 500
+					ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
+					continue
+				}		
+		FoundDrop := FindClick(A_ScriptDir "\pics\Maps\4_6\DollNode", "rLDPlayer mc o40 Count1 n0")
+			if (FoundDrop == true)
+				{
+					ClickS(818, 260)
+					sleep 500
+					ClickS(818, 260)
+					ClickTilGone("\Maps\4_6\DollDrop", "rLDPlayer mc o10 w30000,50 ")
+				}
+		ClickS(320, 180)
+		sleep 250
+		TFindClick("Terminate","TerminateOK")
+		sleep 500
+		ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
+	}
 	GoHome()
 }
 
@@ -578,7 +529,7 @@ GoHome()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 1000
+		sleep 2000
 		ClickS(725, 548)
 		RFindClick("Battle", "rLDPlayer mc o30 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
@@ -591,11 +542,14 @@ GoHome()
 	}
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport
+	sleep 1500
 	ClickS(855, 460)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, CommandPost
 	sleep 500
 	ClickS(434, 400)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 1000
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
@@ -626,7 +580,7 @@ GoHome()
 {
 	Global
 	GuiControl,, NB, MapSelect
-	sleep 1000
+	sleep 2000
 	ClickS(716, 664)
 	RFindClick("Battle", "rLDPlayer mc o30 w30000,50")
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
@@ -642,6 +596,7 @@ GoHome()
 	{
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		GuiControl,, NB, CommandPost
+		sleep 2000
 		ClickS(840, 330)
 		sleep 500
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50")
@@ -660,6 +615,7 @@ GoHome()
 			Pause
 		}
 		RFindClick("Maps\5_4\SupportFriend", "rLDPlayer mc o50 w30000,50 ")
+		sleep 500
 		RFindClick("OK", "rLDPlayer mc o20 w30000,50")
 		GuiControl,, NB, Heliport2
 		sleep 1000
@@ -673,9 +629,11 @@ GoHome()
 			Pause
 		}
 		RFindClick("Maps\5_4\SupportFriend", "rLDPlayer mc o50 w30000,50 ")
+		sleep 500
 		RFindClick("OK", "rLDPlayer mc o20 w30000,50")
 		sleep 500
 		TFindClick("Terminate","TerminateRestart")
+		sleep 500
 		ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	}
@@ -690,6 +648,7 @@ GoHome()
 		{
 			sleep 500
 			TFindClick("Terminate","TerminateRestart")
+			sleep 500
 			ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
 		}
 }
@@ -701,7 +660,7 @@ GoHome()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 1000
+		sleep 2000
 		ClickS(715, 550)
 		RFindClick("Battle", "rLDPlayer mc o5 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatEquipEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
@@ -714,7 +673,9 @@ GoHome()
 	}
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
+	sleep 1500
 	ClickS(522, 372)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o5 w30000,50")
 	sleep 500
 	RFindClick("StartOperation", "rLDPlayer mc o5 w30000,50")
@@ -761,9 +722,11 @@ GoHome()
 	RFindClick("RetreatConfirm", "rLDPlayer mc o30 w30000,50 ")
 	sleep 500
 	TFindClick("Terminate","TerminateRestart")
+	sleep 500
 	ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
+	sleep 2000
 	ClickS(522, 372)
 	RFindClick("OK", "rLDPlayer mc o5 w30000,50")
 	sleep 500
@@ -832,7 +795,8 @@ GoHome()
 	sleep 500
 	RFindClick("RetreatConfirm", "rLDPlayer mc o30 w30000,50")
 	sleep 500
-	TFindClick("Terminate","TerminateRestart")
+	TFindClick("Terminate","TerminateOK")
+	sleep 500
 	ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
 	GoHome()
 }
@@ -844,7 +808,7 @@ GoHome()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 1000
+		sleep 2000
 		ClickS(715, 550)
 		RFindClick("Battle", "rLDPlayer mc o5 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatEquipEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
@@ -859,7 +823,7 @@ GoHome()
 	{
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\AutoFairyOff", "rLDPlayer mc o30 Count1 w1000,50")
-		Found := FindClick(A_ScriptDir "\pics\LowFairyCommand", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		Found := FindClick(A_ScriptDir "\pics\LowFairyCommand", "rLDPlayer mc o30 Count1 n0 w1000,50")
 		if(Found == 1)
 		{
 			RFindClick("AutoFairyOn", "rLDPlayer mc o5 w30000,50")
@@ -868,6 +832,7 @@ GoHome()
 		}
 		GuiControl,, NB, Heliport
 		ClickS(522, 372)
+		sleep 500
 		RFindClick("OK", "rLDPlayer mc o5 w30000,50")
 		sleep 500
 		RFindClick("StartOperation", "rLDPlayer mc o5 w30000,50")
@@ -895,11 +860,12 @@ GoHome()
 		nodes(1)
 		sleep 500
 		TFindClick("Terminate","TerminateRestart")
+		sleep 500
 		ClickTilGone("TerminateRestart", " rLDPlayer mc o10 w30000,50")
 	}
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	Found := FindClick(A_ScriptDir "\pics\AutoFairyOff", "rLDPlayer mc o30 Count1 w1000,50")
-	Found := FindClick(A_ScriptDir "\pics\LowFairyCommand", "rLDPlayer mc o30 Count1 n0 w3000,50")
+	Found := FindClick(A_ScriptDir "\pics\LowFairyCommand", "rLDPlayer mc o30 Count1 n0 w1000,50")
 	if(Found == 1)
 	{
 		RFindClick("AutoFairyOn", "rLDPlayer mc o5 w30000,50")
@@ -908,6 +874,7 @@ GoHome()
 	}
 	GuiControl,, NB, Heliport
 	ClickS(522, 372)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o5 w30000,50")
 	sleep 500
 	RFindClick("StartOperation", "rLDPlayer mc o5 w30000,50")
@@ -935,6 +902,7 @@ GoHome()
 	nodes(1)
 	sleep 500
 	TFindClick("Terminate","TerminateOK")
+	sleep 500
 	ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
 	GoHome()
 }
@@ -946,7 +914,7 @@ GoHome()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 1000
+		sleep 2000
 		ClickS(720, 660)
 		RFindClick("Battle", "rLDPlayer mc o30 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
@@ -959,15 +927,19 @@ GoHome()
 	}
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
+	sleep 1500
 	ClickS(486, 232)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, CommandPost
 	sleep 500
 	ClickS(576, 397)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport2
 	sleep 500
 	ClickS(855, 737)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
 	RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
@@ -983,6 +955,7 @@ GoHome()
 	ClickS(576, 397)
 	sleep 500
 	RFindClick("Retreat", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
 	RFindClick("RetreatConfirm", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport1
 	sleep 500
@@ -1013,9 +986,11 @@ GoHome()
 	ClickS(486, 398)
 	sleep 500
 	RFindClick("Retreat", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
 	RFindClick("RetreatConfirm", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
 	TFindClick("Terminate","TerminateOK")
+	sleep 500
 	ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
 	GoHome()
 }
@@ -1027,7 +1002,7 @@ GoHome()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 1000
+		sleep 2000
 		ClickS(720, 660)
 		RFindClick("Battle", "rLDPlayer mc o30 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
@@ -1040,11 +1015,14 @@ GoHome()
 	}
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
+	sleep 1500
 	ClickS(486, 232)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, CommandPost
 	sleep 500
 	ClickS(576, 397)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport2
 	sleep 500
@@ -1083,9 +1061,11 @@ GoHome()
 	ClickS(486, 398)
 	sleep 500
 	RFindClick("Retreat", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
 	RFindClick("RetreatConfirm", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
 	TFindClick("Terminate","TerminateOK")
+	sleep 500
 	ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
 	GoHome()
 }
@@ -1112,15 +1092,19 @@ Orphan_60Stars()
 	{
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
+	sleep 1000
 	ClickS(435, 194)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
 	GuiControl,, NB, CommandPost
 	ClickS(640, 426)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
 	GuiControl,, NB, Heliport2
 	ClickS(840, 247)
+	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
 	RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
@@ -1187,6 +1171,7 @@ Orphan_60Stars()
 	}
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
+	sleep 1000
 	ClickS(435, 194)
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500
@@ -1259,62 +1244,63 @@ Orphan_60Stars()
 	FindClick(A_ScriptDir "\pics\CombatReturnEvent", "rLDPlayer mc o40 Count1 w100,50")
 	sleep 3000
 	GuiControl,, NB, Expedition Check
-FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0")
-	if (FoundLoginCollectNotice == true)
-	{
-		GuiControl,, NB, Login Collect Found
-		TFindClick("LoginCollectNotice","LoginCollectNotice2")
-		sleep 3000
-		TFindClick("LoginCollectNotice2","LoginCollectNotice3")
-		sleep 1000
-		TFindClick("LoginCollectNotice3","LoginCollectNotice4")
-		ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
-	}
-FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
-	if (FoundAchievement == true)
-	{
-		GuiControl,, NB, Achievement Found
-		ClickS(130, 300)
-		sleep 3000
-	}
-FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
-	if (FoundExpedition == true)
-	{
-		GuiControl,, NB, Expedition Found
-		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
-		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-		sleep 3000
-	}
-FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
-	if (FoundExpedition == true)
-	{
-		GuiControl,, NB, Expedition Found
-		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
-		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-		sleep 3000
-	}
-FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
-	if (FoundExpedition == true)
-	{
-		GuiControl,, NB, Expedition Found
-		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
-		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-		sleep 3000
-	}
-FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
-	if (FoundExpedition == true)
-	{
-		GuiControl,, NB, Expedition Found
-		RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
-		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-	}
-FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
-	if (FoundAchievement == true)
-	{
-		GuiControl,, NB, Achievement Found
-		ClickS(130, 300)
-		sleep 3000
-	}
+	FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rLDPlayer mc o40 Count1 n0 w500")
+		if (FoundLoginCollectNotice == true)
+		{
+			GuiControl,, NB, Login Collect Found
+			TFindClick("LoginCollectNotice","LoginCollectNotice2")
+			sleep 2000
+			TFindClick("LoginCollectNotice2","LoginCollectNotice3")
+			sleep 1000
+			TFindClick("LoginCollectNotice3","LoginCollectNotice4", sleep500)
+			sleep 500
+			Found := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1")
+			ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
+		}
+	FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
+		if (FoundAchievement == true)
+		{
+			GuiControl,, NB, Achievement Found
+			ClickS(130, 300)
+			sleep 3000
+		}
+	FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+		if (FoundExpedition == true)
+		{
+			GuiControl,, NB, Expedition Found
+			RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+			RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+			sleep 3000
+		}
+	FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0")
+		if (FoundExpedition == true)
+		{
+			GuiControl,, NB, Expedition Found
+			RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+			RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+			sleep 3000
+		}
+	FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0")
+		if (FoundExpedition == true)
+		{
+			GuiControl,, NB, Expedition Found
+			RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+			RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+			sleep 3000
+		}
+	FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0")
+		if (FoundExpedition == true)
+		{
+			GuiControl,, NB, Expedition Found
+			RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
+			RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+		}
+	FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
+		if (FoundAchievement == true)
+		{
+			GuiControl,, NB, Achievement Found
+			ClickS(130, 300)
+		}
 	GuiControl,, NB, Collected 60 stars, paused.
 	pause
 }
