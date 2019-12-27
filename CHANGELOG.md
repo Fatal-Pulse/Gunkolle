@@ -1,4 +1,10 @@
 
+#### LDPlayer 0.6.9
+* **_New_** Added AN94 and AK12.
+* **_New_** Added an event map Dinergates.
+* **_Update_** Made 6_3N_airstrike faster.
+* **_Update_** Login popup looks for 3-star tdolls (not tested). 
+
 #### LDPlayer 0.6.8
 * **_Update_** Login popup and achievements should work during maps and gohome function.
 * **_Update_** 4_6_data was changed to faster/stable version.

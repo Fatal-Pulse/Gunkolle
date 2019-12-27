@@ -1,4 +1,4 @@
-;Gunkolle v0.6.8
+;Gunkolle v0.6.9
 #Persistent
 #SingleInstance
 #Include %A_ScriptDir%/Functions/Gdip_All.ahk ;Thanks to tic (Tariq Porter) for his GDI+ Library => ahkscript.org/boards/viewtopic.php?t=6517
@@ -64,7 +64,7 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|Orphan_60Stars
+Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|6_3N|6_3N_airstrike|10_4E|10_4Ecdo|Orphan_60Stars|Dinergates
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%ClickS(706, 425)
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.8
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.6.9
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -286,10 +286,21 @@ Transition(ClickThis,WaitForThis)
 					TFindClick("LoginCollectNotice","LoginCollectNotice2")
 					sleep 2000
 					TFindClick("LoginCollectNotice2","LoginCollectNotice3")
-					sleep 1000
+					sleep 6000
+					FoundDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0")
+					if (FoundDrop == true)
+						{
+							ClickTilGone("DollDrop", "rLDPlayer mc o10 w30000,50 ")
+						}
 					TFindClick("LoginCollectNotice3","LoginCollectNotice4", sleep500)
-					sleep 500
-					Found := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1")
+					sleep 6000
+					FoundDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0")
+					if (FoundDrop == true)
+						{
+							ClickTilGone("DollDrop", "rLDPlayer mc o10 w30000,50 ")
+						}
+					FoundCollectAgain := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1 w500")
+					FoundCollectAgain := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1 w500")
 					ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
 				}
 			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
@@ -792,10 +803,21 @@ Sortie2:
 				TFindClick("LoginCollectNotice","LoginCollectNotice2")
 				sleep 2000
 				TFindClick("LoginCollectNotice2","LoginCollectNotice3")
-				sleep 1000
+				sleep 6000
+				FoundDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0")
+				if (FoundDrop == true)
+					{
+						ClickTilGone("DollDrop", "rLDPlayer mc o10 w30000,50 ")
+					}
 				TFindClick("LoginCollectNotice3","LoginCollectNotice4", sleep500)
-				sleep 500
-				Found := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1")
+				sleep 6000
+				FoundDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0")
+				if (FoundDrop == true)
+					{
+						ClickTilGone("DollDrop", "rLDPlayer mc o10 w30000,50 ")
+					}
+				FoundCollectAgain := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1 w500")
+				FoundCollectAgain := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1 w500")
 				ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
 				loopcount++
 			}
@@ -834,10 +856,21 @@ FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\LoginCollectNotice", "rL
 		TFindClick("LoginCollectNotice","LoginCollectNotice2")
 		sleep 2000
 		TFindClick("LoginCollectNotice2","LoginCollectNotice3")
-		sleep 1000
+		sleep 6000
+		FoundDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0")
+		if (FoundDrop == true)
+			{
+				ClickTilGone("DollDrop", "rLDPlayer mc o10 w30000,50 ")
+			}
 		TFindClick("LoginCollectNotice3","LoginCollectNotice4", sleep500)
-		sleep 500
-		Found := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1")
+		sleep 6000
+		FoundDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0")
+		if (FoundDrop == true)
+			{
+				ClickTilGone("DollDrop", "rLDPlayer mc o10 w30000,50 ")
+			}
+		FoundCollectAgain := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1 w500")
+		FoundCollectAgain := FindClick(A_ScriptDir "\pics\LoginCollectNotice3", "rLDPlayer mc o40 Count1 n1 w500")
 		ClickTilGone("LoginCollectNotice4", " rLDPlayer mc o10 w30000,50")
 	}
 FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
@@ -1248,7 +1281,7 @@ Initialize()
 	FriendChecker := 1
 	BatteryChecker := 1
 	CombatSimsDataChecker := 1
-	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000,ZAS1,ZAS2,K11,AUG,RFB,ART,T91,K2,64Shiki,GRAPE1,GRAPE2,M4A1M3,AR15M3
+	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000,ZAS1,ZAS2,K11,AUG,RFB,ART,T91,K2,64Shiki,GRAPE1,GRAPE2,M4A1M3,AR15M3,AN94,AK12
 	4Star = 
 	init_mouse()
 }
