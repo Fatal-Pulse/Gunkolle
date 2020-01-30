@@ -1,4 +1,11 @@
 
+#### LDPlayer 0.7.0
+* **_Update_** Expeditions now use ClickM (area of clicking changed) and are faster now.
+* **_Update_** Using a new pic for achievement popup.
+* **_Update_** Changed to a more consistent expedition check during transitions.
+* **_Update_** Changing login popup to find consistency.
+* **_Update_** 4_6_data has new unpause pic to be more consistent.
+
 #### LDPlayer 0.6.9
 * **_New_** Added AN94 and AK12.
 * **_New_** Added an event map Dinergates.
