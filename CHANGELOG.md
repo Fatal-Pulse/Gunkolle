@@ -1,4 +1,10 @@
 
+#### LDPlayer 0.7.1
+* **_New_** Added two CT maps.
+* **_New_** Replaced 6_3N with 8_1N maps.
+* **_New_** Added SOPII mod 3 for dragging.
+* **_Update_** Adjusted pics for 6 star inclusion.
+
 #### LDPlayer 0.7.0
 * **_Update_** Expeditions now use ClickM (area of clicking changed) and are faster now.
 * **_Update_** Using a new pic for achievement popup.
