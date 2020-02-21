@@ -46,12 +46,15 @@ RunMap(x)
 	{
 		E1B1_Crates()
 	}
+	else if(x == "E1_10_M870")
+	{
+		E1_10_M870()
+	}
 	else if(x == "E3_9_Python")
 	{
 		E3_9_Python()
 	}
 }
-
 
 WaitBattle()
 {
@@ -1428,7 +1431,9 @@ E1B1_Crates()
 		RFindClick("\Maps\CT\EventPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		RFindClick("\Maps\CT\Scarecrow", "rLDPlayer mc o30 w30000,50")
 		RFindClick("\Maps\CT\Confirm", "rLDPlayer mc o30 w30000,50")
-		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		sleep 500
+		Found := FindClick(A_ScriptDir "\pics\Maps\CT\Confirm", "rLDPlayer mc o40 Count1 n0 w500")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w2000,50")
 		if(Found == 1)
 		{
 			Retirement()
@@ -1474,7 +1479,9 @@ E3_9_Python()
 		RFindClick("\Maps\CT\EventPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		RFindClick("\Maps\CT\Block", "rLDPlayer mc o30 w30000,50")
 		RFindClick("\Maps\CT\Confirm", "rLDPlayer mc o30 w30000,50")
-		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		sleep 500
+		Found := FindClick(A_ScriptDir "\pics\Maps\CT\Confirm", "rLDPlayer mc o40 Count1 n0 w500")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w2000,50")
 		if(Found == 1)
 		{
 			Retirement()
@@ -1543,6 +1550,98 @@ E3_9_Python()
 	sleep 2200
 	GuiControl,, NB, CommandPost
 	ClickS(626, 395)
+	sleep 500
+	RFindClick("Retreat", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
+	RFindClick("RetreatConfirm", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
+	TFindClick("Terminate","TerminateOK")
+	sleep 500
+	ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
+	GoHomeEvent()
+}
+
+E1_10_M870()
+{
+	Global
+	RetirementLoop := 1
+	while (RetirementLoop != 0)
+	{
+		GuiControl,, NB, MapSelect
+		RFindClick("\Maps\CT\CT", "rLDPlayer mc o30 w30000,50")
+		RFindClick("\Maps\CT\EventPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		RFindClick("\Maps\CT\Desire", "rLDPlayer mc o30 w30000,50")
+		RFindClick("\Maps\CT\Confirm", "rLDPlayer mc o30 w30000,50")
+		sleep 500
+		Found := FindClick(A_ScriptDir "\pics\Maps\CT\Confirm", "rLDPlayer mc o40 Count1 n0 w500")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w2000,50")
+		if(Found == 1)
+		{
+			Retirement()
+			RetirementLoop++
+		}
+		RetirementLoop--
+	}
+	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+	GuiControl,, NB, Heliport1
+	sleep 1500
+	ClickS(463, 431)
+	sleep 500
+	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 500
+	GuiControl,, NB, Command Post
+	ClickS(841, 399)
+	sleep 500
+	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 1000
+	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+	GuiControl,, NB, Heliport
+	sleep 2000
+	ClickS(463, 431)
+	sleep 200
+	ClickS(463, 431)
+	sleep 500
+	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+	sleep 1000
+	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+	GuiControl,, NB, Plan 1
+	sleep 500
+	ClickS(599, 475)
+	sleep 500
+	GuiControl,, NB, Plan 2
+	ClickS(456, 527)
+	sleep 500
+	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+	nodes(2)
+	sleep 500
+	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
+	nodes(1)
+	sleep 5500
+	GuiControl,, NB, Heliport
+	ClickS(457, 396)
+	sleep 200
+	ClickS(457, 396)
+	sleep 500
+	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+	sleep 1000
+	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+	GuiControl,, NB, Plan 3
+	sleep 500
+	ClickS(430, 496)
+	sleep 500
+	GuiControl,, NB, Plan 4
+	ClickS(496, 598)
+	sleep 500
+	GuiControl,, NB, Plan 5
+	ClickS(457, 396)
+	sleep 500
+	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+	nodes(5)
+	sleep 13500
+	GuiControl,, NB, Heliport
+	ClickS(457, 396)
+	sleep 200
+	ClickS(457, 396)
 	sleep 500
 	RFindClick("Retreat", "rLDPlayer mc o10 w30000,50 ")
 	sleep 500

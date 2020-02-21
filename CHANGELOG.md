@@ -1,4 +1,7 @@
 
+#### LDPlayer 0.7.1.1
+* **_New_** Another CT map for M870, small change to others.
+
 #### LDPlayer 0.7.1
 * **_New_** Added two CT maps.
 * **_New_** Replaced 6_3N with 8_1N maps.
