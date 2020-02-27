@@ -1,4 +1,9 @@
 
+#### LDPlayer 0.7.2
+* **_Update_** Updated event pic.
+* **_Update_** Added fail-safe clicks to test for lag in 4_6.
+* **_Update_** Expedition tweaks/cleanup.
+
 #### LDPlayer 0.7.1.1
 * **_New_** Another CT map for M870, small change to others.
 

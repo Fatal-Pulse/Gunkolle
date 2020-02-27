@@ -1,4 +1,4 @@
-;Gunkolle v0.7.1.1
+;Gunkolle v0.7.2
 #Persistent
 #SingleInstance
 #Include %A_ScriptDir%/Functions/Gdip_All.ahk ;Thanks to tic (Tariq Porter) for his GDI+ Library => ahkscript.org/boards/viewtopic.php?t=6517
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.7.1.1
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.7.2
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -341,6 +341,37 @@ Transition(ClickThis,WaitForThis)
 			}
 			
 		}
+	}
+}
+
+ExpeditionCheck()
+{
+	global
+	GuiControl,, NB, Expedition Check
+	FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
+		if (FoundAchievement == true)
+		{
+			GuiControl,, NB, Achievement Found
+			ClickS(130, 300)
+		}
+	Found := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o40 Count1 n0")
+	if (Found == 0)
+	{
+		GuiControl,, NB, Expedition Found
+		sleep 500
+		FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
+		if (FoundExpedition == true)
+			{
+				GuiControl,, NB, Expedition Found
+				ClickM(740, 530)
+				RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+			}
+		FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
+		if (FoundAchievement == true)
+			{
+				GuiControl,, NB, Achievement Found
+				ClickS(130, 300)
+			}
 	}
 }
 
@@ -841,26 +872,7 @@ Sortie2:
 		}
 	}
 
-GuiControl,, NB, Expedition Check
-FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
-	if (FoundAchievement == true)
-	{
-		GuiControl,, NB, Achievement Found
-		ClickS(130, 300)
-	}
-FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0")
-	if (FoundExpedition == true)
-	{
-		GuiControl,, NB, Expedition Found
-		ClickM(740, 530)
-		RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-	}
-FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
-	if (FoundAchievement == true)
-	{
-		GuiControl,, NB, Achievement Found
-		ClickS(130, 300)
-	}
+	ExpeditionCheck()
 	
 	Repair()
 
@@ -882,7 +894,7 @@ FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40
 	; 	} 
 	; } 
 
-	; Check expedition
+	ExpeditionCheck()
 	
 	GuiControlGet, corpsedragoffV
 	if (corpsedragoffV != 1)
@@ -927,15 +939,6 @@ FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40
 		}
 		; Check expedition
 	}	
-
-	; ExpeditionCheck("Daily")
-	FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0")
-		if (FoundExpedition == true)
-		{
-			GuiControl,, NB, Expedition Found
-			RFindClick("ExpeditionArrive", "rLDPlayer mc o50 w30000,50")
-			RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
-		}
 		
 	loop, 5
 	{
