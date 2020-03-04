@@ -53,7 +53,7 @@ WINID=ahk_class Qt5QWindowIcon
 WINID=ahk_exe Nox.exe
 ```
 
-You will also likely need to find and replace all existing mentions of LDPlayer in all functions. As far as I know, you need more changes for most other emulators that aren't Nox or LDPlayer. MeMu doesn't get recognized at all when I last tried.
+You will also likely need to find and replace all existing mentions of LDPlayer in all functions for window to be found. Also the HWND needs replaced in Mouse.ahk. I know it works on LeapDroid and Nox, MuMu doesn't like FindClick when I last tried.
 
 ## How to use: Gunkolle(Sortie)
 read the wiki
@@ -69,3 +69,43 @@ Simple pause script that runs alongside Gunkolle.
 Enter in config.ini under [Variables], PauseHr=22 , and PauseMn=22 to pause at 22:22.  Use 24 Hour format only. You may use PCSleep=1 to sleep the computer at that time as well.
 
 Use ResumeHr and ResumeMn to have the script resume at a specific time. Can be omitted for pause functionality only. When resume is enabled, PCSleep will be ignored and expired timers will automatically be set to pause/resume 24 hours later.
+
+## Making new maps
+
+If you're looking to edit/make your own maps in game you will  need a couple of things first. If you don't already have it, download notepad++ for editing. You will also need WindowSpy, which should be in your AHK folder.
+
+Maps are located in the Constants folder, so right click on it and edit with notepad++.
+
+To make a new map, here's how I would start. For this example I will make 4_3E for dragging.
+
+1. Within the RunMap(x) function, you will see if/else statements. Copy any of the else statements and paste it at the end of RunMap. I copied 4_6data, so the end will look like this:
+
+...
+	else if(x == "E3_9_Python")
+	{
+		E3_9_Python()
+	}
+	else if(x == "4_6_data")
+	{
+		4_6_data()
+	}
+}
+
+Now replace the text 4_6_data with 4_3E.
+
+2. Since I'm making 4_3E, I will copy another normal map like 0_2. Scroll down or ctrl-f for the 0_2() function and copy the whole thing. Then paste it afterwards as another function. You can start editing the pasted function and make it into 4_3E.
+
+3. Making the map. Replace the text 0_2 with 4_3E, and make sure the name of the map you are making stays consistent. 
+
+Next you will need to find coords for the map, so open WindowSpy and make sure LDPlayer is clicked on. The first ClickS coordinate is for selecting the map, so to find the coord you need, hover your mouse over where you want to click and hold ctrl or shift on your keyboard. Then on WindowSpy, under mouse position, copy the coordinates under "Window:" and paste them under the corresponding ClickS() coords for map select. Now your first click is done!
+
+4. Leave Retirement stuff alone, and move onto when the map is loaded, here the first line will make sure a map is loaded by looking for the pic "Turn". After that, GuiControl is there to tell the user what the script is clicking with ClickS. 
+You will use RFindClick to click on pics that are on all maps, like "OK" and "StartOperation". 
+Sleep is to buffer for lag between clicks so the it doesn't click too fast; it pauses the script for milliseconds.
+
+From here, look down the script and edit the clicks for the map you want to make using WindowSpy to find coords. ClickS has an offset of 10 pixels. Also you will be rearranging the order of a lot of these ClickS and RFindClick for the new map you are making, just do it as you are playing through the new map.
+
+5. Once you are done editing the clicks and the map is ready to test, you need to lastly add the map to the Gui by editing Gunkolle.ahk. Once open, ctrf-f for 0_2 and you should see the map list. At the end of the list add your new map, seperating them like oldmap|newmap. 
+
+6. Remember to save all then test the map. If you want to know more about FindClick options, look through FindClick.ahk. Might edit later with more info.
+
