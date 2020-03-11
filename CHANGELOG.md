@@ -1,4 +1,7 @@
 
+#### LDPlayer 0.7.2.1
+* **_Bugfix_** Looking for pause fix on 4_6.
+
 #### LDPlayer 0.7.2
 * **_Update_** Updated event pic.
 * **_Update_** Added fail-safe clicks to test for lag in 4_6.

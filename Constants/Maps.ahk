@@ -472,6 +472,8 @@ GoHomeEvent()
 					sleep 2000
 					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
 					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
+					sleep 500
+					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -506,6 +508,8 @@ GoHomeEvent()
 					sleep 2000
 					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
 					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
+					sleep 500
+					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -536,6 +540,8 @@ GoHomeEvent()
 					ClickS(818, 260)
 					sleep 2000
 					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
+					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
+					sleep 500
 					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
@@ -602,6 +608,8 @@ GoHomeEvent()
 					sleep 2000
 					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
 					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
+					sleep 500
+					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -636,6 +644,8 @@ GoHomeEvent()
 					sleep 2000
 					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
 					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
+					sleep 500
+					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -666,6 +676,8 @@ GoHomeEvent()
 					ClickS(818, 260)
 					sleep 2000
 					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
+					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
+					sleep 500
 					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
