@@ -1,4 +1,9 @@
 
+#### LDPlayer 0.7.3
+* **_New_** New event map.
+* **_Update_** Login checks for achievement.
+* **_Note_** The new client branch should be working, but I won't be working on it because it's crashing while idle.
+
 #### LDPlayer 0.7.2.1
 * **_Bugfix_** Looking for pause fix on 4_6.
 
