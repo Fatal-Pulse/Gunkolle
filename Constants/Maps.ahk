@@ -42,9 +42,17 @@ RunMap(x)
 	{
 		10_4Ecdo()
 	}
-	else if(x == "EmptyHouse")
+	else if(x == "E1_1")
 	{
-		EmptyHouse()
+		E1_1()
+	}
+	else if(x == "E1_2")
+	{
+		E1_2()
+	}
+	else if(x == "E2_1")
+	{
+		E2_1()
 	}
 }
 
@@ -312,7 +320,7 @@ GoHome()
 				FoundExp := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o30 Count1")
 				if FoundExp >= 1
 				{
-					sleep 1000
+					;sleep 1000
 					RetirementLoop++
 				}
 				ClickS(765, 130)
@@ -481,21 +489,21 @@ GoHomeEvent()
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		sleep 1500
 		GuiControl,, NB, CommandPost
-		ClickS(842, 400)
-		sleep 1200
-		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0")
-		if (Found == 0)
+		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
 		{
 			ClickS(842, 400)
-			sleep 500
+			sleep 1000
 		}
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
-		GuiControl,, NB, Heliport
 		sleep 250
 		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0 w250")
 		sleep 250
-		ClickS(868, 46)
-		sleep 1000
+		GuiControl,, NB, Heliport
+		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		{
+			ClickS(868, 46)
+			sleep 1000
+		}
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 		sleep 250
 		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0 w250")
@@ -623,21 +631,21 @@ GoHomeEvent()
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		sleep 1500
 		GuiControl,, NB, CommandPost
-		ClickS(842, 400)
-		sleep 1200
-		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0")
-		if (Found == 0)
+		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
 		{
 			ClickS(842, 400)
-			sleep 500
+			sleep 1000
 		}
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
-		GuiControl,, NB, Heliport
 		sleep 250
 		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0 w250")
 		sleep 250
-		ClickS(868, 46)
-		sleep 1000
+		GuiControl,, NB, Heliport
+		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		{
+			ClickS(868, 46)
+			sleep 1000
+		}
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 		sleep 250
 		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0 w250")
@@ -1527,16 +1535,16 @@ GoHomeEvent()
 	GoHome()
 }
 
-EmptyHouse()
+E1_1()
 {
 	Global
 	RetirementLoop := 1
 	while (RetirementLoop != 0)
 	{
-		RFindClick("\Maps\Photo\Photo", "rLDPlayer mc o30 w30000,50")
-		FindClick(A_ScriptDir "\pics\Maps\Photo\EventPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
-		RFindClick("\Maps\Photo\EmptyHouse", "rLDPlayer mc o30 w30000,50")
-		RFindClick("\Maps\Photo\ConfirmStart", "rLDPlayer mc o30 w30000,50")
+		RFindClick("\Maps\DJMax\Glory", "rLDPlayer mc o30 w30000,50")
+		FindClick(A_ScriptDir "\pics\Maps\DJMax\EventPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		RFindClick("\Maps\DJMax\Stalker", "rLDPlayer mc o30 w30000,50")
+		RFindClick("\Maps\DJMax\ConfirmStart", "rLDPlayer mc o30 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
 		if(Found == 1)
 		{
@@ -1548,43 +1556,185 @@ EmptyHouse()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 1500
-	ClickS(628, 398)
+	ClickS(662, 362)
 	sleep 500
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 1000
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, CommandPost
 	sleep 2000
-	ClickS(628, 398)
+	ClickS(662, 362)
 	sleep 200
-	ClickS(628, 398)
+	ClickS(662, 362)
 	sleep 500
 	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
 	sleep 1000
 	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
-	GuiControl,, NB, Plan1
+	GuiControl,, NB, Plan
 	sleep 500
-	ClickS(471, 314)
-	GuiControl,, NB, Plan2
+	ClickS(607, 612)
 	sleep 500
-	ClickS(628, 209)
-	GuiControl,, NB, Plan3
+	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+	nodes(3)
+	eventnodes(1)
+	sleep 1000
+	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
+	GoHomeEvent()
+}
+
+E1_2()
+{
+	Global
+	RetirementLoop := 1
+	while (RetirementLoop != 0)
+	{
+		RFindClick("\Maps\DJMax\Glory", "rLDPlayer mc o30 w30000,50")
+		FindClick(A_ScriptDir "\pics\Maps\DJMax\EventPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		RFindClick("\Maps\DJMax\Heartbeat", "rLDPlayer mc o30 w30000,50")
+		RFindClick("\Maps\DJMax\ConfirmStart", "rLDPlayer mc o30 w30000,50")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		if(Found == 1)
+		{
+			Retirement()
+			RetirementLoop++
+		}
+		RetirementLoop--
+	}
+	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+	GuiControl,, NB, CommandPost
+	sleep 1500
+	ClickS(406, 396)
 	sleep 500
-	ClickS(786, 314)
-	GuiControl,, NB, Plan4
+	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 1000
+	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+	GuiControl,, NB, CommandPost
+	sleep 2000
+	ClickS(406, 396)
+	sleep 200
+	ClickS(406, 396)
 	sleep 500
-	ClickS(700, 312)
+	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+	sleep 1000
+	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+	GuiControl,, NB, Plan
+	sleep 500
+	ClickS(624, 501)
+	sleep 500
+	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+	nodes(3)
+	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
+	sleep 11000
+	GuiControl,, NB, Echelon 1
+	ClickS(626, 486)
+	sleep 200
+	ClickS(626, 486)
+	sleep 500
+	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+	sleep 1000
+	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+	GuiControl,, NB, Plan
+	sleep 500
+	ClickS(865, 321)
+	sleep 500
+	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+	nodes(2)
+	eventnodes(1)
+	sleep 7000
+	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
+	GoHomeEvent()
+}
+
+E2_1()
+{
+	Global
+	RetirementLoop := 1
+	while (RetirementLoop != 0)
+	{
+		RFindClick("\Maps\DJMax\Glory", "rLDPlayer mc o30 w30000,50")
+		FindClick(A_ScriptDir "\pics\Maps\DJMax\EventPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		RFindClick("\Maps\DJMax\Sunset", "rLDPlayer mc o30 w30000,50")
+		RFindClick("\Maps\DJMax\ConfirmStart", "rLDPlayer mc o30 w30000,50")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		if(Found == 1)
+		{
+			Retirement()
+			RetirementLoop++
+		}
+		RetirementLoop--
+	}
+	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+	GuiControl,, NB, CommandPost
+	sleep 1500
+	ClickS(663, 396)
+	sleep 500
+	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 1000
+	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+	GuiControl,, NB, CommandPost
+	sleep 2000
+	ClickS(663, 396)
+	sleep 200
+	ClickS(663, 396)
+	sleep 500
+	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+	sleep 1000
+	GuiControl,, NB, Move 1
+	ClickS(665, 331)
+	sleep 2000
+	ClickS(699, 362)
+	GuiControl,, NB, CommandPost
+	sleep 500
+	ClickS(663, 396)
+	sleep 500
+	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 1000
+	ClickS(663, 396)
+	sleep 200
+	ClickS(663, 396)
+	sleep 500
+	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+	sleep 1000
+	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+	GuiControl,, NB, Plan
+	sleep 500
+	ClickS(746, 397)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
 	eventnodes(3)
-	sleep 10000
-	FoundNode := FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o50 n0 Count1 w8000,50")
-	if(FoundNode == 1)
-		{
-			GuiControl,, NB, Waiting for end of combat
-			FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 Count1 n0 w30000,50")
-			sleep 6000
-		}
-	GuiControl,, NB, Waiting for next action
+	sleep 1000
+	GuiControl,, NB, CommandPost
+	sleep 1500
+	ClickS(663, 396)
+	sleep 500
+	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 1000
+	ClickS(746, 397)
+	sleep 500
+	ClickS(663, 396)
+	sleep 500
+	RFindClick("\Maps\DJMax\Switch", "rLDPlayer mc o60 w30000,50 ")
+	GuiControl,, NB, Echelon 2
+	sleep 2000
+	ClickS(663, 396)
+	sleep 500
+	RFindClick("Retreat", "rLDPlayer mc o5 w2000,50 ")
+	sleep 500
+	RFindClick("RetreatConfirm", "rLDPlayer mc o30 w30000,50 ")
+	sleep 500
+	GuiControl,, NB, Echelon 1
+	ClickS(665, 331)
+	sleep 200
+	ClickS(665, 331)
+	sleep 200
+	ClickS(665, 331)
+	sleep 500
+	RFindClick("Retreat", "rLDPlayer mc o5 w2000,50 ")
+	sleep 500
+	RFindClick("RetreatConfirm", "rLDPlayer mc o30 w30000,50 ")
+	sleep 500
+	TFindClick("Terminate","TerminateOK")
+	sleep 500
+	ClickTilGone("TerminateOK", " rLDPlayer mc o10 w30000,50")
 	GoHomeEvent()
 }

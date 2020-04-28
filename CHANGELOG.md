@@ -1,4 +1,7 @@
 
+#### LDPlayer 0.7.4
+* **_New_** DJMax collab event maps.
+
 #### LDPlayer 0.7.3
 * **_New_** New event map.
 * **_Update_** Login checks for achievement.
