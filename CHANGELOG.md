@@ -1,4 +1,8 @@
 
+#### LDPlayer 0.7.5
+* **_New_** Added 11_5 map.
+* **_Update_** Trying new method to keep clicking deployed echcelons if the initial click failed for all maps.
+
 #### LDPlayer 0.7.4
 * **_New_** DJMax collab event maps.
 
