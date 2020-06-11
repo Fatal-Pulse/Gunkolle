@@ -432,7 +432,7 @@ GoHomeEvent()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(649, 401)
 			sleep 1000
@@ -441,7 +441,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(455, 395)
 			sleep 1000
@@ -452,7 +452,7 @@ GoHomeEvent()
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, Heliport
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(455, 395)
 			sleep 200
@@ -505,7 +505,7 @@ GoHomeEvent()
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		sleep 1500
 		GuiControl,, NB, CommandPost
-		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(842, 400)
 			sleep 1000
@@ -516,7 +516,7 @@ GoHomeEvent()
 		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0 w250")
 		sleep 250
 		GuiControl,, NB, Heliport
-		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(868, 46)
 			sleep 1000
@@ -528,8 +528,11 @@ GoHomeEvent()
 		sleep 250
 		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 		GuiControl,, NB, Heliport
-		sleep 2000
-		ClickS(868, 46)
+		while(FindClick(A_ScriptDir "\pics\CommandFairy", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(868, 46)
+			sleep 1000
+		}
 		GuiControl,, NB, Node1
 		sleep 500
 		ClickS(858, 109)
@@ -539,13 +542,13 @@ GoHomeEvent()
 					ClickS(858, 109)
 					sleep 200
 					ClickS(858, 109)
-					sleep 2000
-					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
-					sleep 500
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
+					sleep 3000
+					GuiControl,, NB, Pause
+					while(FindClick(A_ScriptDir "\pics\CombatPaused", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 51)
+							sleep 1000
+						}
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -577,13 +580,12 @@ GoHomeEvent()
 					ClickS(745, 233)
 					sleep 200
 					ClickS(745, 233)
-					sleep 2000
-					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
-					sleep 500
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
+					sleep 3000
+					while(FindClick(A_ScriptDir "\pics\CombatPaused", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 51)
+							sleep 1000
+						}
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -612,13 +614,12 @@ GoHomeEvent()
 					ClickS(818, 260)
 					sleep 200
 					ClickS(818, 260)
-					sleep 2000
-					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
-					sleep 500
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
+					sleep 3000
+					while(FindClick(A_ScriptDir "\pics\CombatPaused", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 51)
+							sleep 1000
+						}
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -649,7 +650,7 @@ GoHomeEvent()
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		sleep 1500
 		GuiControl,, NB, CommandPost
-		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(842, 400)
 			sleep 1000
@@ -660,7 +661,7 @@ GoHomeEvent()
 		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0 w250")
 		sleep 250
 		GuiControl,, NB, Heliport
-		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(868, 46)
 			sleep 1000
@@ -672,8 +673,11 @@ GoHomeEvent()
 		sleep 250
 		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 		GuiControl,, NB, Heliport
-		sleep 2000
-		ClickS(868, 46)
+		while(FindClick(A_ScriptDir "\pics\CommandFairy", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(868, 46)
+			sleep 1000
+		}
 		GuiControl,, NB, Node1
 		sleep 500
 		ClickS(858, 109)
@@ -683,13 +687,12 @@ GoHomeEvent()
 					ClickS(858, 109)
 					sleep 200
 					ClickS(858, 109)
-					sleep 2000
-					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
-					sleep 500
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
+					sleep 3000
+					while(FindClick(A_ScriptDir "\pics\CombatPaused", "rLDPlayer mc o25 Count1 n0") != 1)
+						{
+							ClickS(640, 51)
+							sleep 1000
+						}
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -721,13 +724,12 @@ GoHomeEvent()
 					ClickS(745, 233)
 					sleep 200
 					ClickS(745, 233)
-					sleep 2000
-					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
-					sleep 500
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
+					sleep 3000
+					while(FindClick(A_ScriptDir "\pics\CombatPaused", "rLDPlayer mc o25 Count1 n0") != 1)
+						{
+							ClickS(640, 51)
+							sleep 1000
+						}
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -756,13 +758,12 @@ GoHomeEvent()
 					ClickS(818, 260)
 					sleep 200
 					ClickS(818, 260)
-					sleep 2000
-					ClickTilGone("\Maps\4_6\CombatPause", " rLDPlayer mc o75 w30000,50 sleep1000")
-					sleep 500
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
-					FoundPause := FindClick(A_ScriptDir "\pics\Maps\4_6\CombatPause", "rLDPlayer mc o40 Count1 n1 w250")
-					sleep 250
+					sleep 3000
+					while(FindClick(A_ScriptDir "\pics\CombatPaused", "rLDPlayer mc o25 Count1 n0") != 1)
+						{
+							ClickS(640, 51)
+							sleep 1000
+						}
 					GuiControl,, NB, Withdraw
 					ClickS(426, 66)
 					sleep 1500
@@ -811,7 +812,7 @@ GoHomeEvent()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(855, 460)
 			sleep 1000
@@ -820,7 +821,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, CommandPost
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(434, 400)
 			sleep 1000
@@ -831,7 +832,7 @@ GoHomeEvent()
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, CommandPost
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(434, 400)
 			sleep 200
@@ -877,7 +878,7 @@ GoHomeEvent()
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		GuiControl,, NB, CommandPost
 		sleep 2000
-		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(840, 330)
 			sleep 1000
@@ -888,7 +889,7 @@ GoHomeEvent()
 		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 		GuiControl,, NB, Heliport1
 		sleep 2000
-		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(425, 350)
 			sleep 1000
@@ -907,7 +908,7 @@ GoHomeEvent()
 		RFindClick("OK", "rLDPlayer mc o20 w30000,50")
 		GuiControl,, NB, Heliport2
 		sleep 1000
-		while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(425, 560)
 			sleep 1000
@@ -1215,7 +1216,7 @@ GoHomeEvent()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(412, 480)
 			sleep 1000
@@ -1224,7 +1225,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o5 w30000,50")
 	sleep 1000
 	GuiControl,, NB, Heliport2
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(850, 478)
 			sleep 1000
@@ -1233,7 +1234,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o5 w30000,50")
 	sleep 1000
 	GuiControl,, NB, Heliport3
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(442, 225)
 			sleep 1000
@@ -1271,7 +1272,7 @@ GoHomeEvent()
 	RFindClick("\Maps\8_1N\Switch", "rLDPlayer mc o60 w30000,50 ")
 	GuiControl,, NB, Echelon1
 	Sleep 2200
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(442, 300)
 			sleep 1000
@@ -1284,7 +1285,7 @@ GoHomeEvent()
 	ClickS(886, 575)
 	sleep 200
 	GuiControl,, NB, Echelon2
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(850, 549)
 			sleep 200
@@ -1342,7 +1343,7 @@ GoHomeEvent()
 		}
 	GuiControl,, NB, Heliport1
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(412, 480)
 			sleep 1000
@@ -1402,7 +1403,7 @@ GoHomeEvent()
 		}
 	GuiControl,, NB, Heliport1
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(412, 480)
 			sleep 1000
@@ -1467,7 +1468,7 @@ GoHomeEvent()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(486, 232)
 			sleep 1000
@@ -1476,7 +1477,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, CommandPost
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(576, 397)
 			sleep 1000
@@ -1485,7 +1486,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport2
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(855, 737)
 			sleep 1000
@@ -1496,7 +1497,7 @@ GoHomeEvent()
 	RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, CommandPost
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(576, 397)
 			sleep 200
@@ -1507,7 +1508,7 @@ GoHomeEvent()
 	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(576, 397)
 			sleep 1000
@@ -1540,7 +1541,7 @@ GoHomeEvent()
 	nodes(5)
 	GuiControl,, NB, Heliport1
 	sleep 15000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(486, 398)
 			sleep 200
@@ -1579,7 +1580,7 @@ GoHomeEvent()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport1
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(486, 232)
 			sleep 1000
@@ -1588,7 +1589,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, CommandPost
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(576, 397)
 			sleep 1000
@@ -1597,7 +1598,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport2
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(855, 737)
 			sleep 1000
@@ -1608,7 +1609,7 @@ GoHomeEvent()
 	RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, Heliport1
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(486, 232)
 			sleep 200
@@ -1636,7 +1637,7 @@ GoHomeEvent()
 	nodes(5)
 	GuiControl,, NB, Heliport1
 	sleep 15000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(486, 398)
 			sleep 200
@@ -1677,7 +1678,7 @@ GoHomeEvent()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, Heliport 1
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(626, 448)
 			sleep 1000
@@ -1686,7 +1687,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport 2
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(626, 487)
 			sleep 1000
@@ -1695,7 +1696,7 @@ GoHomeEvent()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, CommandPost
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(576, 487)
 			sleep 1000
@@ -1706,7 +1707,7 @@ GoHomeEvent()
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, Heliport 2
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(626, 487)
 			sleep 200
@@ -1717,7 +1718,7 @@ GoHomeEvent()
 	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 1000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(626, 487)
 			sleep 1000
@@ -1745,7 +1746,7 @@ GoHomeEvent()
 	nodes(5)
 	sleep 4000
 	GuiControl,, NB, Echelon 1
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(575, 485)
 			sleep 200
@@ -1784,7 +1785,7 @@ E1_1()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(662, 362)
 			sleep 1000
@@ -1795,7 +1796,7 @@ E1_1()
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, CommandPost
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(662, 362)
 			sleep 200
@@ -1839,7 +1840,7 @@ E1_2()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(406, 396)
 			sleep 1000
@@ -1850,7 +1851,7 @@ E1_2()
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, CommandPost
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(406, 396)
 			sleep 200
@@ -1870,7 +1871,7 @@ E1_2()
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	sleep 11000
 	GuiControl,, NB, Echelon 1
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(626, 486)
 			sleep 200
@@ -1914,7 +1915,7 @@ E2_1()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(663, 396)
 			sleep 1000
@@ -1925,7 +1926,7 @@ E2_1()
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 	GuiControl,, NB, CommandPost
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(663, 396)
 			sleep 200
@@ -1941,7 +1942,7 @@ E2_1()
 	ClickS(699, 362)
 	GuiControl,, NB, CommandPost
 	sleep 500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(663, 396)
 			sleep 1000
@@ -1949,7 +1950,7 @@ E2_1()
 		}
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 1000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(663, 396)
 			sleep 200
@@ -1969,7 +1970,7 @@ E2_1()
 	sleep 1000
 	GuiControl,, NB, CommandPost
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(663, 396)
 			sleep 1000
@@ -1984,7 +1985,7 @@ E2_1()
 	RFindClick("\Maps\DJMax\Switch", "rLDPlayer mc o60 w30000,50 ")
 	GuiControl,, NB, Echelon 2
 	sleep 2000
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(663, 396)
 			sleep 1000
@@ -1997,7 +1998,7 @@ E2_1()
 	GuiControl,, NB, Echelon 1
 	ClickS(665, 331)
 	sleep 200
-	while(FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o25 Count1 n0") = 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(665, 331)
 			sleep 200

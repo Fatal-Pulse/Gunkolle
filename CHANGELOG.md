@@ -1,7 +1,11 @@
 
+#### LDPlayer 0.7.6
+* **_Update_** 4_6 now needs command fairy on echelon 2 (made by Fatal-Pulse) so the echelon is clicked consistently.
+* **_Update_** More 4_6 tweaks regarding combat withdraw, and changes to initial echelon deployment clicks.
+
 #### LDPlayer 0.7.5
 * **_New_** Added 11_5 map.
-* **_Update_** Trying new method to keep clicking deployed echcelons if the initial click failed for all maps.
+* **_Update_** Trying new method to keep clicking deployed echelons if the initial click failed for all maps.
 
 #### LDPlayer 0.7.4
 * **_New_** DJMax collab event maps.
