@@ -1,4 +1,10 @@
 
+#### LDPlayer 0.7.7
+* **_Update_** Compulsory client update to V2.0416.
+* **_Update_** New pics for client update.
+* **_Update_** Changes to repair, and a few menu navigation changes.
+* **_New_** Re-opens the game when the client idle crashes on Expedition only mode.
+
 #### LDPlayer 0.7.6
 * **_Update_** 4_6 now needs command fairy on echelon 2 (made by Fatal-Pulse) so the echelon is clicked consistently.
 * **_Update_** More 4_6 tweaks regarding combat withdraw, and changes to initial echelon deployment clicks.

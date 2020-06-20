@@ -40,21 +40,20 @@ Transition("CombatTdollEnhancement","Retirement")
 	RFindClick("ThreeStar", "rLDPlayer mc o20 w30000,50")
 	RFindClick("Confirm", "rLDPlayer mc o20 w30000,50")
 	sleep 500
-	Found := FindClick(A_ScriptDir "\pics\3STAR", "rLDPlayer mc o50 Count1 n0")
+	Found := FindClick(A_ScriptDir "\pics\3STAR", "rLDPlayer mc o50 Count1 n0 w500")
 	if Found >= 1
 	{
 	ClickTilGone("3STAR", " rLDPlayer mc o75 w30000,50 sleep100")
 	}
-	RFindClick("ConfirmRet", "rLDPlayer mc o75 w30000,50")
 	sleep 500
+	RFindClick("ConfirmRet", "rLDPlayer mc o75 w30000,50")
+	sleep 1000
 	RFindClick("TdollRetirementDismantle", "rLDPlayer mc o75 w30000,50")
 	sleep 500
-	Found := FindClick(A_ScriptDir "\pics\RetireOK", "rLDPlayer mc o50 Count1 n1")
+	Found := FindClick(A_ScriptDir "\pics\RetireOK", "rLDPlayer mc o50 Count1 n1 w500")
 	Sleep 1000
-	RFindClick("FactoryReturn", "rLDPlayer mc o50 w30000,50")
-	sleep 2000
-	Transition("Combat","CombatPage")
-
+	Transition("BaseNavigation","NavigateCombat")
+	Transition("NavigateCombat","CombatPage")
 }
 	return
 
