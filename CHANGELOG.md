@@ -1,4 +1,8 @@
 
+#### LDPlayer 0.7.8
+* **_Update_** Login popups updated (might need more tweaking, there are a lot of different orders of popups in the new client).
+* **_Update_** Rewrote node function so that it only spam clicks during combat result.
+
 #### LDPlayer 0.7.7
 * **_Update_** Compulsory client update to V2.0416.
 * **_Update_** New pics for client update.

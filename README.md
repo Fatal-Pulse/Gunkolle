@@ -16,6 +16,7 @@ Running from source
 * findclick library by berban (also included)
 * Mouse library by fnzr (included)
 * Playing at 1280 x 720 res
+* Using 8 gb of ram in emulator settings helps prevent crashing.
 * Using latest client V2.0416.
 * Using the uncensored doll pics via recipe (522/320/404/137).
 * Both NVIDIA and AMD graphics cards are working, but AMD users might need to replace some pics.

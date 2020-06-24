@@ -124,23 +124,17 @@ nodes(nodecount)
 	Global
 	loop, %nodecount%
 	{
-		Found := 0
 		FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0 w30000,50")
-		sleep 5000
-		while(Found == 0)
+		sleep 1000
+		while(FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0") == 1)
 		{
-			Found := 0
-			Found := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50")
-			if Found >= 1
-			{
-			}
-			else
-			{
-				sleep 50
-				;ClickS(Safex,Safey)
-				ClickS(700,400)
-			}
-			GuiControl,, NB, Waiting for end of combat = %found%
+			GuiControl,, NB, Waiting for end of combat
+			sleep 2000
+		}
+		GuiControl,, NB, Combat Results
+		while(FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50") == 0)
+		{
+			ClickS(700,400)
 		}
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		GuiControl,, NB, Waiting for next action
@@ -152,23 +146,17 @@ eventnodes(nodecount)
 	Global
 	loop, %nodecount%
 	{
-		Found := 0
 		FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0 w30000,50")
-		sleep 5000
-		while(Found == 0)
+		sleep 1000
+		while(FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0") == 1)
 		{
-			Found := 0
-			Found := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50")
-			if Found >= 1
-			{
-			}
-			else
-			{
-				sleep 50
-				;ClickS(Safex,Safey)
-				ClickS(700,125)
-			}
-			GuiControl,, NB, Waiting for end of combat = %found%
+			GuiControl,, NB, Waiting for end of combat
+			sleep 2000
+		}
+		while(FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50") == 0)
+		{
+			GuiControl,, NB, Combat Results
+			ClickS(700,125)
 		}
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		GuiControl,, NB, Waiting for next action
@@ -180,23 +168,17 @@ nodeboss(nodecount)
 	Global
 	loop, %nodecount%
 	{
-		Found := 0
 		FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0 w30000,50")
-		sleep 5000
-		while(Found == 0)
+		sleep 1000
+		while(FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0") == 1)
 		{
-			Found := 0
-			Found := FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50")
-			if Found >= 1
-			{
-			}
-			else
-			{
-				sleep 50
-				;ClickS(Safex,Safey)
-				ClickS(700,125)
-			}
-			GuiControl,, NB, Waiting for end of combat = %found%
+			GuiControl,, NB, Waiting for end of combat
+			sleep 2000
+		}
+		while(FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50") == 0)
+		{
+			GuiControl,, NB, Combat Results
+			ClickS(700,125)
 		}
 		GuiControl,, NB, Waiting for next action
 	}
@@ -254,12 +236,13 @@ GoHome()
 			}
 			else
 			{
-                sleep 200
-				Found2 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o40 Count1 w100,50")
-				;Found3 := FindClick(A_ScriptDir "\pics\CombatReturnEvent", "rLDPlayer mc o40 Count1 w100,50")
-				Found4 := FindClick(A_ScriptDir "\pics\ReturnToBase", "rLDPlayer mc o40 Count1 w100,50")
+				Found2 := FindClick(A_ScriptDir "\pics\ReturnToBase", "rLDPlayer mc o40 Count1 w100,50")
+                sleep 300
+				Found3 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o40 Count1 w100,50")
+				;Found4 := FindClick(A_ScriptDir "\pics\CombatReturnEvent", "rLDPlayer mc o40 Count1 w100,50")
 				FoundLogin := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n0")
 				FoundLogin2 := FindClick(A_ScriptDir "\pics\Login02", "rLDPlayer mc o40 Count1 n0")
+				FoundLogin3 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0")
 				if FoundLogin >= 1
 				{
 					GuiControl,, NB, Login Collect Found
@@ -275,11 +258,21 @@ GoHome()
 					}
 					FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
 					sleep 500
-					FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "rLDPlayer mc o40 Count1 n0 w500")
-					if (FoundDollLogin == true)
+					FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
+					sleep 500
+					FoundLogin04 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0 w500")
+					if (FoundLogin04 == true)
 						{
-							sleep 3000
+							RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
+							sleep 4500
+						}
+					FoundDollDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0 w500")
+					if (FoundDollDrop == true)
+						{
 							RFindClick("DollDrop", "rLDPlayer mc o50 w30000,50")
+							sleep 500
+							ClickS(130, 300)
+							sleep 500
 						}
 					FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
 					sleep 500
@@ -298,11 +291,83 @@ GoHome()
 						}
 					}
 					RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
-					loopcount++
 				}
 				if FoundLogin2 >= 1
 				{
 					GuiControl,, NB, Login Collect Found
+					RFindClick("Login02", "rLDPlayer mc o50 w30000,50")
+					sleep 1000
+					RFindClick("Login03", "rLDPlayer mc o50 w30000,50")
+					sleep 1000
+					loop, 2
+					{
+					FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+					if (FoundAchievement == true)
+						{
+							GuiControl,, NB, Achievement Found
+							ClickS(130, 300)
+							sleep 500
+						}
+					}
+					RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
+				}
+				if FoundLogin3 >= 1
+				{
+					GuiControl,, NB, Login Collect Found
+					loop, 2
+					{
+					FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+					if (FoundAchievement == true)
+						{
+							GuiControl,, NB, Achievement Found
+							ClickS(130, 300)
+							sleep 500
+						}
+					}
+					FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
+					sleep 500
+					FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
+					sleep 500
+					FoundLogin04 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0 w500")
+					if (FoundLogin04 == true)
+						{
+							GuiControl,, NB, Waiting for login tdolls
+							sleep 4000
+							RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
+						}
+					sleep 500
+					loop, 2
+					{
+					FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0 w500")
+					if (FoundAchievement == true)
+						{
+							GuiControl,, NB, Achievement Found
+							ClickS(130, 300)
+							sleep 500
+						}
+					}
+					FoundDollDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0 w500")
+					if (FoundDollDrop == true)
+						{
+							RFindClick("DollDrop", "rLDPlayer mc o50 w30000,50")
+							sleep 500
+							ClickS(130, 300)
+							sleep 500
+							ClickS(130, 300)
+							GuiControl,, NB, Searching for login tdolls
+							sleep 4500
+						}
+					FoundDollDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0 w500")
+					if (FoundDollLogin == true)
+						{
+							RFindClick("DollDrop", "rLDPlayer mc o50 w30000,50")
+							sleep 500
+							ClickS(130, 300)
+							sleep 500
+							ClickS(130, 300)
+							sleep 500
+						}
+					sleep 500
 					RFindClick("Login02", "rLDPlayer mc o50 w30000,50")
 					sleep 1000
 					RFindClick("Login03", "rLDPlayer mc o50 w30000,50")
@@ -326,6 +391,7 @@ GoHome()
 					RetirementLoop++
 				}
 				ClickS(765, 130)
+				sleep 150
 			}
 			GuiControl,, NB, Waiting for base = %found1% %found2%
 		}
