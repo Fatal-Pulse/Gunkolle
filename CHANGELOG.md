@@ -1,4 +1,8 @@
 
+#### LDPlayer 0.7.9
+* **_New_** Isomer maps. Illusory_Peace_III_EX is using a few non-random clicks due to node hit-boxes, use for daily only. Wiki updated on how to use.
+* **_Update_** Login popups updated.
+
 #### LDPlayer 0.7.8
 * **_Update_** Login popups updated (might need more tweaking, there are a lot of different orders of popups in the new client).
 * **_Update_** Rewrote node function so that it only spam clicks during combat result.

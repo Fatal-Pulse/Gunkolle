@@ -1,4 +1,4 @@
-;Gunkolle v0.7.8
+;Gunkolle v0.7.9
 #Persistent
 #SingleInstance
 #Include %A_ScriptDir%/Functions/Gdip_All.ahk ;Thanks to tic (Tariq Porter) for his GDI+ Library => ahkscript.org/boards/viewtopic.php?t=6517
@@ -64,16 +64,16 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w70 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|8_1N|8_1N_airstrike|10_4E|10_4Ecdo|11_5
+Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|8_1N|8_1N_airstrike|10_4E|10_4Ecdo|11_5|Illusory_Peace_III_EX|Faith_of_Blood_II_EX|Wolf_and_Owl_II|Shark_and_Sea_I_EX
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%ClickS(706, 425)
 ; GuiControl, Move, WorldV, x37 h17 w15
 ; Gui, Add, Text, x55 ym, -
 ; Gui, Add, Edit, gMapF r2 limit3 w10 vMapV -VScroll ym, %Map%
 ; GuiControl, Move, MapV, x62 h17 w20
-Gui, Add, Text, ym, Interval(ms):
+Gui, Add, Text, ym, Interval: ;(ms)
 Gui, Add, Edit, gIntervalF r2 w15 vIntervalV -VScroll ym, %SortieInterval%
-GuiControl, Move, IntervalV, h17 w60
+GuiControl, Move, IntervalV, h17 w35
 Gui, Add, Checkbox, vExpeditionV , Expedition only
 GuiControl, Move, ExpeditionV, x150 y33
 Gui, Add, Checkbox, vcorpsedragoffV , Corpse dragging off (check wiki)
@@ -87,7 +87,7 @@ GuiControl, Move, selectscroll2V, x291 y33
 ; Gui, Add, Edit, gNodeCount r2 limit3 w10 vNodeCount -VScroll ym, %Nodes%
 ; GuiControl, Move, NodeCount, x195 y33 h17 w25
 Gui, Add, Button, gSSBF vSSB, A
-GuiControl, Move, SSB, x255 w60 ym
+GuiControl, Move, SSB, x265 w60 ym
 GuiControl,,SSB, Start
 Gui, Add, Edit, gMiW r2 w20 vmid -VScroll, %MinRandomWait%
 GuiControl, Move, mid, h20 x60 y30 w80
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.7.8
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.7.9
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -293,10 +293,11 @@ Transition(ClickThis,WaitForThis)
 						sleep 500
 					}
 				}
+				loop, 4
+				{
 				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
 				sleep 500
-				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
-				sleep 500
+				}
 				FoundLogin04 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundLogin04 == true)
 					{
@@ -892,10 +893,11 @@ Sortie2:
 						sleep 500
 					}
 				}
+				loop, 4
+				{
 				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
 				sleep 500
-				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
-				sleep 500
+				}
 				FoundLogin04 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundLogin04 == true)
 					{
@@ -942,10 +944,11 @@ Sortie2:
 						sleep 500
 					}
 				}
+				loop, 4
+				{
 				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
 				sleep 500
-				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n1 w500")
-				sleep 500
+				}
 				FoundLogin04 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0 w500")
 				if (FoundLogin04 == true)
 					{
