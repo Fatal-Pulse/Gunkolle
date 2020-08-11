@@ -3,7 +3,7 @@ AutoSkill()
 	Global
 	AutoSkillStarlist := 1,2,3,4,5
 	AutoSkillTypelist := HandGun,SubmachineGun,Rifle,AssaultRifle,MachineGun,ShotGun
-	if (InStr(AutoSkillStarlist, %AutoSkillStar%) && InStr(AutoSkillTypelist, %AutoSkillType%))
+	if (InStr(AutoSkillStarlist, %AutoSkillStar%) || InStr(AutoSkillTypelist, %AutoSkillType%))
 	{
 		if(FindClick(A_ScriptDir "\pics\Research\Skill\SkillReady", "rLDPlayer mc o40 Count1 n0") || FindClick(A_ScriptDir "\pics\Research\Skill\SkillReady2", "rLDPlayer mc o40 Count1 n0"))
 		{
@@ -26,8 +26,11 @@ AutoSkill()
 						RFindClick("Research\Skill\Descending", "rLDPlayer mc o40 w10000,1000")
 						sleep 1000
 						RFindClick("Research\Skill\Filter", "rLDPlayer mc o40 w10000,1000")
-						sleep 1000
-						RFindClick("Research\Skill\"AutoSkillStar, "rLDPlayer mc o40 w10000,1000")
+						if(AutoSkillStar != 0)
+						{
+							sleep 1000
+							RFindClick("Research\Skill\"AutoSkillStar, "rLDPlayer mc o40 w10000,1000")
+						}
 						if(AutoSkillType != 0)
 						{
 							sleep 1000
