@@ -2315,23 +2315,61 @@ WHEEL_OF_FORTUNE()
 	}
 	sleep 1000
 
-	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
+	if(FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0 w15000,50"))
+	{
+		sleep 5000
+		while(FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w300,50") == 0)
+		{
+			ClickS(900,120)
+		}
+	}
+
+	while(FindClick(A_ScriptDir "\pics\CommandFairy", "rLDPlayer mc o25 Count1 n0") != 1)
+	{
+		ClickS(663, 306)
+		sleep 1000
+		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+	}
 	GuiControl,, NB, Plan
-	sleep 500
-	ClickS(663, 306)
-	sleep 500
-	ClickS(590, 377)
-	sleep 500
-	ClickS(646, 451)
-	sleep 500
-	ClickS(683, 381)
-	sleep 500
-	ClickS(707, 606)
-	sleep 500
-	ClickS(598, 633)
-	sleep 500
-	ClickS(667, 673)
-	sleep 500
+	RFindClick("PlanningMode", "rLDPlayer mc o20 w3000,50")
+	loop, 50
+	{
+		Found1 := FindClick(A_ScriptDir "\pics\Maps\FarSideOfTheSea\watermelon1", "rLDPlayer mc o50 Count1 n1 a,,-700")
+		Found2 := FindClick(A_ScriptDir "\pics\Maps\FarSideOfTheSea\watermelon2", "rLDPlayer mc o50 Count1 n1 a,,-700")
+		Found3 := FindClick(A_ScriptDir "\pics\Maps\FarSideOfTheSea\watermelon3", "rLDPlayer mc o50 Count1 n0 a,550,-550")
+		Found4 := FindClick(A_ScriptDir "\pics\Maps\FarSideOfTheSea\watermelon4", "rLDPlayer mc o50 Count1 n0 a,650,-600")
+		Found5 := FindClick(A_ScriptDir "\pics\Maps\FarSideOfTheSea\watermelon5", "rLDPlayer mc o50 Count1 n1 a,,-700,600")
+		Found7 := FindClick(A_ScriptDir "\pics\Maps\FarSideOfTheSea\watermelon7", "rLDPlayer mc o50 Count1 n1 a,,-600,-150")
+		if(Found1 == 1 || Found2 == 1 || Found3 == 1 || Found4 == 1 || Found5== 1|| Found7 == 1)
+		{
+			break
+		}
+	}
+	if(Found3 == 1)
+	{
+		sleep 300
+		ClickS(646, 451)
+		sleep 300
+		ClickS(667, 673)
+	}
+	else if(Found4 == 1)
+	{
+		sleep 300
+		ClickS(646, 451)
+		sleep 300
+		ClickS(706, 609)
+		sleep 300
+		ClickS(596, 629)
+		sleep 300
+		ClickS(667, 673)
+	}
+	else
+	{
+		sleep 300
+		ClickS(667, 673)
+	}
+	sleep 300
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
 	nodetilplanningover()
 	; Found := FindClick(A_ScriptDir "\pics\Maps\Isomer\CriticallyDamagedSaSI", "rLDPlayer mc o30 Count1 n0 w1000,50")
