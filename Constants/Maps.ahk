@@ -57,6 +57,10 @@ RunMap(x)
 	else if(x == "WHEEL_OF_FORTUNE")
 	{
 		WHEEL_OF_FORTUNE()
+	}	
+	else if(x == "WHEEL_1NODE")
+	{
+		WHEEL_1NODE()
 	}
 }
 
@@ -2357,4 +2361,123 @@ WHEEL_OF_FORTUNE()
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	GoHome()
 	}
+}
+
+WHEEL_1NODE()
+{
+	Global
+	RetirementLoop := 1
+	while (RetirementLoop != 0)
+	{
+		RFindClick("\Maps\FarSideOfTheSea\FarSideOfTheSea", "rLDPlayer mc o30 w30000,50")
+		FindClick(A_ScriptDir "\pics\Maps\FarSideOfTheSea\FarSideOfTheSeaPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		sleep 500
+		ClickS(1043, 320)
+		sleep 500
+		RFindClick("\Maps\FarSideOfTheSea\ConfirmStart", "rLDPlayer mc o30 w30000,50")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		if(Found == 1)
+		{
+			Retirement()
+			RetirementLoop++
+		}
+		RetirementLoop--
+	}
+	loop, 20
+	{
+		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		GuiControl,, NB, CommandPost
+		sleep 1000
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(733, 355)
+			sleep 1000
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+		sleep 1000
+		RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+		GuiControl,, NB, CommandPost
+		if(FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o40 Count1 n0 w2000,50"))
+		{
+			RFindClick("CombatTdollEnhancement", "rLDPlayer mc o40 Count1 n1 w2000,50")
+			break
+		}
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(733, 355)
+			sleep 200
+			ClickS(733, 355)
+			sleep 1000
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+		sleep 1000
+		ClickS(665, 307)
+		FirstNodeBattle := 0
+		while(FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o30 Count1 n1 ") != 1)
+		{
+			sleep 500
+			ClickS(746, 354)
+			if(FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0"))
+			{
+				sleep 5000
+				while(FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w200,50") == 0)
+				{
+					ClickS(900,120)
+				}
+				FirstNodeBattle++
+			}
+		}
+		sleep 1000
+		if(FirstNodeBattle != 1)
+		{
+			RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+			GuiControl,, NB, Plan
+			sleep 500
+			ClickS(663, 306)
+			sleep 300
+			ClickS(591, 375)
+			sleep 300
+			ClickS(647, 450)
+			sleep 300
+			ClickS(684, 385)
+			sleep 300
+			ClickS(663, 306)
+			sleep 300
+			RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+			nodetilplanningover()
+		}
+		Else
+		{
+			RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
+			sleep 15000
+		}
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(663, 306)
+			sleep 500
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		RFindClick("Retreat", "rLDPlayer mc o5 w2000,50 ")
+		sleep 500
+		RFindClick("RetreatConfirm", "rLDPlayer mc o30 w30000,50 ")
+		sleep 500
+		TFindClick("Terminate","TerminateRestart")
+		sleep 500
+		RFindClick("TerminateRestart", "rLDPlayer mc o50 w30000,50")
+		sleep 500
+		FindClick(A_ScriptDir "\pics\TerminateRestart", "rLDPlayer mc o30 Count1 n1 ,50")
+		Sortiecount++
+		ti := BC+1
+		Menu, Main, Rename, %BC%, %ti%
+		BC += 1
+	}
+	Sortiecount--
+	ti := BC-1
+	Menu, Main, Rename, %BC%, %ti%
+	BC -= 1
+	sleep 6000
+	ClickS(70, 70)
+	GoHome()
 }
