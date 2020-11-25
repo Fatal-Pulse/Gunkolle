@@ -38,22 +38,30 @@ RunMap(x)
 	{
 		11_5()
 	}
-	else if(x == "Illusory_Peace_III_EX")
+	else if(x == "11_5")
 	{
-		Illusory_Peace_III_EX()
+		11_5()
 	}
-	else if(x == "Faith_of_Blood_II_EX")
+	else if(x == "SC_2_1_EX")
 	{
-		Faith_of_Blood_II_EX()
+		SC_2_1_EX()
 	}
-	else if(x == "Wolf_and_Owl_II")
-	{
-		Wolf_and_Owl_II()
-	}
-	else if(x == "Shark_and_Sea_I_EX")
-	{
-		Shark_and_Sea_I_EX()
-	}
+	; else if(x == "Illusory_Peace_III_EX")
+	; {
+	; 	Illusory_Peace_III_EX()
+	; }
+	; else if(x == "Faith_of_Blood_II_EX")
+	; {
+	; 	Faith_of_Blood_II_EX()
+	; }
+	; else if(x == "Wolf_and_Owl_II")
+	; {
+	; 	Wolf_and_Owl_II()
+	; }
+	; else if(x == "Shark_and_Sea_I_EX")
+	; {
+	; 	Shark_and_Sea_I_EX()
+	; }
 }
 
 WaitBattle()
@@ -272,7 +280,7 @@ GoHome()
 			else
 			{
 				Found2 := FindClick(A_ScriptDir "\pics\ReturnToBase", "rLDPlayer mc o40 Count1")
-				Found3 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o40 Count1")
+				Found3 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o70 Count1")
 				FoundLogin := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n0")
 				FoundLogin2 := FindClick(A_ScriptDir "\pics\Login02", "rLDPlayer mc o40 Count1 n0")
 				FoundLogin3 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0")
@@ -430,7 +438,7 @@ GoHome()
 	}
 }
 
-checkdamage()
+Checkdamage()
 {
 	FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w5000,50")
 	Found := FindClick(A_ScriptDir "\pics\CriticallyDamaged", "rLDPlayer mc o10 Count1 n0 w500,50 a150,535,-250,-190")
@@ -469,7 +477,7 @@ checkdamage()
 		ClickS(649, 401)
 		sleep 1000
 	}
-	checkdamage()
+	Checkdamage()
 	FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport
@@ -2261,6 +2269,61 @@ Shark_and_Sea_I_EX()
 	}
 }
 
+SC_2_1_EX()
+{
+	Global
+	RetirementLoop := 1
+	while (RetirementLoop != 0)
+	{
+		RFindClick("\Maps\Shattered_Connexion\Shattered_Connexion", "rLDPlayer mc o30 w30000,50")
+		FindClick(A_ScriptDir "\pics\Maps\Shattered_Connexion\EventPage", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		sleep 500
+		ClickS(527, 429)
+		sleep 500
+		RFindClick("\Maps\Shattered_Connexion\ConfirmStart", "rLDPlayer mc o30 w30000,50")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		if(Found == 1)
+		{
+			Retirement()
+			RetirementLoop++
+		}
+		RetirementLoop--
+	}
+	loop, 1
+	{
+	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+	GuiControl,, NB, CommandPost
+	sleep 1500
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+	{
+		ClickS(643, 411)
+		sleep 1000
+	}
+	Checkdamage()
+	FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
+	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+	sleep 1000
+	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+	GuiControl,, NB, CommandPost
+	sleep 2000
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+	{
+		ClickS(646, 412)
+		sleep 500
+		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+	}
+	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+	sleep 1000
+	ClickS(811, 586)
+	sleep 500
+	ClickS(811, 586)
+	nodes(1)
+	sleep 1s000
+	FindClick(A_ScriptDir "\pics\EndTurn", "rLDPlayer mc o50 Count1 n1 w30000,50")
+	sleep 10000
+	GoHome()
+	}
+}
 
 
 

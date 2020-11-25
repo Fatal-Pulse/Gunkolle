@@ -40,6 +40,9 @@ THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN10. I may be unable to help you 
 
 ## What does work at current state:
 1. 0-2 with SOPM3 and AR15M3
+2. 4-6 data with two dummies
+3. Shattered_Connexion box farm [(see wiki)](https://github.com/Fatal-Pulse/Gunkolle/wiki)
+4. everything else untested 
 
 ## How to use: Gunkolle(Expeditions)
 When starting Gunkolle make sure your android emulator is the active window when starting the script. (else you'll get an invald screen reading)

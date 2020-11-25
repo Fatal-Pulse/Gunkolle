@@ -1,3 +1,6 @@
+#### LDPlayer 0.8.1
+* **_New_** Shattered_Connexion box farm
+
 #### LDPlayer 0.8.0
 * **_Update_** 0-2
 * **_Update_** retirement
