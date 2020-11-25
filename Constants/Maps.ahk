@@ -514,9 +514,23 @@ checkdamage()
 	}
 }
 
+zoommout()
+{
+	ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
+	loop,4
+	{
+		loop 5
+		{
+			ControlSend ,, {F5 down}, ahk_id %ld_id%  
+			sleep 100
+		}
+	}
+}
+
 4_6_data()
 {
 	Global
+	ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
 	RetirementLoop := 1
 	while (RetirementLoop != 0)
 	{
@@ -588,6 +602,8 @@ checkdamage()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
+					zoommout()
 					TFindClick("Terminate","TerminateRestart")
 					sleep 500
 					RFindClick("TerminateRestart", "rLDPlayer mc o50 w30000,50")
@@ -627,6 +643,8 @@ checkdamage()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
+					zoommout()
 					TFindClick("Terminate","TerminateRestart")
 					sleep 500
 					RFindClick("TerminateRestart", "rLDPlayer mc o50 w30000,50")
@@ -663,6 +681,8 @@ checkdamage()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
+					zoommout()
 					TFindClick("Terminate","TerminateRestart")
 					sleep 500
 					RFindClick("TerminateRestart", "rLDPlayer mc o50 w30000,50")
@@ -740,6 +760,8 @@ checkdamage()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
+					zoommout()
 					TFindClick("Terminate","TerminateOK")
 					sleep 500
 					RFindClick("TerminateOK", "rLDPlayer mc o50 w30000,50")
@@ -779,6 +801,8 @@ checkdamage()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
+					zoommout()
 					TFindClick("Terminate","TerminateOK")
 					sleep 500
 					RFindClick("TerminateOK", "rLDPlayer mc o50 w30000,50")
@@ -815,6 +839,8 @@ checkdamage()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
+					zoommout()
 					TFindClick("Terminate","TerminateOK")
 					sleep 500
 					RFindClick("TerminateOK", "rLDPlayer mc o50 w30000,50")
