@@ -148,6 +148,7 @@ nodes(nodecount)
 			sleep 2000
 		}
 		GuiControl,, NB, Combat Results
+		sleep 2000
 		while(FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50") == 0)
 		{
 			ClickS(700,120)
@@ -173,6 +174,46 @@ nodeboss(nodecount)
 		{
 			GuiControl,, NB, Combat Results
 			ClickS(700,125)
+		}
+		GuiControl,, NB, Waiting for next action
+	}
+}
+
+nodetilplanningover()
+{
+	Global
+	loop
+	{
+		Loop 
+		{
+			if(FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0 w100,50"))
+			{
+				break
+			}
+			if(FindClick(A_ScriptDir "\pics\EndTurn", "rLDPlayer mc o50 Count1 n0 w100,50"))
+			{
+				GuiControl,, NB, Time to go home?
+				sleep 1000
+				if(FindClick(A_ScriptDir "\pics\EndTurn", "rLDPlayer mc o50 Count1 n0 w1000,50"))
+				{
+					break 2
+				}
+				GuiControl,, NB, Time to go home? Nope...
+				sleep 1000
+				GuiControl,, NB, Waiting for next action
+			}
+		}
+		FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0 w30000,50")
+		sleep 1000
+		while(FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0") == 1)
+		{
+			GuiControl,, NB, Waiting for end of combat
+			sleep 2000
+		}
+		while(FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50") == 0)
+		{
+			GuiControl,, NB, Combat Results
+			ClickS(900,125)
 		}
 		GuiControl,, NB, Waiting for next action
 	}
@@ -220,20 +261,18 @@ GoHome()
 		Found1 := 0
 		Found2 := 0
 		;Found3 := 0
-		sleep 4000
+		; sleep 2000
 		while(Found1 == 0)
 		{
-			Found1 := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 w250,50 Count1 n0 a1200,,,-600")
+			Found1 := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 w50,50 Count1 n0 a1200,,,-600")
 			if (Found1 >= 1)
 			{
 
 			}
 			else
 			{
-				Found2 := FindClick(A_ScriptDir "\pics\ReturnToBase", "rLDPlayer mc o40 Count1 w100,50")
-                sleep 300
-				Found3 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o40 Count1 w100,50")
-				Found4 := FindClick(A_ScriptDir "\pics\CombatReturnEvent", "rLDPlayer mc o40 Count1 w100,50")
+				Found2 := FindClick(A_ScriptDir "\pics\ReturnToBase", "rLDPlayer mc o40 Count1")
+				Found3 := FindClick(A_ScriptDir "\pics\CombatReturn", "rLDPlayer mc o40 Count1")
 				FoundLogin := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n0")
 				FoundLogin2 := FindClick(A_ScriptDir "\pics\Login02", "rLDPlayer mc o40 Count1 n0")
 				FoundLogin3 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0")
@@ -385,10 +424,19 @@ GoHome()
 					RetirementLoop++
 				}
 				ClickS(765, 130)
-				sleep 150
 			}
 			GuiControl,, NB, Waiting for base = %found1% %found2%
 		}
+	}
+}
+
+checkdamage()
+{
+	Found := FindClick(A_ScriptDir "\pics\CriticallyDamaged", "rLDPlayer mc o30 Count1 n0 w1000,50")
+	if(Found == 1)
+	{
+		RFindClick("CriticallyDamaged", "rLDPlayer mc o30 Count1 n1 w1000,50")
+		RFindClick("OKRepair", "rLDPlayer mc o20 w30000,50 ")
 	}
 }
 
@@ -416,11 +464,12 @@ GoHome()
 	GuiControl,, NB, CommandPost
 	sleep 1500
 	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
-		{
-			ClickS(649, 401)
-			sleep 1000
-			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
-		}
+	{
+		ClickS(649, 401)
+		sleep 1000
+	}
+	checkdamage()
+	FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport
 	sleep 500
@@ -454,31 +503,11 @@ GoHome()
 	ClickS(582, 99)
 	GuiControl,, NB, Plan2
 	sleep 500
-	ClickS(814, 115)
+	ClickS(814, 121)
 	sleep 500
 	RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
 	nodes(5)
 	sleep 500
-	Found := FindClick(A_ScriptDir "\pics\Maps\0_2\CriticallyDamaged", "rLDPlayer mc o30 Count1 n0 w1000,50")
-	if(Found == 1)
-	{
-		RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
-		GoHome()
-		loop, 5
-		{
-			Transition("Repair","RepairSlot")
-		}
-		RFindClick("RepairSlot", "rLDPlayer mc o50 w30000,50 a50,100,-1050,-100")
-		RFindClick("RepairSlotWait", "rLDPlayer mc o30 w30000,50 n0 a0,100,-1000,-300")
-		sleep 250
-		WFindClick("Damage", "rLDPlayer mc")
-		RFindClick("RepairOK", "rLDPlayer mc o50 w30000,50")
-		RFindClick("RepairQuick", "rLDPlayer mc o50 w30000,50")
-		RFindClick("RepairConfirm", "rLDPlayer mc o50 w30000,50")
-		RFindClick("RepairReturnFaded", "rLDPlayer mc o50 w30000,50 ")
-		RFindClick("RepairReturn", "rLDPlayer mc o50 w30000,50")
-		continue
-	}
 	RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
 	GoHome()
 	}
@@ -2204,3 +2233,7 @@ Shark_and_Sea_I_EX()
 	GoHome()
 	}
 }
+
+
+
+

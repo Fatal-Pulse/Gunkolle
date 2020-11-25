@@ -38,6 +38,9 @@ THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN10. I may be unable to help you 
 2. Auto-Battle return
 3. Combat simulation, batteries, time checks
 
+## What does work at current state:
+1. 0-2 with SOPM3 and AR15M3
+
 ## How to use: Gunkolle(Expeditions)
 When starting Gunkolle make sure your android emulator is the active window when starting the script. (else you'll get an invald screen reading)
 
