@@ -147,7 +147,7 @@ RFindClick(x,y,v*)
 		}
 		else
 		{
-			FindClick(A_ScriptDir "\pics\" x,y "Center x"RandX " y"RandY)
+			FindClick(A_ScriptDir "\pics\" x,y " Center x"RandX " y"RandY)
 			previousImg := x
 			previousParameters := y
 		}

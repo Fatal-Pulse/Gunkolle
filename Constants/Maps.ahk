@@ -432,10 +432,11 @@ GoHome()
 
 checkdamage()
 {
-	Found := FindClick(A_ScriptDir "\pics\CriticallyDamaged", "rLDPlayer mc o30 Count1 n0 w1000,50")
+	FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w5000,50")
+	Found := FindClick(A_ScriptDir "\pics\CriticallyDamaged", "rLDPlayer mc o10 Count1 n0 w500,50 a150,535,-250,-190")
 	if(Found == 1)
 	{
-		RFindClick("CriticallyDamaged", "rLDPlayer mc o30 Count1 n1 w1000,50")
+		RFindClick("CriticallyDamaged", "rLDPlayer mc o10 Count1 n1 w30000,50 a150,535,-250,-190")
 		RFindClick("OKRepair", "rLDPlayer mc o20 w30000,50 ")
 	}
 }
