@@ -261,7 +261,7 @@ GoHome()
 		Found1 := 0
 		Found2 := 0
 		;Found3 := 0
-		; sleep 2000
+		sleep 4000
 		while(Found1 == 0)
 		{
 			Found1 := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 w50,50 Count1 n0 a1200,,,-600")

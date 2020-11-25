@@ -1,3 +1,7 @@
+#### LDPlayer 0.8.0
+* **_Update_** 0-2
+* **_Update_** retirement
+* **_Update_** doll switcher
 
 #### LDPlayer 0.7.9
 * **_New_** Isomer maps. Illusory_Peace_III_EX is using a few non-random clicks due to node hit-boxes, use for daily only. Wiki updated on how to use.
