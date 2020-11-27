@@ -421,6 +421,8 @@ ExpeditionCheck()
 			ClickS(130, 300)
 		}
 	Found := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o40 Count1 n0")
+	NoStopFindClick("ExpeditionArrive", "rLDPlayer mc o40 Count1 n1")
+	NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o40 Count1 n1")
 	if (Found == 0)
 	{
 		GuiControl,, NB, Wait For Home

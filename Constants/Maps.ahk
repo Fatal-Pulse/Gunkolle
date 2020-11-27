@@ -425,10 +425,11 @@ GoHome()
 					}
 					RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
 				}
-				FoundExp := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o30 Count1")
+				FoundExp := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o40 Count1")
 				if FoundExp >= 1
 				{
 					;sleep 1000
+					ClickM(740, 530)
 					RetirementLoop++
 				}
 				ClickS(765, 130)
@@ -436,6 +437,7 @@ GoHome()
 			GuiControl,, NB, Waiting for base = %found1% %found2%
 		}
 	}
+	ExpeditionCheck()
 }
 
 Checkdamage()
@@ -2298,6 +2300,7 @@ SC_2_1_EX()
 	{
 		ClickS(643, 411)
 		sleep 1000
+		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
 	}
 	Checkdamage()
 	FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
