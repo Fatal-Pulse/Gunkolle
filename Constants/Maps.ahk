@@ -46,6 +46,10 @@ RunMap(x)
 	{
 		SC_2_1_EX()
 	}
+		else if(x == "SC_2_4_EX")
+	{
+		SC_2_4_EX()
+	}
 	; else if(x == "Illusory_Peace_III_EX")
 	; {
 	; 	Illusory_Peace_III_EX()
@@ -2326,6 +2330,106 @@ SC_2_1_EX()
 	sleep 10000
 	GoHome()
 	}
+}
+
+SC_2_4_EX()
+{
+	Global
+	ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
+	RetirementLoop := 1
+	while (RetirementLoop != 0)
+	{
+		RFindClick("\Maps\Shattered_Connexion\Shattered_Connexion", "rLDPlayer mc o30 w30000,50")
+		FindClick(A_ScriptDir "\pics\Maps\Shattered_Connexion\EventPage", "rLDPlayer mc o30 Count1 n0 w5000,50")
+		sleep 500
+		ClickS(769, 504)
+		sleep 500
+		RFindClick("\Maps\Shattered_Connexion\ConfirmStart", "rLDPlayer mc o30 w30000,50")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		if(Found == 1)
+		{
+			Retirement()
+			RetirementLoop++
+		}
+		RetirementLoop--
+	}
+	loop, 10
+	{
+		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		GuiControl,, NB, CommandPost
+		sleep 1500
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(639, 410)
+			sleep 1000
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		Checkdamage()
+		FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
+		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
+		sleep 1000
+		RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+		GuiControl,, NB, CommandPost
+		if(FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n2 w2000,50"))
+		{
+			break
+		}
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(646, 412)
+			sleep 500
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+		GuiControl,, NB, CommandPost
+		sleep 500
+		RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+		GuiControl,, NB, Plan1
+		sleep 500
+		RFindClick("\Maps\Shattered_Connexion\SC_2_4_EX1", "rLDPlayer mc y-20 o20 w3000,50")
+		GuiControl,, NB, Plan2
+		sleep 500
+		ClickS(618, 200)
+		sleep 500
+		RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+		nodes(1)
+		sleep 500
+		RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
+		sleep 10000
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(665, 606)
+			sleep 1000
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		RFindClick("OK", "rLDPlayer mc o10 w30000,50")
+		sleep 1000
+		ClickS(637, 392)
+		sleep 500
+		ClickS(658, 599)
+		sleep 500
+		ClickS(567, 614)
+		sleep 1000
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		{
+			ClickS(658, 599)
+			sleep 1000
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		RFindClick("Retreat", "rLDPlayer mc o20 w2000,50")
+		sleep 500
+		RFindClick("RetreatConfirm", "rLDPlayer mc o30 w30000,50")
+		sleep 500
+		TFindClick("Terminate","TerminateOK")
+		sleep 500
+		RFindClick("TerminateOK", "rLDPlayer mc x-250 o50 w30000,50")
+		sleep 500
+	}
+	sleep 8000
+	ClickS(66, 79)
+	ClickS(66, 79)
+	ClickS(66, 79)
+	GoHome()
 }
 
 

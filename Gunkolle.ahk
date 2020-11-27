@@ -66,7 +66,7 @@ Gui, Add, Text,, MinWait:
 Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
-Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|8_1N|8_1N_airstrike|10_4E|10_4Ecdo|11_5|SC_2_1_EX
+Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|8_1N|8_1N_airstrike|10_4E|10_4Ecdo|11_5|SC_2_1_EX|SC_2_4_EX
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%ClickS(706, 425)
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -98,7 +98,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.8.1
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.8.2
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -147,7 +147,7 @@ RFindClick(x,y,v*)
 		}
 		else
 		{
-			FindClick(A_ScriptDir "\pics\" x,y " Center x"RandX " y"RandY)
+			FindClick(A_ScriptDir "\pics\" x," Center x"RandX " y"RandY " " y)
 			previousImg := x
 			previousParameters := y
 		}

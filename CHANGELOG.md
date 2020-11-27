@@ -1,3 +1,6 @@
+#### LDPlayer 0.8.2
+* **_New_** Shattered_Connexion kord farm
+
 #### LDPlayer 0.8.1
 * **_New_** Shattered_Connexion box farm
 
