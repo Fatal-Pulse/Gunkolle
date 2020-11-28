@@ -437,6 +437,8 @@ GoHome()
 					RetirementLoop++
 				}
 				ClickS(765, 130)
+				NoStopFindClick("ExpeditionArrive", "rLDPlayer mc o40 Count1 n1")
+				NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o40 Count1 n1")
 			}
 			GuiControl,, NB, Waiting for base = %found1% %found2%
 		}

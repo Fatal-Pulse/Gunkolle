@@ -476,7 +476,7 @@ TimeCheck()
 			Random, FriendTime, 3000000, 3600000
 			SetTimer, FriendFlag, %Friendtime%
 			RFindClick("Dorm\QuickMenu", "rLDPlayer mc o30 w30000,50")
-			RFindClick("Dorm\Dorm", "rLDPlayer mc o30 w30000,50")
+			RFindClick("Dorm\DormNoBats", "rLDPlayer mc o30 w30000,50")
 			RFindClick("Dorm\Visit", "rLDPlayer mc o30 w30000,50")
 			sleep 100
 			RFindClick("Dorm\MyFriends", "rLDPlayer mc o30 w30000,50")
