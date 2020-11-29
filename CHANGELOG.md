@@ -1,3 +1,6 @@
+#### LDPlayer 0.8.3
+* **_Update_** Battery/friendpoint collector
+
 #### LDPlayer 0.8.2
 * **_New_** Shattered_Connexion kord farm
 

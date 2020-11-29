@@ -268,12 +268,13 @@ GoHome()
 {
 	Global
 	RetirementLoop := 1
+	sleep 4000
 	loop, %RetirementLoop%
 	{
 		Found1 := 0
 		Found2 := 0
 		;Found3 := 0
-		sleep 4000
+
 		while(Found1 == 0)
 		{
 			Found1 := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 w50,50 Count1 n0 a1200,,,-600")
@@ -2306,10 +2307,10 @@ SC_2_1_EX()
 	{
 		ClickS(643, 411)
 		sleep 1000
-		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o40")
 	}
-	Checkdamage()
 	FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
+	Checkdamage()
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	sleep 1000
 	RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
@@ -2318,8 +2319,8 @@ SC_2_1_EX()
 	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 	{
 		ClickS(646, 412)
-		sleep 500
-		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		sleep 1000
+		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o40")
 	}
 	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
 	sleep 1000

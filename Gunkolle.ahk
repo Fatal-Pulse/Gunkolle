@@ -421,18 +421,15 @@ ExpeditionCheck()
 			ClickS(130, 300)
 		}
 	Found := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o40 Count1 n0")
-	NoStopFindClick("ExpeditionArrive", "rLDPlayer mc o40 Count1 n1")
-	NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o40 Count1 n1")
-	if (Found == 0)
+	while(Found == 0)
 	{
 		GuiControl,, NB, Wait For Home
-		sleep 750
-		FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w750")
+		FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w250")
 		if (FoundExpedition == true)
 			{
 				GuiControl,, NB, Expedition Found
 				ClickM(740, 530)
-				RFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w30000,50")
+				NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w5000,50")
 			}
 		FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
 		if (FoundAchievement == true)
@@ -440,6 +437,9 @@ ExpeditionCheck()
 				GuiControl,, NB, Achievement Found
 				ClickS(130, 300)
 			}
+		NoStopFindClick("ExpeditionArrive", "rLDPlayer mc y200 o40 n1")
+		NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o40 n1")
+		Found := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o40 Count1 n0")
 	}
 }
 
