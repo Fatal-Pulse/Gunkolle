@@ -42,9 +42,9 @@ RunMap(x)
 	{
 		11_5()
 	}
-	else if(x == "SC_2_1_EX")
+	else if(x == "SC_2_2_EX")
 	{
-		SC_2_1_EX()
+		SC_2_2_EX()
 	}
 		else if(x == "SC_2_4_EX")
 	{
@@ -2278,7 +2278,7 @@ Shark_and_Sea_I_EX()
 	}
 }
 
-SC_2_1_EX()
+SC_2_2_EX()
 {
 	Global
 	RetirementLoop := 1
