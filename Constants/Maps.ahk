@@ -2303,10 +2303,9 @@ SC_2_1_EX()
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w1000,50") != 1)
 	{
 		ClickS(643, 411)
-		sleep 1000
 		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o40")
 	}
 	FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
