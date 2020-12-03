@@ -534,15 +534,19 @@ Checkdamage()
 zoommout()
 {
 	ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
-	loop,4
+	loop 4
 	{
-		loop 5
+		sleep 250
+		loop 10
 		{
 			ControlSend ,, {F5 down}, ahk_id %ld_id%  
-			sleep 100
+			sleep 25
 		}
+
 	}
+
 }
+
 
 4_6_data()
 {
@@ -552,7 +556,8 @@ zoommout()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 2800
+		FindClick(A_ScriptDir "\pics\CombatMissionActive", "rLDPlayer mc o30 Count1 n0 w2000,50")
+		sleep 1000
 		DragDownToUp(500, 675, 350)
 		sleep 500
 		ClickS(750, 625)
@@ -568,12 +573,12 @@ zoommout()
 	Loop, 9
 	{
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
-		sleep 1500
+		sleep 1000
 		GuiControl,, NB, CommandPost
-		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		ClickS(842, 400)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w1000,50") != 1)
 		{
 			ClickS(842, 400)
-			sleep 1000
 			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
 		}
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
@@ -581,10 +586,10 @@ zoommout()
 		Found := FindClick(A_ScriptDir "\pics\OK", "rLDPlayer mc o40 Count1 n0 w250")
 		sleep 250
 		GuiControl,, NB, Heliport
-		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
+		ClickS(868, 46)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w1000,50") != 1)
 		{
 			ClickS(868, 46)
-			sleep 1000
 			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
 		}
 		RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
@@ -593,10 +598,13 @@ zoommout()
 		sleep 250
 		RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
 		GuiControl,, NB, Heliport
-		while(FindClick(A_ScriptDir "\pics\CommandFairy", "rLDPlayer mc o25 Count1 n0") != 1)
+		sleep 2000
+		ClickS(868, 46)
+		sleep 1500
+		while(FindClick(A_ScriptDir "\pics\CommandFairy", "rLDPlayer mc o25 Count1 n0 w2000,50") != 1)
 		{
 			ClickS(868, 46)
-			sleep 1000
+			Found := FindClick(A_ScriptDir "\pics\Cancel", "rLDPlayer mc o40 Count1 n1")
 		}
 		GuiControl,, NB, Node1
 		sleep 500
@@ -2463,6 +2471,3 @@ SC_2_4_EX()
 	ClickS(66, 79)
 	GoHome()
 }
-
-
-

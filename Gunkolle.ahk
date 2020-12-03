@@ -281,6 +281,8 @@ Transition(ClickThis,WaitForThis)
 		{
 			Counter = 0
 			GuiControl,, NB, Expedition Found
+			FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o50 Center x"RandX " y"RandY)
+			FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o40 Center x"RandX " y"RandY)
 			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n0 w500")
 			if (FoundLoginCollectNotice == true)
 			{
