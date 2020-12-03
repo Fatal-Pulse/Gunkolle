@@ -619,6 +619,11 @@ zoommout()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					while(FindClick(A_ScriptDir "\pics\PlanningMode", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 600)
+							sleep 1000
+						}
 					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
 					zoommout()
 					TFindClick("Terminate","TerminateRestart")
@@ -660,6 +665,11 @@ zoommout()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					while(FindClick(A_ScriptDir "\pics\PlanningMode", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 600)
+							sleep 1000
+						}
 					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
 					zoommout()
 					TFindClick("Terminate","TerminateRestart")
@@ -698,6 +708,11 @@ zoommout()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					while(FindClick(A_ScriptDir "\pics\PlanningMode", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 600)
+							sleep 1000
+						}
 					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
 					zoommout()
 					TFindClick("Terminate","TerminateRestart")
@@ -777,6 +792,11 @@ zoommout()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					while(FindClick(A_ScriptDir "\pics\PlanningMode", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 600)
+							sleep 1000
+						}
 					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
 					zoommout()
 					TFindClick("Terminate","TerminateOK")
@@ -818,6 +838,11 @@ zoommout()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					while(FindClick(A_ScriptDir "\pics\PlanningMode", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 600)
+							sleep 1000
+						}
 					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
 					zoommout()
 					TFindClick("Terminate","TerminateOK")
@@ -856,6 +881,11 @@ zoommout()
 					sleep 1500
 					ClickS(800, 200)
 					sleep 1500
+					while(FindClick(A_ScriptDir "\pics\PlanningMode", "rLDPlayer mc o25 Count1 n0") = 0)
+						{
+							ClickS(640, 600)
+							sleep 1000
+						}
 					RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
 					zoommout()
 					TFindClick("Terminate","TerminateOK")
