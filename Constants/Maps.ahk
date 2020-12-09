@@ -157,10 +157,10 @@ nodes(nodecount)
 		while(FindClick(A_ScriptDir "\pics\CombatPause", "rLDPlayer mc o25 Count1 n0") == 1)
 		{
 			GuiControl,, NB, Waiting for end of combat
-			sleep 2000
+			sleep 1000
 		}
 		GuiControl,, NB, Combat Results
-		sleep 2000
+		sleep 1000
 		while(FindClick(A_ScriptDir "\pics\LoadScreen", "rLDPlayer mc o50 n0 Count1 w100,50") == 0)
 		{
 			ClickS(700,120)
@@ -465,8 +465,9 @@ Checkdamage()
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
-		sleep 2000
-		ClickS(725, 430)
+		while(FindClick(A_ScriptDir "\pics\Battle", "rLDPlayer mc o30 Count1 n0 w1000,50") != 1){
+				ClickS(725, 430)	
+		}
 		RFindClick("Battle", "rLDPlayer mc o30 w30000,50")
 		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
 		if(Found == 1)
@@ -480,7 +481,7 @@ Checkdamage()
 	{
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
-	sleep 1500
+	sleep 1000
 	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 	{
 		ClickS(649, 401)
@@ -2340,8 +2341,9 @@ SC_2_2_EX()
 	{
 	FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 	GuiControl,, NB, CommandPost
+	ClickS(643, 411)
 	sleep 1500
-	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w1000,50") != 1)
+	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w3000,50") != 1)
 	{
 		ClickS(643, 411)
 		Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o40")

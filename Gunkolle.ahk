@@ -51,6 +51,7 @@ IniRead, Enhancement, config.ini, Variables, Enhancement, 0
 IniRead, FriendCollector, config.ini, Variables, FriendCollector, 0
 IniRead, BatteryCollector, config.ini, Variables, BatteryCollector, 0
 IniRead, CombatSimsData, config.ini, Variables, CombatSimsData, 0
+IniRead, MakeReports, config.ini, Variables, MakeReports, 0
 IniRead, SortieInterval, config.ini, Variables, SortieInterval, -1 ;900000 for full morale
 IniRead, WorldV, config.ini, Variables, WorldSwitcher 
 IniRead, AutoBattleResendV, config.ini, Variables, AutoBattleResend
@@ -98,7 +99,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.8.2
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.8.4
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -283,7 +284,7 @@ Transition(ClickThis,WaitForThis)
 			GuiControl,, NB, Expedition Found
 			FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o50 Center x"RandX " y"RandY)
 			FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o40 Center x"RandX " y"RandY)
-			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n0 w500")
+			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n0 w100")
 			if (FoundLoginCollectNotice == true)
 			{
 				GuiControl,, NB, Login Collect Found
@@ -456,6 +457,7 @@ UpdateEnergy()
 		FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy" EnergyCount, "rLDPlayer mc o30 Count1 n0")
 	}
 	GuiControl,, NB, EnergyCount == %EnergyCount% CombatSimsData == %CombatSimsData%
+	SLEEP 1000
 	return EnergyCount
 }
 
@@ -472,10 +474,10 @@ TimeCheck()
 	GuiControl,, NB, %TimeString%
 	if (FriendCollector == 1) && (FriendChecker == 1)
 	{
-		if TimeString between 1100 and 1415
+		if TimeString (between 1100 and 1315) or (between 2300 and 2399)
 		{ 
 			FriendChecker--
-			Random, FriendTime, 3000000, 3600000
+			Random, FriendTime, 9000000, 9600000
 			SetTimer, FriendFlag, %Friendtime%
 			RFindClick("Dorm\QuickMenu", "rLDPlayer mc o30 w30000,50")
 			RFindClick("Dorm\DormNoBats", "rLDPlayer mc o30 w30000,50")
@@ -527,43 +529,85 @@ TimeCheck()
 	; 		WaitForPixelColor(Homex,Homey,pc,AndroidpopupExitx,AndroidpopupExity,30)
 	; 	}
 	; }
-	; if (((CombatSimsData >= 1) && (CombatSimsDataChecker == 1)))
-	; {
-	; 	if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
-	; 	{
-	; 		CombatSimsDataChecker--
-	; 		Random, CombatSimsDataTime, 3600000,  3650000
-	; 		SetTimer, CombatSimsDataFlag, %CombatSimsDataTime%
-	; 		Transition("Combat","CombatPage")
-	; 		NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w1000,50")
-	; 		NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o30 Count1 w30000,50 n0")
-	; 		Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "rLDPlayer mc o30 Count1 n0 w2000")
-	; 		if (Found != True){
-	; 			RFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o30 w2000,50")
-	; 			}
-	; 		EnergyCount := UpdateEnergy()
-	; 		While (EnergyCount >= CombatSimsData) {
-	; 			EnergyCount := UpdateEnergy()
-	; 			loop,3 {
-	; 				if ((EnergyCount >= CombatSimsData) && (CombatSimsData == A_Index)) {
-	; 					RFindClick("CombatSims\Data\Training" A_Index, "rLDPlayer mc o30 Count1 w5000,50")
-	; 					RFindClick("CombatSims\Data\EnterCombat", "rLDPlayer mc o30 w5000,50")
-	; 					RFindClick("CombatSims\Data\Confirm", "rLDPlayer mc o30 w5000,50")
-	; 					;needs a better wait here; perhaps the yellow combat loading screen
-	; 					sleep 5000 
-	; 					Found := 0
-	; 					While (Found != true) {
-	; 						ClickS(Homex,Homey)
-	; 						Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "rLDPlayer mc o30 Count1 w2000,50 n0")
-	; 					}
-	; 					EnergyCount := UpdateEnergy()
-	; 					sleep 2000
-	; 				}
-	; 			}
-	; 		}
-	; 		GoHome()
-	; 	}
-	; }
+	if (((CombatSimsData >= 1) && (CombatSimsDataChecker == 1)))
+	{
+		if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
+		{
+			TotalBattles := 0
+			totalBattlescounter := 0
+			CombatSimsDataChecker--
+			Random, CombatSimsDataTime, 3600000,  3650000
+			SetTimer, CombatSimsDataFlag, %CombatSimsDataTime%
+			Transition("Combat","CombatPage")
+			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
+			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o30 Count1 w4000")
+			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o30 Count1 n0 w20000")
+			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o30 Count1 w10000,50 n0")
+			EnergyCount := UpdateEnergy()
+			totalBattles := Floor(EnergyCount/CombatSimsData)
+			GuiControl,, NB, totalBattles == %totalBattles% || totalBattlescounter == %totalBattlescounter%
+			sleep 5000
+			if(totalBattles != 0)
+			{
+				RFindClick("CombatSims\Data\Training" CombatSimsData, "rLDPlayer mc o30 Count1 w5000,50")
+				RFindClick("CombatSims\Data\EnterCombat", "rLDPlayer mc o30 w5000,50")
+				sleep 1000
+				RFindClick("CombatSims\Data\Confirm", "rLDPlayer mc o30 w5000,50")
+				sleep 5000
+				totalBattlescounter = totalBattles
+				loop, %totalBattles% {
+					totalBattlescounter--
+					GuiControl,, NB, totalBattles == %totalBattles% || totalBattlescounter == %totalBattlescounter%
+					Found := 0
+					While (Found != 1) {
+						ClickM(673, 686)
+						Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\Confirm", "rLDPlayer mc o20 Count1 w2000,50")
+						GuiControl,, NB, totalBattlescounter == %totalBattlescounter%
+					}
+					if(totalBattlescounter == 1)
+					{
+						RFindClick("CombatSims\Data\Cancel", "rLDPlayer mc o30 w5000,50")
+						break
+					} else {
+						RFindClick("CombatSims\Data\Confirm", "rLDPlayer mc o30 w5000,50")
+					}
+				}	
+			}
+			GoHome()
+		}
+	}
+
+	if ((MakeReports >= 1) && (MakeReportsChecker == 1))
+	{
+		MakeReportsChecker--
+		RFindClick("Dorm\QuickMenu", "rLDPlayer mc o30 n2 sleep300 w30000,50")
+		if (FindClick(A_ScriptDir "\pics\DataRoom\DataOpen", "rLDPlayer mc o30 n1 Count1 w4000,50") || FindClick(A_ScriptDir "\pics\DataRoom\DataOpenALT", "rLDPlayer mc o30 n1 Count1"))
+		{
+			RFindClick("DataRoom\Back", "rLDPlayer mc o30 n0 w30000,50")
+			while(FindClick(A_ScriptDir "\pics\DataRoom\DataDeskWork", "rLDPlayer mc o30 n0 Count1 w2000,50") != 1)
+			{
+				ClickM(316, 604)
+			}
+			RFindClick("DataRoom\DataDeskWork", "rLDPlayer mc o30 w30000,50")
+			RFindClick("DataRoom\DataDeskOk", "rLDPlayer mc o30 w30000,50 n0")
+			sleep 1000
+			if (MakeReports == 1){
+				ClickM(353, 341)
+			} else {
+				ClickM(743, 341)
+			}
+			RFindClick("DataRoom\DataDeskOk", "rLDPlayer mc o30 w30000,50")
+			NoStopFindClick("DataRoom\Cancel", "rLDPlayer mc o30 w1000,50")
+			NoStopFindClick("DataRoom\Cancel2", "rLDPlayer mc o30 w2000,50")
+			RFindClick("DataRoom\Back", "rLDPlayer mc o30 w30000,50")
+			Random, MakeReportsTime, 3610000,  3650000
+			SetTimer, MakeReportsFlag, %MakeReportsTime%
+		} else {
+			RFindClick("DataRoom\CloseQuickMenu", "rLDPlayer mc o30 w30000,50")
+			Random, MakeReportsTime, 900000,  910000
+			SetTimer, MakeReportsFlag, %MakeReportsTime%
+		}
+	}
 }
 
 Production()
@@ -1126,10 +1170,7 @@ Sortie2:
 		; Check expedition
 	}	
 		
-	loop, 5
-	{
-		Transition("Combat","CombatPage")
-	}
+	Transition("Combat","CombatPage")
 	Transition("CombatMissionNotActive","CombatMissionActive")
 
 	GuiControlGet, WorldV
@@ -1379,6 +1420,13 @@ CombatSimsDataFlag:
 	return
 }
 
+MakeReportsFlag:
+{
+	MakeReportsChecker := 1
+	SetTimer, MakeReportsFlag, off
+	return
+}
+
 
 #Include %A_ScriptDir%/Functions/Click.ahk
 #Include %A_ScriptDir%/Functions/TimerUtils.ahk
@@ -1413,6 +1461,7 @@ Initialize()
 	FriendChecker := 1
 	BatteryChecker := 1
 	CombatSimsDataChecker := 1
+	MakeReportsChecker := 1
 	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000,ZAS1,ZAS2,K11,AUG,RFB,T91,K2,64SHIKI,GRAPE1,GRAPE2,M4A1M3,AR15M3,AN94,AK12,SOPM3,G36M3,M14M3
 	4Star = 
 	init_mouse()

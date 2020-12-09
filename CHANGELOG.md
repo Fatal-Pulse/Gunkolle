@@ -1,3 +1,8 @@
+
+#### LDPlayer 0.8.4
+* **_Update_** Auto Data Sampling
+* **_New_** Auto Combat report maker
+
 #### LDPlayer 0.8.3
 * **_Update_** Battery/friendpoint collector
 
