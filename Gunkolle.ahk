@@ -554,7 +554,7 @@ TimeCheck()
 				sleep 1000
 				RFindClick("CombatSims\Data\Confirm", "rLDPlayer mc o30 w5000,50")
 				sleep 5000
-				totalBattlescounter = totalBattles
+				totalBattlescounter = %totalBattles%
 				loop, %totalBattles% {
 					totalBattlescounter--
 					GuiControl,, NB, totalBattles == %totalBattles% || totalBattlescounter == %totalBattlescounter%

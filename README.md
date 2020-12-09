@@ -36,7 +36,6 @@ THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN10. I may be unable to help you 
 ## What does not work at current state:
 1. Auto-Factory check
 2. Auto-Battle return
-3. Combat simulation, batteries, time checks
 
 ## What does work at current state:
 1. 0-2 with SOPM3 and AR15M3
