@@ -531,7 +531,8 @@ TimeCheck()
 	; }
 	if (((CombatSimsData >= 1) && (CombatSimsDataChecker == 1)))
 	{
-		if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
+		if(1)
+		; if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
@@ -545,6 +546,7 @@ TimeCheck()
 			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o30 Count1 w10000,50 n0")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/CombatSimsData)
+			totalBattlescounter := totalBattles
 			GuiControl,, NB, totalBattles == %totalBattles% || totalBattlescounter == %totalBattlescounter%
 			sleep 5000
 			if(totalBattles != 0)
@@ -554,14 +556,13 @@ TimeCheck()
 				sleep 1000
 				RFindClick("CombatSims\Data\Confirm", "rLDPlayer mc o30 w5000,50")
 				sleep 5000
-				totalBattlescounter = %totalBattles%
 				loop, %totalBattles% {
 					totalBattlescounter--
 					GuiControl,, NB, totalBattles == %totalBattles% || totalBattlescounter == %totalBattlescounter%
 					Found := 0
 					While (Found != 1) {
 						ClickM(673, 686)
-						Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\Confirm", "rLDPlayer mc o20 Count1 w2000,50")
+						Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\Confirm", "rLDPlayer mc o20 Count1 w2000,50 n0")
 						GuiControl,, NB, totalBattlescounter == %totalBattlescounter%
 					}
 					if(totalBattlescounter == 1)
