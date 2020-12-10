@@ -474,7 +474,7 @@ TimeCheck()
 	GuiControl,, NB, %TimeString%
 	if (FriendCollector == 1) && (FriendChecker == 1)
 	{
-		if TimeString (between 1100 and 1315) or (between 2300 and 2399)
+		if TimeString between 1100 and 1315
 		{ 
 			FriendChecker--
 			Random, FriendTime, 9000000, 9600000
