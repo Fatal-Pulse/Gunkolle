@@ -99,7 +99,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.8.4
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.8.5
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -427,12 +427,13 @@ ExpeditionCheck()
 	while(Found == 0)
 	{
 		GuiControl,, NB, Wait For Home
-		FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w250")
+		FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n1 w250")
 		if (FoundExpedition == true)
 			{
 				GuiControl,, NB, Expedition Found
 				ClickM(740, 530)
 				NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w5000,50")
+				sleep 3000
 			}
 		FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "rLDPlayer mc o40 Count1 n0")
 		if (FoundAchievement == true)
@@ -440,8 +441,6 @@ ExpeditionCheck()
 				GuiControl,, NB, Achievement Found
 				ClickS(130, 300)
 			}
-		NoStopFindClick("ExpeditionArrive", "rLDPlayer mc y200 o40 n1")
-		NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o40 n1")
 		Found := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o40 Count1 n0")
 	}
 }
@@ -565,7 +564,7 @@ TimeCheck()
 						Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\Confirm", "rLDPlayer mc o20 Count1 w2000,50 n0")
 						GuiControl,, NB, totalBattlescounter == %totalBattlescounter%
 					}
-					if(totalBattlescounter == 1)
+					if(totalBattlescounter == 0)
 					{
 						RFindClick("CombatSims\Data\Cancel", "rLDPlayer mc o30 w5000,50")
 						break
@@ -695,38 +694,6 @@ Production()
 		RFindClick("FactoryReturn", "rLDPlayer mc o50 w30000,50")
 	}
 }
-
-Repair()
-{
-	Global
-	while (FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o30 Count1 n0 a1200,,,-600") != 1)
-;	{
-;		GuiControl,, NB, An expedition is returning, retrying every 1
-;		sleep 1000
-;		ClickS(Expeditionx,Expeditiony)
-;	}
-	Found := 0
-	Found := FindClick(A_ScriptDir "\pics\Repair", "rLDPlayer mc o50 w500,50 Count1 n0 a800,200,-200,-400")
-	if ( Found >= 1)
-	{
-		loop, 5
-		{
-			Transition("Repair","RepairSlot")
-		}
-		RFindClick("RepairSlot", "rLDPlayer mc o50 w30000,50 a50,100,-1050,-100")
-		RFindClick("RepairSlotWait", "rLDPlayer mc o30 w30000,50 n0 a0,100,-1000,-300")
-		sleep 250
-		WFindClick("Damage", "rLDPlayer mc")
-		RFindClick("RepairOK", "rLDPlayer mc o50 w30000,50")
-		RFindClick("RepairQuick", "rLDPlayer mc o50 w30000,50")
-		RFindClick("RepairConfirm", "rLDPlayer mc o50 w30000,50")
-		RFindClick("RepairReturnFaded", "rLDPlayer mc o50 w30000,50 ")
-		RFindClick("RepairReturn", "rLDPlayer mc o50 w30000,50")
-		sleep 1500
-		; ExpeditionCheck("Daily")
-	}
-}
-
 
 RSleep(min,max)
 {
@@ -885,7 +852,7 @@ Sortie2:
 		loopcount := 1
 		while (loopcount != 0)
 		{
-			FoundHome := FindClick(A_ScriptDir "\pics\FoundHome", "rLDPlayer mc o40 Count1 n0 w500")
+			FoundHome := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o40 Count1 n0 w500")
 			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o40 Count1 n0 w500")
 ;			FoundAutoBattle := FindClick(A_ScriptDir "\pics\AutoBattle", "rLDPlayer mc o40 Count1 n0 w500")
 			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\Login01", "rLDPlayer mc o40 Count1 n0")
@@ -895,11 +862,12 @@ Sortie2:
 			FoundCrash := FindClick(A_ScriptDir "\pics\Crash", "rLDPlayer mc o40 Count1 n0")
 			if (FoundHome == true)
 			{
-				GuiControl,, NB,At home
-
 				AutoSkill()
 
 				TimeCheck()
+
+				GuiControl,, NB,At home
+				sleep 10000
 			}
 			else if (FoundExpedition == true)
 			{
@@ -1100,8 +1068,6 @@ Sortie2:
 	}
 
 	ExpeditionCheck()
-	
-	Repair()
 
 	AutoSkill()
 

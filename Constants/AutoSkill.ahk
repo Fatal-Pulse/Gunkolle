@@ -8,14 +8,24 @@ AutoSkill()
 		if(FindClick(A_ScriptDir "\pics\Research\Skill\SkillReady", "rLDPlayer mc o40 Count1 n0") || FindClick(A_ScriptDir "\pics\Research\Skill\SkillReady2", "rLDPlayer mc o40 Count1 n0"))
 		{
 			Transition("Research\Skill\Research","Research\Skill\ResearchClicked")
-			loop,3
+			loop,4
 			{
-				x:=200*A_index+(1)
-				y:=200*A_index+(-601)
-				if(FindClick(A_ScriptDir "\pics\Research\Skill\Slot", "rLDPlayer mc o40 Count1 n0 w5000,50 a200," x ",-30," y ""))
+				if(A_index == 4)
 				{
-					RFindClick("Research\Skill\Slot", "rLDPlayer mc o40 w10000,1000")
-					if(FindClick(A_ScriptDir "\pics\Research\Skill\SortBySorted", "rLDPlayer mc o20 Count1 n0 w4000,50") == 0)
+					sleep 1000
+					DragDownToUp(500, 675, 350)
+					index := 3
+				}
+				else 
+				{
+					index := A_index
+				}
+				x:=200*index+(1)
+				y:=200*index+(-601)
+				if(FindClick(A_ScriptDir "\pics\Research\Skill\Slot", "rLDPlayer mc o100 Count1 n0 w5000,50 a200," x ",-30," y ""))
+				{
+					RFindClick("Research\Skill\Slot", "rLDPlayer mc o100 w10000,1000 a200," x ",-30," y "")
+					if(FindClick(A_ScriptDir "\pics\Research\Skill\SortBySorted", "rLDPlayer mc o40 Count1 n0 w4000,50") == 0)
 					{
 						RFindClick("Research\Skill\Level", "rLDPlayer mc o40 w10000,1000")
 						sleep 1000
@@ -38,16 +48,16 @@ AutoSkill()
 						}
 						sleep 1000
 						ClickS(600,650)
-						RFindClick("Research\Skill\Confirm", "rLDPlayer mc o40 w10000,1000")
+						RFindClick("Research\Skill\Confirm", "rLDPlayer mc o40 w5000,1000")
 					}
-					sleep 3000
+					sleep 2000
 					loop,6
 					{
 						Clickcordx:= -90+A_index*180
 						ClickS(Clickcordx,340)
-						sleep 500
+						sleep 300
 					}
-					RFindClick("Research\Skill\StartTraining", "rLDPlayer mc o40 w10000,1000")
+					RFindClick("Research\Skill\StartTraining", "rLDPlayer mc o40 w5000,1000")
 				}
 			}
 			sleep 3000

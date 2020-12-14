@@ -45,6 +45,7 @@ THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN10. I may be unable to help you 
 5. Battery/friendpoint collector
 6. Auto Combat report maker
 7. Auto Data Sampling
+8. Auto skiller
 
 everything else untested 
 

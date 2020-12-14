@@ -1,3 +1,6 @@
+####LDPlayer 0.8.5
+* **_Update_** Auto Data Sampling fix
+* **_Update_** Auto skiller
 
 #### LDPlayer 0.8.4
 * **_Update_** Auto Data Sampling
