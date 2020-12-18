@@ -867,7 +867,12 @@ Sortie2:
 				TimeCheck()
 
 				GuiControl,, NB,At home
-				sleep 10000
+
+				Transition("Combat","CombatPage")
+				GuiControl,, NB, sleeping for 5 minutes...
+				sleep 300000
+				GoHome()
+
 			}
 			else if (FoundExpedition == true)
 			{
