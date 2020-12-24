@@ -151,10 +151,10 @@ ZoomOut(RepeatCount=1)
 ; the click works even when the window is minimized.
 ; This is not relevant now, but it opens new possibilities.
 ; It also has no external dependencies, so you can "dry run" a map simply by running this file, which speeds up testing
-ClickM(x, y, offset=50)
+ClickM(x, y, offset=15)
 {
     x := randomize(x, offset)
-    y := randomize(y, offset)
+    y := randomize(y, offset) - 38
     SendLButtonDown(x, y)
     SendLButtonUp(x, y)
     ; Avoids clicking too fast. Maybe we should randomize this a little bit.

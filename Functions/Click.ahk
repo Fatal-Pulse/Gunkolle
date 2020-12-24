@@ -1,6 +1,6 @@
 ﻿;Click v1.61121
 
-ClickS(x,y)
+ClickS(x,y,z:=0)
 {
 	global uid
 	global Background
@@ -8,7 +8,14 @@ ClickS(x,y)
 	global YDiff
 	global Class
 	global ClickDelay
-	global coffset
+	if(z == 0)
+	{
+		global coffset
+	}
+	else
+	{
+		coffset := z
+	}
 	Sleep ClickDelay
 	WinActivateRestore()
 	Random, xoff, -coffset, coffset
