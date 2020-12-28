@@ -51,6 +51,7 @@ IniRead, Enhancement, config.ini, Variables, Enhancement, 0
 IniRead, FriendCollector, config.ini, Variables, FriendCollector, 0
 IniRead, BatteryCollector, config.ini, Variables, BatteryCollector, 0
 IniRead, CombatSimsData, config.ini, Variables, CombatSimsData, 0
+IniRead, CombatSimsMemFrag, config.ini, Variables, CombatSimsMemFrag, 0
 IniRead, MakeReports, config.ini, Variables, MakeReports, 0
 IniRead, SortieInterval, config.ini, Variables, SortieInterval, -1 ;900000 for full morale
 IniRead, WorldV, config.ini, Variables, WorldSwitcher 
@@ -100,7 +101,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.8.6
+Gui, Show, X%TWinX% Y%TWinY% Autosize, Gunkolle - LDPlayer 0.8.7
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -449,7 +450,7 @@ ExpeditionCheck()
 UpdateEnergy()
 {
 	global
-	FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "rLDPlayer mc o30 Count1 w15000,50 n0")
+	FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "rLDPlayer mc o60 Count1 w15000,50 n0")
 	EnergyCount = 0
 	FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy0", "rLDPlayer mc o30 Count1 w1000,50 n0")
 	While (FoundEnergy != true) {
@@ -541,13 +542,12 @@ TimeCheck()
 			Transition("Combat","CombatPage")
 			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
 			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o30 Count1 w4000")
-			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o30 Count1 n0 w20000")
+			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o60 Count1 n0 w20000")
 			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o30 Count1 w10000,50 n0")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/CombatSimsData)
 			totalBattlescounter := totalBattles
 			GuiControl,, NB, totalBattles == %totalBattles% || totalBattlescounter == %totalBattlescounter%
-			sleep 5000
 			if(totalBattles != 0)
 			{
 				RFindClick("CombatSims\Data\Training" CombatSimsData, "rLDPlayer mc o30 Count1 w5000,50")
@@ -572,6 +572,56 @@ TimeCheck()
 						RFindClick("CombatSims\Data\Confirm", "rLDPlayer mc o30 w5000,50")
 					}
 				}	
+			}
+			GoHome()
+		}
+	}
+
+	if (((CombatSimsMemFrag >= 1) && (CombatSimsMemFragChecker == 1)))
+	{
+		if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2000)) || (RegExMatch(someday, "Wen") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2000 ))))
+		{
+			TotalBattles := 0
+			totalBattlescounter := 0
+			CombatSimsMemFragChecker--
+			Random, CombatSimsMemFragTime, 3600000,  3650000
+			SetTimer, CombatSimsMemFragFlag, %CombatSimsMemFragTime%
+			Transition("Combat","CombatPage")
+			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
+			NoStopFindClick("CombatSims\MemFrag\CloudCorridor", "rLDPlayer mc o30 Count1 w4000")
+			RFindClick("CombatSims\MemFrag\CloudCorridorClicked", "rLDPlayer mc o60 Count1 n0 w20000")
+			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o30 Count1 w10000,50 n0")
+			EnergyCount := UpdateEnergy()
+			totalBattles := Floor(EnergyCount/3)
+			totalBattlescounter := totalBattles
+			if(totalBattles != 0)
+			{
+				RFindClick("CombatSims\Data\Training3", "rLDPlayer mc o30 Count1 w5000,50")
+				RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
+				zoommout()
+				RFindClick("CombatReturn2", "rLDPlayer mc o70 Count1 w5000,50")
+				RFindClick("CombatSims\Data\Training3", "rLDPlayer mc o30 Count1 w5000,50 n3 sleep500")
+				RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
+				sleep 1000
+				while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w1000,50") != 1)
+				{
+					ClickS(631, 397)
+					Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+				}
+				ClickS(82, 657)
+				RFindClick("OK", "rLDPlayer mc o10 w30000,50")	
+				RFindClick("StartCombat", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+				RFindClick("CombatSims\Data\Confirm", "rLDPlayer mc o30 w5000,50")
+				sleep 5000
+				ClickS(631, 397)
+				sleep 500
+				RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50")
+				sleep 500
+				ClickS(658, 134)
+				sleep 500
+				RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+				RFindClick("CombatSims\MemFrag\MissionClear", "rLDPlayer mc o30 Count1 w4000")
+				RFindClick("CombatSims\Data\Cancel", "rLDPlayer mc o30 w5000,50")
 			}
 			GoHome()
 		}
@@ -1392,6 +1442,13 @@ CombatSimsDataFlag:
 	return
 }
 
+CombatSimsMemFragFlag:
+{
+	CombatSimsMemFragChecker := 1
+	SetTimer, CombatSimsMemFragFlag, off
+	return
+}
+
 MakeReportsFlag:
 {
 	MakeReportsChecker := 1
@@ -1433,6 +1490,7 @@ Initialize()
 	FriendChecker := 1
 	BatteryChecker := 1
 	CombatSimsDataChecker := 1
+	CombatSimsMemFragChecker := 1
 	MakeReportsChecker := 1
 	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000,ZAS1,ZAS2,K11,AUG,RFB,T91,K2,64SHIKI,GRAPE1,GRAPE2,M4A1M3,AR15M3,AN94,AK12,SOPM3,G36M3,M14M3,ASVALM3
 	4Star = 

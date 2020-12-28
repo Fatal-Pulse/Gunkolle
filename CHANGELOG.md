@@ -1,3 +1,9 @@
+####LDPlayer 0.8.7
+* **_New_** Auto MemFrags
+
+####LDPlayer 0.8.6
+* **_New_** Snow event map
+
 ####LDPlayer 0.8.5
 * **_Update_** Auto Data Sampling fix
 * **_Update_** Auto skiller
