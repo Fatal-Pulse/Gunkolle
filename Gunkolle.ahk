@@ -579,7 +579,7 @@ TimeCheck()
 
 	if (((CombatSimsMemFrag >= 1) && (CombatSimsMemFragChecker == 1)))
 	{
-		if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2000)) || (RegExMatch(someday, "Wen") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2000 ))))
+		if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2000)) || (RegExMatch(someday, "Wed") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2000 ))))
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
