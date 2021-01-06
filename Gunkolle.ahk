@@ -532,7 +532,8 @@ TimeCheck()
 	; }
 	if (((CombatSimsData >= 1) && (CombatSimsDataChecker == 1)))
 	{
-		if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
+		; if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
+		if (1)
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
@@ -579,7 +580,7 @@ TimeCheck()
 
 	if (((CombatSimsMemFrag >= 1) && (CombatSimsMemFragChecker == 1)))
 	{
-		if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2000)) || (RegExMatch(someday, "Wed") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2000 ))))
+		if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2100)) || (RegExMatch(someday, "Wed") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2100 ))))
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
@@ -599,6 +600,7 @@ TimeCheck()
 				RFindClick("CombatSims\Data\Training3", "rLDPlayer mc o30 Count1 w5000,50")
 				RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
 				zoommout()
+				sleep 5000
 				RFindClick("CombatReturn2", "rLDPlayer mc o70 Count1 w5000,50")
 				RFindClick("CombatSims\Data\Training3", "rLDPlayer mc o30 Count1 w5000,50 n3 sleep500")
 				RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
@@ -620,7 +622,7 @@ TimeCheck()
 				ClickS(658, 134)
 				sleep 500
 				RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
-				RFindClick("CombatSims\MemFrag\MissionClear", "rLDPlayer mc o30 Count1 w4000")
+				RFindClick("CombatSims\MemFrag\MissionClear", "rLDPlayer mc o30 Count1 w5000")
 				RFindClick("CombatSims\Data\Cancel", "rLDPlayer mc o30 w5000,50")
 			}
 			GoHome()
@@ -915,14 +917,24 @@ Sortie2:
 				AutoSkill()
 
 				TimeCheck()
+				; CombatSimsDataChecker := 0
+				; CombatSimsMemFragChecker := 0
+				; MakeReportsChecker := 0
 
 				GuiControl,, NB,At home
 
 				Transition("Combat","CombatPage")
 				GuiControl,, NB, sleeping for 5 minutes...
-				sleep 300000
+				loop 300
+				{
+					sleep 1000
+					; if(CombatSimsDataChecker == 1 || CombatSimsMemFragChecker == 1 || MakeReportsChecker == 1)
+					; {
+					; 	break
+					; }
+					GuiControl,, NB, sleeping for 5 minutes... %A_Index% seconds have passed
+				}
 				GoHome()
-
 			}
 			else if (FoundExpedition == true)
 			{
@@ -1486,7 +1498,6 @@ Initialize()
 	ClickDelay := 50
 	coffset := 10
 	FactoryChecker := 1
-	FactoryFlag := 1
 	FriendChecker := 1
 	BatteryChecker := 1
 	CombatSimsDataChecker := 1
