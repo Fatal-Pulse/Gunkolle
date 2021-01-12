@@ -532,8 +532,7 @@ TimeCheck()
 	; }
 	if (((CombatSimsData >= 1) && (CombatSimsDataChecker == 1)))
 	{
-		; if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
-		if (1)
+		if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
