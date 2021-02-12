@@ -553,7 +553,7 @@ zoommout()
 		}
 
 	}
-
+	sleep 1000
 }
 
 
@@ -579,7 +579,7 @@ zoommout()
 		}
 		RetirementLoop--
 	}
-	Loop, 9
+	Loop, 19
 	{
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
 		sleep 1000
