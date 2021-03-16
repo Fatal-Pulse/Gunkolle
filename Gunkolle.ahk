@@ -433,7 +433,7 @@ ExpeditionCheck()
 		if (FoundExpedition == true)
 			{
 				GuiControl,, NB, Expedition Found
-				ClickM(740, 530)
+				ClickM(668, 535)
 				NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w5000,50")
 				sleep 3000
 			}
@@ -1195,7 +1195,7 @@ Sortie2:
 ;			AddToSecondEchelon(exhaustedDoll2, 2)
 ;		}
 		Transition("BaseNavigation","NavigateCombat")
-		Transition("NavigateCombat","CombatPage")
+		RFindClick("NavigateCombat", "rLDPlayer mc o50 w30000,50")
 ;		loop, 5
 ;		{
 ;			Transition("FormationReturn","WaitForHome")

@@ -317,7 +317,7 @@ GoHome()
 					FoundLogin04 := FindClick(A_ScriptDir "\pics\Login04", "rLDPlayer mc o40 Count1 n0 w500")
 					if (FoundLogin04 == true)
 						{
-							RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
+							; RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
 							sleep 4500
 						}
 					FoundDollDrop := FindClick(A_ScriptDir "\pics\DollDrop", "rLDPlayer mc o40 Count1 n0 w500")
@@ -344,7 +344,7 @@ GoHome()
 							sleep 500
 						}
 					}
-					RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
+					; RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
 				}
 				if FoundLogin2 >= 1
 				{
@@ -363,7 +363,7 @@ GoHome()
 							sleep 500
 						}
 					}
-					RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
+					; RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
 				}
 				if FoundLogin3 >= 1
 				{
@@ -387,7 +387,7 @@ GoHome()
 						{
 							GuiControl,, NB, Waiting for login tdolls
 							sleep 4000
-							RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
+							; RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
 						}
 					sleep 500
 					loop, 2
@@ -436,7 +436,7 @@ GoHome()
 							sleep 500
 						}
 					}
-					RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
+					; RFindClick("Login04", "rLDPlayer mc o50 w30000,50")
 				}
 				FoundExp := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "rLDPlayer mc o40 Count1")
 				if FoundExp >= 1
