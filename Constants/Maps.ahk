@@ -519,7 +519,7 @@ Checkdamage()
 			sleep 1000
 			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
 		}
-	ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+	RFindClick("Resupply", " rLDPlayer mc o30 w30000,50")
 	GuiControl,, NB, CommandPost
 	sleep 1000
 	ClickS(649, 401)
@@ -543,7 +543,7 @@ Checkdamage()
 zoommout()
 {
 	ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
-	loop 4
+	loop 5
 	{
 		sleep 250
 		loop 10

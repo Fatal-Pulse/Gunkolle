@@ -187,7 +187,8 @@ WFindClick(x,y,SearchNumber := 40)
 		}
 	}
 	GuiControl,, NB, pixel shade offset [%SearchNumber%]
-	FindClick(A_ScriptDir "\pics\" x, y "Center x" RandX " y"  RandY " o" SearchNumber)
+
+	FindClick(A_ScriptDir "\pics\" x, y "Center x" RandX " y"  RandY " o" SearchNumber " n2")
 	previousImg := x
 }
 
@@ -450,12 +451,12 @@ ExpeditionCheck()
 UpdateEnergy()
 {
 	global
-	FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "rLDPlayer mc o60 Count1 w15000,50 n0")
+	FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "rLDPlayer mc o80 Count1 w15000,50 n0")
 	EnergyCount = 0
-	FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy0", "rLDPlayer mc o30 Count1 w1000,50 n0")
+	FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy0", "rLDPlayer mc o50 Count1 w1000,50 n0")
 	While (FoundEnergy != true) {
 		EnergyCount++
-		FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy" EnergyCount, "rLDPlayer mc o30 Count1 n0")
+		FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy" EnergyCount, "rLDPlayer mc o50 Count1 n0")
 	}
 	GuiControl,, NB, EnergyCount == %EnergyCount% CombatSimsData == %CombatSimsData%
 	SLEEP 1000
@@ -541,16 +542,16 @@ TimeCheck()
 			SetTimer, CombatSimsDataFlag, %CombatSimsDataTime%
 			Transition("Combat","CombatPage")
 			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
-			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o30 Count1 w4000")
-			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o60 Count1 n0 w20000")
-			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o30 Count1 w10000,50 n0")
+			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o80 Count1 w4000")
+			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o80 Count1 n0 w20000")
+			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o100 Count1 w10000,50 n0")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/CombatSimsData)
 			totalBattlescounter := totalBattles
 			GuiControl,, NB, totalBattles == %totalBattles% || totalBattlescounter == %totalBattlescounter%
 			if(totalBattles != 0)
 			{
-				RFindClick("CombatSims\Data\Training" CombatSimsData, "rLDPlayer mc o30 Count1 w5000,50")
+				RFindClick("CombatSims\Data\Training" CombatSimsData, "rLDPlayer mc o100 Count1 w5000,50")
 				RFindClick("CombatSims\Data\EnterCombat", "rLDPlayer mc o30 w5000,50")
 				sleep 1000
 				RFindClick("CombatSims\Data\Confirm", "rLDPlayer mc o30 w5000,50")
