@@ -461,8 +461,8 @@ Checkdamage()
 	Found := FindClick(A_ScriptDir "\pics\CriticallyDamaged", "rLDPlayer mc o45 Count1 n0 w1500,50 a150,535,-220,-190")
 	if(Found == 1)
 	{
-		RFindClick("CriticallyDamaged", "rLDPlayer mc o80 Count1 n1 w30000,50 a150,535,-220,-190")
-		RFindClick("OKRepair", "rLDPlayer mc o20 w30000,50 ")
+		RFindClick("CriticallyDamaged", "rLDPlayer mc o40 Count1 n1 w30000,50 a150,535,-220,-190")
+		RFindClick("OKRepair", "rLDPlayer mc o20 w30000,50")
 	}
 }
 
@@ -499,7 +499,7 @@ Checkdamage()
 	FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport
-	sleep 500
+	RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 n0")
 	while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0") != 1)
 		{
 			ClickS(455, 395)
