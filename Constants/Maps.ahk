@@ -708,7 +708,7 @@ zoommout()
 		ClickS(818, 260)
 		sleep 150
 		ClickS(818, 260)
-		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w2000")
 			if (FoundBattle == true)
 				{
 					ClickS(818, 260)
@@ -881,7 +881,7 @@ zoommout()
 		ClickS(818, 260)
 		sleep 150
 		ClickS(818, 260)
-		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w2000")
 			if (FoundBattle == true)
 				{
 					ClickS(818, 260)
