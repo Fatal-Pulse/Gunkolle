@@ -582,10 +582,9 @@ zoommout()
 	Loop, 19
 	{
 		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
-		sleep 1000
 		GuiControl,, NB, CommandPost
 		ClickS(842, 400)
-		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w1000,50") != 1)
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w500,50") != 1)
 		{
 			ClickS(842, 400)
 			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
@@ -618,7 +617,7 @@ zoommout()
 		GuiControl,, NB, Node1
 		sleep 500
 		ClickS(858, 109)
-		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w2000")
 			if (FoundBattle == true)
 				{
 					ClickS(858, 109)
@@ -665,7 +664,7 @@ zoommout()
 		sleep 1500
 		GuiControl,, NB, Node3
 		ClickS(745, 233)
-		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w2000")
 			if (FoundBattle == true)
 				{
 					ClickS(745, 233)
@@ -792,7 +791,7 @@ zoommout()
 		GuiControl,, NB, Node1
 		sleep 500
 		ClickS(858, 109)
-		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w2000")
 			if (FoundBattle == true)
 				{
 					ClickS(858, 109)
@@ -838,7 +837,7 @@ zoommout()
 		sleep 1500
 		GuiControl,, NB, Node3
 		ClickS(745, 233)
-		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w1500")
+		FoundBattle := FindClick(A_ScriptDir "\pics\Maps\4_6\Ambush", "rLDPlayer mc o40 Count1 n0 w2000")
 			if (FoundBattle == true)
 				{
 					ClickS(745, 233)
