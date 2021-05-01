@@ -69,7 +69,7 @@ Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
 ; Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|8_1N|8_1N_airstrike|10_4E|10_4Ecdo|11_5|
-Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data
+Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|Polarized_Light_ReflectorII
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%
 ; GuiControl, Move, WorldV, x37 h17 w15

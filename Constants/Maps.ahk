@@ -42,9 +42,9 @@ RunMap(x)
 	{
 		11_5()
 	}
-	else if(x == "SnowyNC_IV_Bottom_Node")
+	else if(x == "Polarized_Light_ReflectorII")
 	{
-		SnowyNC_IV_Bottom_Node()
+		Polarized_Light_ReflectorII()
 	}
 	; else if(x == "SC_2_2_EX")
 	; {
@@ -2683,5 +2683,80 @@ SnowyNC_IV_Bottom_Node()
 		sleep 500
 	}
 	sleep 4000
+	GoHome()
+}
+
+Polarized_Light_ReflectorII()
+{
+	Global
+	ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
+	RetirementLoop := 1
+	while (RetirementLoop != 0)
+	{
+		RFindClick("\Maps\Polarized_Light\Polarized_Light", "rLDPlayer mc o30 w30000,50")
+		FindClick(A_ScriptDir "\pics\Maps\Polarized_Light\EventPage", "rLDPlayer mc o30 Count1 n0 w5000,50")
+		sleep 500
+		ClickS(1207, 558)
+		sleep 500
+		RFindClick("\Maps\Polarized_Light\ConfirmStart", "rLDPlayer mc o30 w30000,50")
+		Found := FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n0 w3000,50")
+		if(Found == 1)
+		{
+			Retirement()
+			RetirementLoop++
+		}
+		RetirementLoop--
+	}
+	loop, 1
+	{
+		FindClick(A_ScriptDir "\pics\Turn", "rLDPlayer mc o50 Count1 n0 w30000,50")
+		GuiControl,, NB, CommandPost
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w500,50") != 1)
+		{
+			ClickS(659, 381)
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		Checkdamage()
+		FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
+		RFindClick("OK", "rLDPlayer mc o10 w30000,50")
+		sleep 500
+		RFindClick("StartOperation", "rLDPlayer mc o25 w3000,10 a1000,620 n3 sleep200")
+		if(FindClick(A_ScriptDir "\pics\CombatTdollEnhancement", "rLDPlayer mc o30 Count1 n2 w2000,50"))
+		{
+			break
+		}
+		GuiControl,, NB, CommandPost
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w500,50") != 1)
+		{
+			ClickS(659, 381)
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		ClickTilGone("Resupply", " rLDPlayer mc o10 w30000,50")
+		GuiControl,, NB, Heliport
+		RFindClick("PlanningMode", "rLDPlayer mc n0 o10 w30000,50 ")
+		sleep 1000
+		ClickS(554, 494)
+		sleep 2000
+		ClickS(571, 290)
+		GuiControl,, NB, CommandPost
+		while(FindClick(A_ScriptDir "\pics\EchelonFormation", "rLDPlayer mc o25 Count1 n0 w500,50") != 1)
+		{
+			ClickS(659, 381)
+			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
+		}
+		FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
+		RFindClick("OK", "rLDPlayer mc o10 w30000,50")
+		sleep 500
+		RFindClick("PlanningMode", "rLDPlayer mc o10 w30000,50 ")
+		GuiControl,, NB, Plan1
+		sleep 500
+		ClickS(554, 494)
+		sleep 500
+		ClickS(716, 733)
+		RFindClick("Execute", "rLDPlayer mc o5 w30000,50")
+		nodes(4)
+		RFindClick("PlanningMode", "rLDPlayer mc o30 n0 w30000,50")
+		RFindClick("EndTurn", "rLDPlayer mc o30 w30000,50 a1100,620 n3 sleep250")
+	}
 	GoHome()
 }
