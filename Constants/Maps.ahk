@@ -519,7 +519,7 @@ Checkdamage()
 			sleep 1000
 			Found := FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 ,50")
 		}
-	RFindClick("Resupply", " rLDPlayer mc o30 w30000,50")
+	RFindClick("Resupply", " rLDPlayer mc o30 w30000,50 n3 sleep500")
 	GuiControl,, NB, CommandPost
 	sleep 1000
 	ClickS(649, 401)
