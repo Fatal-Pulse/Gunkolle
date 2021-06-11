@@ -69,7 +69,7 @@ Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
 ; Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|8_1N|8_1N_airstrike|10_4E|10_4Ecdo|11_5|
-Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data
+Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|5_6Boss
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -434,7 +434,7 @@ ExpeditionCheck()
 		if (FoundExpedition == true)
 			{
 				GuiControl,, NB, Expedition Found
-				ClickM(668, 535)
+				ClickM(702, 519)
 				NoStopFindClick("ExpeditionConfirm", "rLDPlayer mc o50 w5000,50")
 				sleep 3000
 			}
@@ -446,12 +446,13 @@ ExpeditionCheck()
 			}
 		Found := FindClick(A_ScriptDir "\pics\WaitForHome", "rLDPlayer mc o40 Count1 n0")
 	}
-}
+} 
 
 UpdateEnergy()
 {
 	global
-	FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "rLDPlayer mc o80 Count1 w15000,50 n0")
+	FindClick(A_ScriptDir "\pics\CombatSims\Data\CombatSimsClicked", "rLDPlayer mc o80 Count1 w15000,50 n0")
+	sleep 3000
 	EnergyCount = 0
 	FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy0", "rLDPlayer mc o50 Count1 w1000,50 n0")
 	While (FoundEnergy != true) {
