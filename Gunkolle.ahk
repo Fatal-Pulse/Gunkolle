@@ -633,13 +633,13 @@ TimeCheck()
 		}
 	}
 
-	if(((CombatSimsCoalitionDrill == 1) && (CombatSimsCoalitionDrillChecker == 1)))
+	if((CombatSimsCoalitionDrill == 1) && (CombatSimsCoalitionDrillChecker == 1))
 	{
+		CombatSimsCoalitionDrillChecker--
+		Random, CombatSimsCoalitionDrillTime, 3600000,  3650000
+		SetTimer, CombatSimsCoalitionDrillFlag, %CombatSimsCoalitionDrillTime%
 		while(1)
-		{
-			CombatSimsCoalitionDrillChecker--
-			Random, CombatSimsCoalitionDrillFragTime, 3600000,  3650000
-			SetTimer, CombatSimsCoalitionDrillFlag, %CombatSimsCoalitionDrillTime%
+		{	
 			Transition("Combat","CombatPage")
 			while(FindClick(A_ScriptDir "\pics\CombatSims\Data\CombatSimsClicked", "rLDPlayer mc o80 Count1 n0") == 0)
 			{
