@@ -51,6 +51,7 @@ IniRead, Enhancement, config.ini, Variables, Enhancement, 0
 IniRead, FriendCollector, config.ini, Variables, FriendCollector, 0
 IniRead, BatteryCollector, config.ini, Variables, BatteryCollector, 0
 IniRead, CombatSimsData, config.ini, Variables, CombatSimsData, 0
+IniRead, CombatSimsCoalitionDrill, config.ini, Variables, CombatSimsCoalitionDrill, 0
 IniRead, CombatSimsMemFrag, config.ini, Variables, CombatSimsMemFrag, 0
 IniRead, MakeReports, config.ini, Variables, MakeReports, 0
 IniRead, SortieInterval, config.ini, Variables, SortieInterval, -1 ;900000 for full morale
@@ -207,7 +208,7 @@ NoStopFindClick(x,y,v*)
 		if (Found == 1)
 		{
 			RSleep(MinRandomWait, MaxRandomWait)
-			FindClick(A_ScriptDir "\pics\" x,y "Center x"RandX " y"RandY)
+			FindClick(A_ScriptDir "\pics\" x,y " Center x"RandX " y" RandY)
 			return 1
 		}
 		if (Found2 == 1)
@@ -454,10 +455,10 @@ UpdateEnergy()
 	FindClick(A_ScriptDir "\pics\CombatSims\Data\CombatSimsClicked", "rLDPlayer mc o80 Count1 w15000,50 n0")
 	sleep 3000
 	EnergyCount = 0
-	FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy0", "rLDPlayer mc o50 Count1 w1000,50 n0")
-	While (FoundEnergy != true) {
+	FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy0", "rLDPlayer mc o100 Count1 w1000,50 n0")
+	While (FoundEnergy == 0) {
 		EnergyCount++
-		FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy" EnergyCount, "rLDPlayer mc o50 Count1 n0")
+		FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy" EnergyCount, "rLDPlayer mc o140 Count1 n0 a870,130,-350,-550")
 	}
 	GuiControl,, NB, EnergyCount == %EnergyCount% CombatSimsData == %CombatSimsData%
 	SLEEP 1000
@@ -534,7 +535,8 @@ TimeCheck()
 	; }
 	if (((CombatSimsData >= 1) && (CombatSimsDataChecker == 1)))
 	{
-		if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
+		; if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
+		if (1)
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
@@ -543,8 +545,8 @@ TimeCheck()
 			SetTimer, CombatSimsDataFlag, %CombatSimsDataTime%
 			Transition("Combat","CombatPage")
 			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
-			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o80 Count1 w4000")
-			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o80 Count1 n0 w20000")
+			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o40 Count1 w2000")
+			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o60 Count1 n0 w20000")
 			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o100 Count1 w10000,50 n0")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/CombatSimsData)
@@ -581,7 +583,8 @@ TimeCheck()
 
 	if (((CombatSimsMemFrag >= 1) && (CombatSimsMemFragChecker == 1)))
 	{
-		if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2100)) || (RegExMatch(someday, "Wed") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2100 ))))
+		; if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2100)) || (RegExMatch(someday, "Wed") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2100 ))))
+		if(1)
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
@@ -628,6 +631,42 @@ TimeCheck()
 			}
 			GoHome()
 		}
+	}
+
+	if(((CombatSimsCoalitionDrill == 1) && (CombatSimsCoalitionDrillChecker == 1)))
+	{
+		while(1)
+		{
+			CombatSimsCoalitionDrillChecker--
+			Random, CombatSimsCoalitionDrillFragTime, 3600000,  3650000
+			SetTimer, CombatSimsCoalitionDrillFlag, %CombatSimsCoalitionDrillTime%
+			Transition("Combat","CombatPage")
+			while(FindClick(A_ScriptDir "\pics\CombatSims\Data\CombatSimsClicked", "rLDPlayer mc o80 Count1 n0") == 0)
+			{
+				NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o40 w1000,50")
+			}
+			NoStopFindClick("CombatSims\CoalitionDrill\CoalitionDrill", "rLDPlayer mc o50 Count1 n2 sleep500 w4000")
+			RFindClick("CombatSims\CoalitionDrill\CoalitionDrillClicked", "rLDPlayer mc o60 Count1 n0 w20000")
+			EnergyCount := UpdateEnergy()
+			totalBattles := Floor(EnergyCount/3)
+			if(NoStopFindClick("CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 a600,280,,-400") == 0) 
+			{
+				break
+			}
+			if(totalBattles != 0)
+			{
+				FindClick(A_ScriptDir "\pics\CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 x-50 y330 w5000 a1000,280,,-400")
+				sleep 2000
+				FindClick(A_ScriptDir "\pics\CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 x-50 y330 a900,280,,-400")
+				; RFindClick("CombatSims\CoalitionDrill\AutoAssign", "rLDPlayer mc o60 n0 sleep500 w20000")
+				RFindClick("CombatSims\CoalitionDrill\Attack", "rLDPlayer mc o60 w20000")
+				RFindClick("CombatSims\CoalitionDrill\Attack2", "rLDPlayer mc o40 w2000")
+				RFindClick("CombatSims\CoalitionDrill\OK", "rLDPlayer mc o40 w5000")
+				RFindClick("CombatSims\CoalitionDrill\back", "rLDPlayer mc o60 n1 sleep500 w20000")
+			}
+			break			
+		}
+		GoHome()
 	}
 
 	if ((MakeReports >= 1) && (MakeReportsChecker == 1))
@@ -1469,6 +1508,13 @@ MakeReportsFlag:
 	return
 }
 
+CombatSimsCoalitionDrillFlag:
+{
+	CombatSimsCoalitionDrillChecker := 1
+	SetTimer, CombatSimsCoalitionDrillFlag, off
+	return
+}
+
 
 #Include %A_ScriptDir%/Functions/Click.ahk
 #Include %A_ScriptDir%/Functions/TimerUtils.ahk
@@ -1503,7 +1549,9 @@ Initialize()
 	BatteryChecker := 1
 	CombatSimsDataChecker := 1
 	CombatSimsMemFragChecker := 1
+	CombatSimsCoalitionDrillChecker := 1
 	MakeReportsChecker := 1
+
 	5Star = TYPE97,OTS14,HK416,G41,TYPE95,G11,FAL,WA2000,ZAS1,ZAS2,K11,AUG,RFB,T91,K2,64SHIKI,GRAPE1,GRAPE2,M4A1M3,AR15M3,AN94,AK12,SOPM3,G36M3,M14M3,ASVALM3
 	4Star = 
 	init_mouse()

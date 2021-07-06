@@ -1123,7 +1123,7 @@ zoommout()
 		FindClick(A_ScriptDir "\pics\CombatMissionActive", "rLDPlayer mc o30 Count1 n0 w2000,50")
 		sleep 1000
 		DragDownToUp(500, 675, 350)
-		while(FindClick(A_ScriptDir "\pics\Battle", "rLDPlayer mc o30 Count1 n0 w1000,50") != 1){
+		while(FindClick(A_ScriptDir "\pics\Battle", "rLDPlayer mc o30 Count1 n0 w2000,50") != 1){
 				ClickS(847, 630)	
 		}
 		RFindClick("Battle", "rLDPlayer mc o30 w30000,50")
@@ -1146,7 +1146,6 @@ zoommout()
 		ClickS(840, 381)
 		sleep 1000
 	}
-	Checkdamage()
 	FindClick(A_ScriptDir "\pics\Close", "rLDPlayer mc o30 Count1 n1 1000,50")
 	RFindClick("OK", "rLDPlayer mc o10 w30000,50 ")
 	GuiControl,, NB, Heliport
