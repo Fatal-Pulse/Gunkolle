@@ -2,6 +2,11 @@
 
 RunMap(x)
 {
+	top_maps = 0_2,4_6_data
+	If x in %top_maps%
+	{
+		DragUpToDown(251, 200, 800)
+	}
 	if (x == "0_2")
 	{
 		0_2()
@@ -470,6 +475,10 @@ Checkdamage()
 {
 	Global
 	RetirementLoop := 1
+	while(NoStopFindClick("\Maps\0_2\Chapter0Clicked", "rLDPlayer mc o30 n0 a200,,-900") == 0)
+	{
+		NoStopFindClick("\Maps\0_2\Chapter0", "rLDPlayer mc o30 w500 a200,,-900")
+	}
 	while (RetirementLoop != 0)
 	{
 		GuiControl,, NB, MapSelect
@@ -560,7 +569,13 @@ zoommout()
 4_6_data()
 {
 	Global
-	ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
+	; ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
+	while(NoStopFindClick("\pics\Maps\4_6\Chapter4Clicked", "rLDPlayer mc o30 n0 a200,,-900") == 0)
+	{
+		NoStopFindClick("\pics\Maps\4_6\Chapter4", "rLDPlayer mc o30 w500 a200,,-900")
+	}
+	NoStopFindClick("\pics\Maps\4_6\Normal", "rLDPlayer mc o30")
+	sleep 1000
 	RetirementLoop := 1
 	while (RetirementLoop != 0)
 	{

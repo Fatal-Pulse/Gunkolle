@@ -70,7 +70,7 @@ Gui, Add, Text,, MaxWait:
 Gui, Add, Edit, r1 w20 vNB ReadOnly
 GuiControl, Move, NB, x10 w300 y80
 ; Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|4_3E|5_4_friendly|8_1N|8_1N_airstrike|10_4E|10_4Ecdo|11_5|
-Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data|5_6Boss
+Gui, Add, DDL, x40 w124 ym-3 vWorldV, 0_2|4_6_data
 GuiControl, ChooseString, WorldV, %WorldV%
 ; Gui, Add, Edit, gWorldF r2 limit3 w10 vWorldV -VScroll ym, %World%
 ; GuiControl, Move, WorldV, x37 h17 w15
@@ -205,13 +205,13 @@ NoStopFindClick(x,y,v*)
 	Found2:= FindClick(A_ScriptDir "\pics\ExpeditionArrive", "rLDPlayer mc o50 Center x"RandX " y"RandY "  n0 Count1")
 	loop, %looper%
 	{
-		if (Found == 1)
+		if (Found >= 1)
 		{
 			RSleep(MinRandomWait, MaxRandomWait)
-			FindClick(A_ScriptDir "\pics\" x,y " Center x"RandX " y" RandY)
-			return 1
+			counted := FindClick(A_ScriptDir "\pics\" x,y " Center x"RandX " y" RandY)
+			return counted
 		}
-		if (Found2 == 1)
+		if (Found2 >= 1)
 		{
 			while(Found2 != 1)
 			{
@@ -221,6 +221,7 @@ NoStopFindClick(x,y,v*)
 			looper +=1
 		}
 	}
+	return 0
 }
 
 ClickTilGone(x,y,v*)
@@ -649,7 +650,7 @@ TimeCheck()
 			RFindClick("CombatSims\CoalitionDrill\CoalitionDrillClicked", "rLDPlayer mc o60 Count1 n0 w20000")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/3)
-			if(NoStopFindClick("CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 a600,280,,-400") == 0) 
+			if(NoStopFindClick("CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 n0 a600,280,,-400") == 0) 
 			{
 				break
 			}
