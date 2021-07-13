@@ -546,8 +546,8 @@ TimeCheck()
 			SetTimer, CombatSimsDataFlag, %CombatSimsDataTime%
 			Transition("Combat","CombatPage")
 			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
-			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o40 Count1 w2000")
-			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o60 Count1 n0 w20000")
+			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o100 Count1 w2000 a160,,-1000")
+			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o100 Count1 n0 w20000 a160,,-1000")
 			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o100 Count1 w10000,50 n0")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/CombatSimsData)
@@ -594,8 +594,8 @@ TimeCheck()
 			SetTimer, CombatSimsMemFragFlag, %CombatSimsMemFragTime%
 			Transition("Combat","CombatPage")
 			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
-			NoStopFindClick("CombatSims\MemFrag\CloudCorridor", "rLDPlayer mc o30 Count1 w4000")
-			RFindClick("CombatSims\MemFrag\CloudCorridorClicked", "rLDPlayer mc o60 Count1 n0 w20000")
+			NoStopFindClick("CombatSims\MemFrag\CloudCorridor", "rLDPlayer mc o100 Count1 w4000 a160,,-1000")
+			RFindClick("CombatSims\MemFrag\CloudCorridorClicked", "rLDPlayer mc o100 Count1 n0 w20000 a160,,-1000")
 			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o30 Count1 w10000,50 n0")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/3)
@@ -642,12 +642,12 @@ TimeCheck()
 		while(1)
 		{	
 			Transition("Combat","CombatPage")
-			while(FindClick(A_ScriptDir "\pics\CombatSims\Data\CombatSimsClicked", "rLDPlayer mc o80 Count1 n0") == 0)
+			while(FindClick(A_ScriptDir "\pics\CombatSims\Data\CombatSimsClicked", "rLDPlayer mc o60 Count1 n0") == 0)
 			{
 				NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o40 w1000,50")
 			}
-			NoStopFindClick("CombatSims\CoalitionDrill\CoalitionDrill", "rLDPlayer mc o50 Count1 n2 sleep500 w4000")
-			RFindClick("CombatSims\CoalitionDrill\CoalitionDrillClicked", "rLDPlayer mc o60 Count1 n0 w20000")
+			NoStopFindClick("CombatSims\CoalitionDrill\CoalitionDrill", "rLDPlayer mc o100 Count1 n2 sleep500 w4000 a160,,-1000")
+			RFindClick("CombatSims\CoalitionDrill\CoalitionDrillClicked", "rLDPlayer mc o100 Count1 n0 w20000 a160,,-1000")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/3)
 			if(NoStopFindClick("CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 n0 a600,280,,-400") == 0) 
@@ -664,6 +664,7 @@ TimeCheck()
 				RFindClick("CombatSims\CoalitionDrill\Attack2", "rLDPlayer mc o40 w2000")
 				RFindClick("CombatSims\CoalitionDrill\OK", "rLDPlayer mc o40 w5000")
 				RFindClick("CombatSims\CoalitionDrill\back", "rLDPlayer mc o60 n1 sleep500 w20000")
+				ChapterReset = 1
 			}
 			break			
 		}
@@ -800,6 +801,11 @@ ReplaceDPS(exhaustedDoll, loadedDoll, resetFilter:=False)
 	Global
 	sleep 1000
 	WFindClick("DollList\"%exhaustedDoll% , "rLDPlayer mc a125,125,-590,-220", 120) ;select Doll1
+	NoStopFindClick("Filter", "rLDPlayer mc o50 n0 w1000,50")
+	if(NoStopFindClick("WaitForFormation", "rLDPlayer mc o30 n0"))
+	{
+		WFindClick("DollList\"%exhaustedDoll% , "rLDPlayer mc a125,125,-590,-220", 120)
+	}
 	if resetFilter
 	{
 		RFindClick("FilterYellow", "rLDPlayer mc o20 w30000,50")
@@ -808,11 +814,11 @@ ReplaceDPS(exhaustedDoll, loadedDoll, resetFilter:=False)
 	RFindClick("Filter", "rLDPlayer mc o50 w30000,50") ; select filter
 	if %loadedDoll% in %5Star%
 	{
-		RFindClick("5STAR", "rLDPlayer mc o50 w10000,50") ;go to formation 
+		RFindClick("5STAR", "rLDPlayer mc o50 w10000,50")
 	}
 	Else
 	{
-		RFindClick("4STAR", "rLDPlayer mc o50 w10000,50") ;go to formation 
+		RFindClick("4STAR", "rLDPlayer mc o50 w10000,50")
 	}
 	RFindClick("Filter"WeaponType, "rLDPlayer mc o50 w30000,50")	
 	RFindClick("Confirm", "rLDPlayer mc o50 w30000,50")

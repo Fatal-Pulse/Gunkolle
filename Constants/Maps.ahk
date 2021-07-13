@@ -2,10 +2,16 @@
 
 RunMap(x)
 {
+	global
 	top_maps = 0_2,4_6_data
 	If x in %top_maps%
 	{
-		DragUpToDown(251, 200, 800)
+		if (ChapterReset == 1 || x == "4_6_data")
+		{
+			sleep 3000
+			DragUpToDown(251, 200, 800)
+			ChapterReset = 0
+		}
 	}
 	if (x == "0_2")
 	{
@@ -570,11 +576,11 @@ zoommout()
 {
 	Global
 	; ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
-	while(NoStopFindClick("\pics\Maps\4_6\Chapter4Clicked", "rLDPlayer mc o30 n0 a200,,-900") == 0)
+	while(NoStopFindClick("\Maps\4_6\Chapter4Clicked", "rLDPlayer mc o30 n0 a200,,-900") == 0)
 	{
-		NoStopFindClick("\pics\Maps\4_6\Chapter4", "rLDPlayer mc o30 w500 a200,,-900")
+		NoStopFindClick("\Maps\4_6\Chapter4", "rLDPlayer mc o30 w500 a200,,-900")
 	}
-	NoStopFindClick("\pics\Maps\4_6\Normal", "rLDPlayer mc o30")
+	NoStopFindClick("\Maps\4_6\Normal", "rLDPlayer mc o30")
 	sleep 1000
 	RetirementLoop := 1
 	while (RetirementLoop != 0)
