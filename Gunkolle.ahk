@@ -536,8 +536,8 @@ TimeCheck()
 	; }
 	if (((CombatSimsData >= 1) && (CombatSimsDataChecker == 1)))
 	{
-		; if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
-		if (1)
+		if (((RegExMatch(someday, "Sun|Tue|Fri") && (TimeString >= 0800 && TimeString <= 2400)) || (RegExMatch(someday, "Mon|Wed|Sat") && (TimeString >= 0000 && TimeString <= 0800))))
+		; if (1)
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
@@ -584,8 +584,8 @@ TimeCheck()
 
 	if (((CombatSimsMemFrag >= 1) && (CombatSimsMemFragChecker == 1)))
 	{
-		; if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2100)) || (RegExMatch(someday, "Wed") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2100 ))))
-		if(1)
+		if (((RegExMatch(someday, "Mon|Sat") && (TimeString >= 0800 && TimeString <= 2100)) || (RegExMatch(someday, "Wed") && (TimeString >= 0800 )) || (RegExMatch(someday, "Thu") && (TimeString <= 2100 ))))
+		; if(1)
 		{
 			TotalBattles := 0
 			totalBattlescounter := 0
@@ -650,14 +650,14 @@ TimeCheck()
 			RFindClick("CombatSims\CoalitionDrill\CoalitionDrillClicked", "rLDPlayer mc o100 Count1 n0 w20000 a160,,-1000")
 			EnergyCount := UpdateEnergy()
 			totalBattles := Floor(EnergyCount/3)
-			if(NoStopFindClick("CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 n0 a600,280,,-400") == 0) 
+			if(NoStopFindClick("CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 n0 a1000,280,,-400") == 0) 
 			{
 				break
 			}
 			if(totalBattles != 0)
 			{
 				FindClick(A_ScriptDir "\pics\CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 x-50 y330 w5000 a1000,280,,-400")
-				sleep 2000
+				sleep 4000
 				FindClick(A_ScriptDir "\pics\CombatSims\CoalitionDrill\3x", "rLDPlayer mc o100 Count1 x-50 y330 a900,280,,-400")
 				; RFindClick("CombatSims\CoalitionDrill\AutoAssign", "rLDPlayer mc o60 n0 sleep500 w20000")
 				RFindClick("CombatSims\CoalitionDrill\Attack", "rLDPlayer mc o60 w20000")

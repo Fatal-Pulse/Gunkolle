@@ -633,7 +633,7 @@ zoommout()
 		while(FindClick(A_ScriptDir "\pics\CommandFairy", "rLDPlayer mc o25 Count1 n0 w2000,50") != 1)
 		{
 			ClickS(868, 46)
-			Found := FindClick(A_ScriptDir "\pics\Cancel", "rLDPlayer mc o40 Count1 n1")
+			Found := FindClick(A_ScriptDir "\pics\Cancel", "rLDPlayer mc o40 Count1 n1 w1000,50")
 		}
 		GuiControl,, NB, Node1
 		sleep 500
@@ -941,7 +941,7 @@ zoommout()
 					ClickTilGone("DollDrop", "rLDPlayer mc o10 w30000,50 ")
 				}
 		ClickS(320, 180)
-		sleep 250
+		FindClick(A_ScriptDir "\pics\Cancel", "rLDPlayer mc o40 Count1 n1 w1000,50")
 		TFindClick("Terminate","TerminateOK")
 		sleep 500
 		RFindClick("TerminateOK", "rLDPlayer mc o50 w30000,50")

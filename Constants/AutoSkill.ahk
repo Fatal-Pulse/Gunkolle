@@ -5,7 +5,7 @@ AutoSkill()
 	AutoSkillTypelist := HandGun,SubmachineGun,Rifle,AssaultRifle,MachineGun,ShotGun
 	if (InStr(AutoSkillStarlist, %AutoSkillStar%) || InStr(AutoSkillTypelist, %AutoSkillType%))
 	{
-		if(FindClick(A_ScriptDir "\pics\Research\Skill\SkillReady", "rLDPlayer mc o40 Count1 n0") || FindClick(A_ScriptDir "\pics\Research\Skill\SkillReady2", "rLDPlayer mc o40 Count1 n0"))
+		if(FindClick(A_ScriptDir "\pics\Research\Skill\SkillReady", "rLDPlayer mc o100 Count1 n0") || FindClick(A_ScriptDir "\pics\Research\Skill\SkillReady2", "rLDPlayer mc o100 Count1 n0"))
 		{
 			Transition("Research\Skill\Research","Research\Skill\ResearchClicked")
 			loop,4
