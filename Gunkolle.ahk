@@ -208,7 +208,7 @@ NoStopFindClick(x,y,v*)
 		if (Found >= 1)
 		{
 			RSleep(MinRandomWait, MaxRandomWait)
-			counted := FindClick(A_ScriptDir "\pics\" x,y " Center x"RandX " y" RandY)
+			counted := FindClick(A_ScriptDir "\pics\" x,y " Center1 x"RandX " y" RandY)
 			return counted
 		}
 		if (Found2 >= 1)
@@ -545,7 +545,10 @@ TimeCheck()
 			Random, CombatSimsDataTime, 3600000,  3650000
 			SetTimer, CombatSimsDataFlag, %CombatSimsDataTime%
 			Transition("Combat","CombatPage")
-			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
+			while(FindClick(A_ScriptDir "\pics\CombatSims\Data\CombatSimsClicked", "rLDPlayer mc o60 Count1 n0") == 0)
+			{
+				NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o40 w1000,50")
+			}
 			NoStopFindClick("CombatSims\Data\DataMode", "rLDPlayer mc o100 Count1 w2000 a160,,-1000")
 			RFindClick("CombatSims\Data\DataModeClicked", "rLDPlayer mc o100 Count1 n0 w20000 a160,,-1000")
 			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o100 Count1 w10000,50 n0")
@@ -593,7 +596,10 @@ TimeCheck()
 			Random, CombatSimsMemFragTime, 3600000,  3650000
 			SetTimer, CombatSimsMemFragFlag, %CombatSimsMemFragTime%
 			Transition("Combat","CombatPage")
-			NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o30 w2000,50")
+			while(FindClick(A_ScriptDir "\pics\CombatSims\Data\CombatSimsClicked", "rLDPlayer mc o60 Count1 n0") == 0)
+			{
+				NoStopFindClick("CombatSims\Data\CombatSims", "rLDPlayer mc o40 w1000,50")
+			}
 			NoStopFindClick("CombatSims\MemFrag\CloudCorridor", "rLDPlayer mc o100 Count1 w4000 a160,,-1000")
 			RFindClick("CombatSims\MemFrag\CloudCorridorClicked", "rLDPlayer mc o100 Count1 n0 w20000 a160,,-1000")
 			NoStopFindClick("CombatSims\Data\Training1", "rLDPlayer mc o30 Count1 w10000,50 n0")
